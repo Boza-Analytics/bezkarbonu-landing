@@ -15,7 +15,7 @@ const dm = DM_Sans({
 
 
 export const metadata: Metadata = {
-  title: "[BRAND] — Dekarbonizace motoru vodíkem",
+  title: "Dekarbonizace motoru bez demontáže | ČištěníVodíkem.cz",
   description:
     "Profesionální vodíková dekarbonizace motorů. Liberec a České Budějovice. Obnovte výkon motoru za 30–60 minut.",
 };
