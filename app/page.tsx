@@ -94,6 +94,32 @@ const REVIEWS = [
   { name: "Tomáš H.", text: "Spotřeba klesla o skoro litr na stovce. Za cenu jedné dekarbonizace se mi to vrátí do půl roku. Škoda, že jsem to neudělal dřív.", initials: "TH", img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/10/IMG_6455-500x667.jpeg" },
 ];
 
+/* ─────────────────────── LOGO COMPONENT ─────────────────────── */
+function Logo() {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="relative flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 shadow-sm flex-shrink-0">
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          className="w-4 h-4 text-[#8cc63f]"
+        >
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+      </div>
+      <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
+        <span className="text-white">Hydro</span>
+        <span className="text-[#8cc63f]">Revive</span>
+      </span>
+    </div>
+  );
+}
+
 /* ─────────────────────── NAVBAR ─────────────────────── */
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -106,11 +132,9 @@ function Navbar() {
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: C.navyDk, borderBottom: `3px solid ${C.lime}` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8" style={{ height: "60px" }}>
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ width: "26px", height: "26px", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.7rem", fontFamily: FONT }}>BK</span>
-          </div>
-          <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, fontFamily: FONT }}>[ BRAND ]</span>
+        
+        <a href="#" style={{ textDecoration: "none" }}>
+          <Logo />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -242,7 +266,7 @@ function TrustBar() {
     <div style={{ background: C.navy, borderBottom: `3px solid ${C.limeDk}` }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex flex-wrap justify-center">
         {items.map((item, i) => (
-          <div key={item} className="flex items-center gap-2" style={{ padding: "13px 16px sm:padding-20px", borderRight: i < items.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+          <div key={item} className="flex items-center gap-2" style={{ padding: "13px 16px", borderRight: i < items.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
             <div style={{ width: "5px", height: "5px", background: C.lime, flexShrink: 0 }} />
             <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.75rem", fontWeight: 500, whiteSpace: "nowrap", fontFamily: FONT }}>{item}</span>
           </div>
@@ -617,11 +641,40 @@ function FAQ() {
 /* ─────────────────────── CONTACT FORM ─────────────────────── */
 function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const field: React.CSSProperties = {
     width: "100%", background: C.white, border: `1.5px solid ${C.border}`,
     padding: "11px 13px", fontFamily: FONT, fontSize: "0.9rem",
     color: C.textDk, outline: "none", transition: "border-color 0.2s",
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    
+    formData.append("access_key", "f5a890ca-be50-4128-b31d-dd19d00053f0");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSent(true); 
+      } else {
+        alert('Něco se pokazilo při odesílání. Zkuste to prosím znovu.');
+      }
+    } catch (error) {
+      alert('Chyba připojení. Zkontrolujte svůj internet a zkuste to znovu.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -663,17 +716,18 @@ function ContactForm() {
               </div>
             ) : (
               <div style={{ background: C.white, border: `1px solid ${C.border}`, borderTop: `4px solid ${C.navy}`, padding: "28px 24px" }}>
-                <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Jméno *</label>
-                      <input required type="text" placeholder="Jan" style={field}
+                      <input name="Jméno" required type="text" placeholder="Jan" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Příjmení *</label>
-                      <input required type="text" placeholder="Novák" style={field}
+                      <input name="Příjmení" required type="text" placeholder="Novák" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
@@ -681,30 +735,30 @@ function ContactForm() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Telefon *</label>
-                      <input required type="tel" placeholder="+420 123 456 789" style={field}
+                      <input name="Telefon" required type="tel" placeholder="+420 123 456 789" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>E-mail *</label>
-                      <input required type="email" placeholder="jan@email.cz" style={field}
+                      <input name="E-mail" required type="email" placeholder="jan@email.cz" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
                   </div>
                   <div>
                     <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Pobočka *</label>
-                    <select required style={{ ...field, cursor: "pointer" }}
+                    <select name="Pobočka" required style={{ ...field, cursor: "pointer" }}
                       onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                       onBlur={e => (e.currentTarget.style.borderColor = C.border)}>
                       <option value="">Vyberte pobočku...</option>
-                      <option value="liberec">Liberec — Tanvaldská 1458</option>
-                      <option value="cb">České Budějovice — Rudolfovská tř. 612</option>
+                      <option value="Liberec">Liberec — Tanvaldská 1458</option>
+                      <option value="České Budějovice">České Budějovice — Rudolfovská tř. 612</option>
                     </select>
                   </div>
                   <div>
                     <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Zpráva (nepovinné)</label>
-                    <textarea rows={3} placeholder="Objem motoru, preferovaný termín nebo cokoliv dalšího..." style={{ ...field, resize: "none" }}
+                    <textarea name="Zpráva" rows={3} placeholder="Objem motoru, preferovaný termín nebo cokoliv dalšího..." style={{ ...field, resize: "none" }}
                       onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                       onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                   </div>
@@ -712,11 +766,11 @@ function ContactForm() {
                     <input required type="checkbox" style={{ marginTop: "2px", flexShrink: 0, accentColor: C.navy }} />
                     Souhlasím se zpracováním osobních údajů dle <a href="#" style={{ color: C.navy, fontWeight: 600 }}>zásad ochrany osobních údajů</a>. *
                   </label>
-                  <button type="submit" className="w-full flex items-center justify-center gap-2 mt-1"
+                  <button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2 mt-1 disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{ ...btnPrimary, padding: "14px" }}
-                    onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
-                    onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
-                    Odeslat zprávu <ArrowRight size={15}/>
+                    onMouseEnter={e => { if(!isSubmitting) e.currentTarget.style.background = C.limeDk }}
+                    onMouseLeave={e => { if(!isSubmitting) e.currentTarget.style.background = C.lime }}>
+                    {isSubmitting ? 'Odesílám...' : 'Odeslat zprávu'} <ArrowRight size={15}/>
                   </button>
                 </form>
               </div>
@@ -735,11 +789,9 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-12 pb-8">
         <div className="flex flex-wrap justify-between gap-10 mb-10">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div style={{ width: "28px", height: "28px", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.7rem", fontFamily: FONT }}>BK</span>
-              </div>
-              <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.68rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, fontFamily: FONT }}>[ BRAND ]</span>
+            <div className="mb-4">
+               {/* NOVÉ LOGO ZDE */}
+               <Logo />
             </div>
             <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.85rem", maxWidth: "200px", lineHeight: 1.7, fontFamily: FONT }}>
               Vodíková dekarbonizace motorů. Liberec a České Budějovice. Provoz HPower s.r.o.
@@ -767,7 +819,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 [BRAND] · HPower s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 HydroRevive CZ · HPower s.r.o.</p>
           <div className="flex gap-5">
             {["Ochrana osobních údajů", "Cookies"].map((l) => (
               <a key={l} href="#" style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
