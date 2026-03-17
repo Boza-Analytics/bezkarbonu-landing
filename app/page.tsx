@@ -65,7 +65,7 @@ const LOCATIONS = [
     city: "Liberec",
     address: "Tanvaldská 1458, Liberec",
     phone: "+420 601 269 600",
-    email: "objednavky@bezkarbonu.cz",
+    email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
     img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/06/VW-Golf-na-dekarbonizaci-1-500x499.jpg",
@@ -74,7 +74,7 @@ const LOCATIONS = [
     city: "České Budějovice",
     address: "Rudolfovská tř. 612, České Budějovice",
     phone: "+420 601 269 600",
-    email: "objednavky@bezkarbonu.cz",
+    email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
     img: "https://www.bezkarbonu.cz/wp-content/uploads/2025/05/Ford-Mondeo-mk4-800x533-1.webp",
@@ -288,7 +288,7 @@ function TrustBar() {
   const badges = ["5+ let na trhu", "Vodíková HHO technologie", "Diagnostika zdarma", "Benzín · Diesel · Hybrid", "Bez demontáže motoru"];
 
   return (
-    <section style={{ background: '#060f24', padding: "72px 0 56px" }}>
+    <section style={{ background: C.offWhite, padding: "72px 0 56px" }}>
       <style>{`
         @keyframes statFadeUp {
           from { opacity: 0; transform: translateY(20px); }
@@ -299,49 +299,51 @@ function TrustBar() {
 
         {/* Heading */}
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <span style={{ fontFamily: FONT, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: C.lime }}>
+          <span style={{ fontFamily: FONT, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: C.navy }}>
             Měřitelné výsledky
           </span>
-          <h2 style={{ fontFamily: FONT, fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", margin: "10px 0 0" }}>
+          <h2 style={{ fontFamily: FONT, fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: C.textDk, letterSpacing: "-0.5px", margin: "10px 0 0" }}>
             Proč má dekarbonizace smysl
           </h2>
         </div>
 
         {/* 3 stat cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map(({ Icon, value, unit, label, note }, i) => (
             <div key={label} style={{
-              background: '#0d3a79',
-              borderTop: `4px solid ${C.lime}`,
-              padding: "48px 32px",
+              background: C.white,
+              border: `1px solid ${C.border}`,
+              borderTop: `4px solid ${C.navy}`,
+              padding: "44px 32px",
               textAlign: "center",
               animation: `statFadeUp 0.6s ease ${i * 0.12}s both`,
-              boxShadow: '0 4px 32px rgba(0,0,0,0.25)',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
             }}>
-              {/* Icon ring */}
+              {/* Icon with navy ring */}
               <div style={{
-                width: "58px", height: "58px", borderRadius: "50%",
-                border: "1.5px solid rgba(140,198,63,0.3)",
+                width: "64px", height: "64px", borderRadius: "50%",
+                border: `2px solid ${C.navy}`,
+                background: C.offWhite,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 margin: "0 auto 28px",
-                color: C.lime,
+                color: C.navy,
               }}>
-                <Icon size={24} strokeWidth={1.5} />
+                <Icon size={26} strokeWidth={1.5} />
               </div>
 
               {/* Big number */}
-              <div style={{ fontFamily: FONT, fontSize: "clamp(2.8rem, 5vw, 4rem)", fontWeight: 800, color: "#fff", letterSpacing: "-3px", lineHeight: 1 }}>
+              <div style={{ fontFamily: FONT, fontSize: "clamp(2.6rem, 4.5vw, 3.8rem)", fontWeight: 800, color: C.navy, letterSpacing: "-3px", lineHeight: 1 }}>
                 {value.toLocaleString("cs-CZ")}
-                <span style={{ fontSize: "1.4rem", fontWeight: 500, color: C.lime, marginLeft: "5px" }}>{unit}</span>
+                <span style={{ fontSize: "1.3rem", fontWeight: 600, color: C.lime, marginLeft: "5px" }}>{unit}</span>
               </div>
 
               {/* Label */}
-              <div style={{ fontFamily: FONT, fontSize: "0.95rem", fontWeight: 600, color: "rgba(255,255,255,0.85)", marginTop: "16px", letterSpacing: "-0.2px" }}>
+              <div style={{ fontFamily: FONT, fontSize: "0.95rem", fontWeight: 700, color: C.textDk, marginTop: "16px", letterSpacing: "-0.2px" }}>
                 {label}
               </div>
 
               {/* Note */}
-              <div style={{ fontFamily: FONT, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", marginTop: "6px", lineHeight: 1.65 }}>
+              <div style={{ fontFamily: FONT, fontSize: "0.8rem", color: C.textLt, marginTop: "6px", lineHeight: 1.65 }}>
                 {note}
               </div>
             </div>
@@ -349,7 +351,7 @@ function TrustBar() {
         </div>
 
         {/* Trust badges strip */}
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 pt-8" style={{ borderTop: `1px solid ${C.border}` }}>
           {badges.map((item) => (
             <div key={item} className="flex items-center gap-2">
               <div style={{ width: "4px", height: "4px", background: C.lime, borderRadius: "50%", flexShrink: 0 }} />
@@ -792,7 +794,7 @@ function ContactForm() {
             <div className="flex flex-col gap-4 mt-8">
               {[
                 { icon: <Phone size={16}/>, label: "Telefon", val: "+420 601 269 600", href: "tel:+420601269600" },
-                { icon: <Mail size={16}/>, label: "E-mail", val: "objednavky@bezkarbonu.cz", href: "mailto:objednavky@bezkarbonu.cz" },
+                { icon: <Mail size={16}/>, label: "E-mail", val: "info@cistenivodikem.cz", href: "mailto:info@cistenivodikem.cz" },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-3">
                   <div style={{ width: "38px", height: "38px", background: C.navy, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0 }}>{c.icon}</div>
@@ -1209,7 +1211,7 @@ function FloatingCTA() {
       <a href="#contact" style={{ ...btnPrimary, display: 'flex', justifyContent: 'center', padding: '10px 16px', fontSize: '0.82rem', width: '100%' }}
         onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
         onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
-        Objednat online <ArrowRight size={14} />
+        Kontaktujte nás <ArrowRight size={14} />
       </a>
     </div>
   );
