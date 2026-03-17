@@ -109,12 +109,15 @@ function Logo() {
           strokeLinejoin="round" 
           className="w-4 h-4 text-[#8cc63f]"
         >
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+          <path d="M12 11v4" />
+          <path d="M10 13h4" />
         </svg>
       </div>
+      
       <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
-        <span className="text-white">Hydro</span>
-        <span className="text-[#8cc63f]">Revive</span>
+        <span className="text-white">Čištění</span>
+        <span className="text-[#8cc63f]">Vodíkem</span>
       </span>
     </div>
   );
@@ -223,8 +226,8 @@ function Hero() {
 
             <div className="flex flex-wrap gap-6 sm:gap-8 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
               {[
-                { num: "30–60 min", label: "procedura" },
-                { num: "2 pobočky", label: "Liberec & ČB" },
+                { num: "50–80 min", label: "procedura" },
+                { num: "5 + let", label: "zkušeností" },
                 { num: "100%", label: "bez chemikálií" },
               ].map((s, i) => (
                 <div key={s.label} style={{ paddingRight: i < 2 ? "20px" : "0", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none" }}>
@@ -790,7 +793,6 @@ function Footer() {
         <div className="flex flex-wrap justify-between gap-10 mb-10">
           <div>
             <div className="mb-4">
-               {/* NOVÉ LOGO ZDE */}
                <Logo />
             </div>
             <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.85rem", maxWidth: "200px", lineHeight: 1.7, fontFamily: FONT }}>
@@ -819,7 +821,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 HydroRevive CZ · HPower s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · HPower s.r.o.</p>
           <div className="flex gap-5">
             {["Ochrana osobních údajů", "Cookies"].map((l) => (
               <a key={l} href="#" style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
