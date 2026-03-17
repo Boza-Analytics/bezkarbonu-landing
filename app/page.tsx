@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Zap, Fuel, ShieldCheck, Clock, Leaf, Wrench,
@@ -64,7 +64,7 @@ const LOCATIONS = [
   {
     city: "Liberec",
     address: "Tanvaldská 1458, Liberec",
-    phone: "+420 792 767 337",
+    phone: "+420 601 269 600",
     email: "objednavky@bezkarbonu.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
@@ -73,7 +73,7 @@ const LOCATIONS = [
   {
     city: "České Budějovice",
     address: "Rudolfovská tř. 612, České Budějovice",
-    phone: "+420 792 767 337",
+    phone: "+420 601 269 600",
     email: "objednavky@bezkarbonu.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
@@ -123,7 +123,7 @@ function Navbar() {
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.875rem", fontWeight: 500, textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+            <a key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}>
               {l.label}
@@ -131,11 +131,11 @@ function Navbar() {
           ))}
         </div>
 
-        <a href="tel:+420792767337" className="hidden md:flex items-center gap-2"
+        <a href="tel:+420601269600" className="hidden md:flex items-center gap-2"
           style={{ background: C.lime, color: "#fff", fontWeight: 600, fontSize: "0.875rem", padding: "8px 16px", textDecoration: "none", fontFamily: FONT, transition: "background 0.2s" }}
           onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
           onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
-          <Phone size={13} /> +420 792 767 337
+          <Phone size={13} /> +420 601 269 600
         </a>
 
         <button className="md:hidden" onClick={() => setOpen(!open)}
@@ -148,12 +148,12 @@ function Navbar() {
         <div style={{ background: C.navyDk, borderTop: "1px solid rgba(255,255,255,0.08)", padding: "20px 16px", display: "flex", flexDirection: "column", gap: "16px" }}>
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", fontWeight: 500, textDecoration: "none", fontFamily: FONT }}>
+              style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT }}>
               {l.label}
             </a>
           ))}
-          <a href="tel:+420792767337" style={{ ...btnPrimary, justifyContent: "center", marginTop: "8px" }}>
-            <Phone size={13}/> +420 792 767 337
+          <a href="tel:+420601269600" style={{ ...btnPrimary, justifyContent: "center", marginTop: "8px" }}>
+            <Phone size={13}/> +420 601 269 600
           </a>
           <a href="#contact" onClick={() => setOpen(false)} style={{ ...btnOutline, justifyContent: "center", borderColor: "rgba(255,255,255,0.25)" }}>
             Objednat termín
@@ -676,7 +676,7 @@ function ContactForm() {
             </p>
             <div className="flex flex-col gap-4 mt-8">
               {[
-                { icon: <Phone size={16}/>, label: "Telefon", val: "+420 792 767 337", href: "tel:+420792767337" },
+                { icon: <Phone size={16}/>, label: "Telefon", val: "+420 601 269 600", href: "tel:+420601269600" },
                 { icon: <Mail size={16}/>, label: "E-mail", val: "objednavky@bezkarbonu.cz", href: "mailto:objednavky@bezkarbonu.cz" },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-3">
@@ -776,8 +776,11 @@ function Footer() {
             <div className="mb-4">
                <Logo />
             </div>
-            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.85rem", maxWidth: "200px", lineHeight: 1.7, fontFamily: FONT }}>
-              Vodíková dekarbonizace motorů. Liberec a České Budějovice. Provoz HPower s.r.o.
+            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.85rem", maxWidth: "220px", lineHeight: 1.7, fontFamily: FONT }}>
+              Vodíková dekarbonizace motorů. Liberec a České Budějovice.<br />
+              RespiPlus Care s.r.o.<br />
+              IČO: 09701982<br />
+              Korunní 2569/108, Praha 10
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
@@ -802,8 +805,14 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · HPower s.r.o.</p>
-          <div className="flex gap-5">
+          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
+          <div className="flex gap-5 items-center">
+            <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.2)")}>
+              Vytvořilo Inetio s.r.o.
+            </a>
             {["Ochrana osobních údajů", "Cookies"].map((l) => (
               <a key={l} href="#" style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
@@ -816,6 +825,238 @@ function Footer() {
   );
 }
 
+/* ─────────────────────── PROCESS ANIMATION ─────────────────────── */
+function ProcessAnimation() {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setActive(p => (p + 1) % 4), 3000);
+    return () => clearInterval(t);
+  }, []);
+
+  const steps = [
+    {
+      num: "01",
+      Icon: Wrench,
+      title: "Připojení přístroje",
+      desc: "Stroj se napojí přímo na sací potrubí. Žádná demontáž, žádný zásah do oleje.",
+    },
+    {
+      num: "02",
+      Icon: Zap,
+      title: "Výroba HHO plynu",
+      desc: "Elektrolýzou vody přístroj vyrábí čistou vodíko-kyslíkovou směs (HHO).",
+    },
+    {
+      num: "03",
+      Icon: Fuel,
+      title: "Plyn vstupuje do motoru",
+      desc: "HHO proudí sacím potrubím a při spalování rozkládá uhlíkové nánosy.",
+    },
+    {
+      num: "04",
+      Icon: Leaf,
+      title: "Motor je čistý",
+      desc: "Zbytky se přemění na vodu a CO₂, které přirozeně odejdou výfukem.",
+    },
+  ];
+
+  return (
+    <section style={{ background: C.white, padding: "80px 0" }}>
+      <style>{`
+        @keyframes pulseDot {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(140,198,63,0.5); }
+          50% { box-shadow: 0 0 0 10px rgba(140,198,63,0); }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8">
+        <div style={{ textAlign: "center", marginBottom: "52px" }}>
+          <span style={{ ...S.tag, color: C.navy }}>Proces</span>
+          <h2 style={{ ...S.h2, color: C.textDk }}>Jak probíhá dekarbonizace</h2>
+          <div style={{ ...S.divider, margin: "14px auto 0" }} />
+        </div>
+
+        {/* Desktop 4-col */}
+        <div className="hidden md:grid" style={{ gridTemplateColumns: "repeat(4, 1fr)", position: "relative" }}>
+          {/* Background line */}
+          <div style={{
+            position: "absolute", top: "35px",
+            left: "calc(12.5% + 8px)", right: "calc(12.5% + 8px)",
+            height: "2px", background: C.gray, zIndex: 0,
+          }}>
+            {/* Lime progress fill */}
+            <div style={{
+              position: "absolute", top: 0, left: 0, height: "100%",
+              background: C.lime,
+              width: active === 0 ? "0%" : active === 1 ? "33%" : active === 2 ? "66%" : "100%",
+              transition: "width 0.7s ease",
+            }} />
+            {/* Moving dot */}
+            <div style={{
+              position: "absolute", top: "50%", transform: "translate(-50%, -50%)",
+              width: "12px", height: "12px", borderRadius: "50%", background: C.lime,
+              left: active === 0 ? "0%" : active === 1 ? "33%" : active === 2 ? "66%" : "100%",
+              transition: "left 0.7s ease",
+              animation: "pulseDot 1.5s ease-in-out infinite",
+              zIndex: 2,
+            }} />
+          </div>
+
+          {steps.map(({ num, Icon, title, desc }, i) => (
+            <div key={num}
+              onClick={() => setActive(i)}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 12px", textAlign: "center", cursor: "pointer", zIndex: 1 }}>
+              {/* Circle */}
+              <div style={{
+                width: "70px", height: "70px", borderRadius: "50%", marginBottom: "24px",
+                background: i <= active ? C.lime : C.white,
+                border: `2px solid ${i <= active ? C.lime : C.border}`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "all 0.5s ease",
+                color: i <= active ? "#fff" : C.textLt,
+                boxShadow: i === active ? "0 0 0 7px rgba(140,198,63,0.15)" : "none",
+                flexShrink: 0,
+              }}>
+                {i < active
+                  ? <CheckCircle2 size={26} />
+                  : <Icon size={26} />
+                }
+              </div>
+              {/* Card */}
+              <div style={{
+                background: i === active ? C.offWhite : "transparent",
+                borderTop: `3px solid ${i === active ? C.lime : "transparent"}`,
+                padding: "18px 12px",
+                transition: "all 0.4s ease",
+                width: "100%",
+              }}>
+                <div style={{ fontFamily: FONT, fontSize: "0.68rem", fontWeight: 700, color: C.lime, letterSpacing: "0.1em", marginBottom: "6px" }}>{num}</div>
+                <h4 style={{ fontFamily: FONT, fontSize: "0.92rem", fontWeight: 700, color: i === active ? C.navy : C.textMd, margin: "0 0 8px", transition: "color 0.4s" }}>
+                  {title}
+                </h4>
+                <p style={{ fontFamily: FONT, fontSize: "0.78rem", color: C.textLt, lineHeight: 1.65, margin: 0, opacity: i === active ? 1 : 0.55, transition: "opacity 0.4s" }}>
+                  {desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile: 2-col grid */}
+        <div className="md:hidden grid grid-cols-2 gap-4">
+          {steps.map(({ num, Icon, title, desc }, i) => (
+            <div key={num}
+              onClick={() => setActive(i)}
+              style={{
+                background: i === active ? C.offWhite : C.white,
+                border: `1px solid ${i === active ? C.lime : C.border}`,
+                borderTop: `3px solid ${i === active ? C.lime : C.border}`,
+                padding: "18px 16px",
+                cursor: "pointer",
+                transition: "all 0.4s",
+              }}>
+              <div style={{
+                width: "44px", height: "44px", borderRadius: "50%", marginBottom: "12px",
+                background: i <= active ? C.lime : C.gray,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: i <= active ? "#fff" : C.textLt,
+                transition: "all 0.5s",
+              }}>
+                {i < active ? <CheckCircle2 size={20} /> : <Icon size={20} />}
+              </div>
+              <div style={{ fontFamily: FONT, fontSize: "0.65rem", fontWeight: 700, color: C.lime, letterSpacing: "0.1em", marginBottom: "4px" }}>{num}</div>
+              <h4 style={{ fontFamily: FONT, fontSize: "0.85rem", fontWeight: 700, color: C.textDk, margin: "0 0 6px" }}>{title}</h4>
+              <p style={{ fontFamily: FONT, fontSize: "0.75rem", color: C.textLt, lineHeight: 1.6, margin: 0 }}>{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Auto-play dots */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "36px" }}>
+          {steps.map((_, i) => (
+            <button key={i} onClick={() => setActive(i)} style={{
+              width: i === active ? "24px" : "8px", height: "8px",
+              borderRadius: "4px", background: i === active ? C.lime : C.border,
+              border: "none", cursor: "pointer", transition: "all 0.4s", padding: 0,
+            }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── BEFORE / AFTER ─────────────────────── */
+function BeforeAfter() {
+  return (
+    <section style={{ background: C.offWhite, padding: "80px 0" }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8">
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <span style={{ ...S.tag, color: C.navy }}>Výsledky</span>
+          <h2 style={{ ...S.h2, color: C.textDk }}>Před a po dekarbonizaci</h2>
+          <div style={{ ...S.divider, margin: "14px auto 0" }} />
+          <p style={{ ...S.sub, marginTop: "16px", textAlign: "center" }}>
+            Rozdíl je vidět pouhým okem. Černé nánosy zmizí, motor dýchá znovu naplno.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* BEFORE */}
+          <div>
+            <div style={{
+              position: "relative", background: C.gray,
+              aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center",
+              borderLeft: `4px solid #ef4444`,
+              overflow: "hidden",
+            }}>
+              <div style={{ textAlign: "center", color: C.textLt }}>
+                <Fuel size={40} style={{ margin: "0 auto 12px", opacity: 0.3 }} />
+                <p style={{ fontFamily: FONT, fontSize: "0.8rem", opacity: 0.5 }}>Foto bude doplněno</p>
+              </div>
+              <div style={{
+                position: "absolute", top: "12px", left: "12px",
+                background: "#ef4444", color: "#fff",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.72rem",
+                letterSpacing: "0.1em", padding: "5px 12px",
+              }}>PŘED</div>
+            </div>
+            <p style={{ fontFamily: FONT, fontSize: "0.82rem", color: C.textLt, marginTop: "10px", lineHeight: 1.6 }}>
+              Uhlíkové nánosy ucpávají ventily, vstřikovače a EGR. Motor ztrácí výkon a spaluje více paliva.
+            </p>
+          </div>
+
+          {/* AFTER */}
+          <div>
+            <div style={{
+              position: "relative", background: C.gray,
+              aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center",
+              borderLeft: `4px solid ${C.lime}`,
+              overflow: "hidden",
+            }}>
+              <div style={{ textAlign: "center", color: C.textLt }}>
+                <Leaf size={40} style={{ margin: "0 auto 12px", opacity: 0.3 }} />
+                <p style={{ fontFamily: FONT, fontSize: "0.8rem", opacity: 0.5 }}>Foto bude doplněno</p>
+              </div>
+              <div style={{
+                position: "absolute", top: "12px", left: "12px",
+                background: C.lime, color: "#fff",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.72rem",
+                letterSpacing: "0.1em", padding: "5px 12px",
+              }}>PO</div>
+            </div>
+            <p style={{ fontFamily: FONT, fontSize: "0.82rem", color: C.textLt, marginTop: "10px", lineHeight: 1.6 }}>
+              Po dekarbonizaci jsou díly čisté jako z výroby. Výkon, spotřeba i emise se vrátí na tovární hodnoty.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────────── PAGE ─────────────────────── */
 export default function Home() {
   return (
@@ -825,6 +1066,8 @@ export default function Home() {
       <TrustBar />
       <Benefits />
       <HowItWorks />
+      <ProcessAnimation />
+      <BeforeAfter />
       <Pricing />
       <WhenToService />
       <Locations />
