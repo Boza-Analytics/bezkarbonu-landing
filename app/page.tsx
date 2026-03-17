@@ -97,22 +97,10 @@ const REVIEWS = [
 /* ─────────────────────── LOGO COMPONENT ─────────────────────── */
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
-      {/* Načtení SVG ikony ze složky public */}
-      <Image 
-        src="/icon-logo.svg" 
-        alt="Logo" 
-        width={28} 
-        height={28} 
-        className="flex-shrink-0 shadow-sm"
-      />
-      
-      {/* Tvůj původní text zůstává nedotčený */}
-      <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
-        <span className="text-white">Čištění</span>
-        <span className="text-[#8cc63f]">Vodíkem</span>
-      </span>
-    </div>
+    <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
+      <span className="text-white">Čištění</span>
+      <span className="text-[#8cc63f]">Vodíkem</span>
+    </span>
   );
 }
 
