@@ -98,23 +98,16 @@ const REVIEWS = [
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="relative flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 shadow-sm flex-shrink-0">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2.5" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          className="w-4 h-4 text-[#8cc63f]"
-        >
-          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-          <path d="M12 11v4" />
-          <path d="M10 13h4" />
-        </svg>
-      </div>
+      {/* Načtení SVG ikony ze složky public */}
+      <Image 
+        src="/icon-logo.svg" 
+        alt="Logo" 
+        width={28} 
+        height={28} 
+        className="flex-shrink-0 shadow-sm"
+      />
       
+      {/* Tvůj původní text zůstává nedotčený */}
       <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
         <span className="text-white">Čištění</span>
         <span className="text-[#8cc63f]">Vodíkem</span>
