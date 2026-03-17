@@ -208,7 +208,7 @@ function Hero() {
               <span style={{ color: C.lime }}>fungovat naplno</span>
             </h1>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", lineHeight: 1.75, marginTop: "20px", maxWidth: "520px" }}>
-              Vodíková dekarbonizace obnoví výkon, sníží spotřebu a prodlouží životnost motoru. Bez demontáže, bez chemikálií — za 30–60 minut.
+              Vodíková dekarbonizace obnoví výkon, sníží spotřebu a prodlouží životnost motoru. Bez demontáže, bez chemikálií — za 50–80 minut.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-8">
