@@ -5,7 +5,7 @@ import Image from "next/image";
 import {
   Zap, Fuel, ShieldCheck, Clock, Leaf, Wrench,
   MapPin, Phone, Mail, ArrowRight, CheckCircle2,
-  Star, Menu, X, ChevronDown,
+  Star, Menu, X, ChevronDown, TrendingDown,
 } from "lucide-react";
 
 /* ── PALETTE ── */
@@ -245,18 +245,119 @@ function Hero() {
 
 /* ─────────────────────── TRUST BAR ─────────────────────── */
 function TrustBar() {
-  const items = ["5+ let na trhu", "Vodíková HHO technologie", "Diagnostika zdarma", "Benzín · Diesel · Hybrid", "Bez demontáže motoru"];
+  const [counts, setCounts] = useState([0, 0, 0]);
+
+  useEffect(() => {
+    const targets = [350, 4200, 30];
+    const steps = 80;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCounts(targets.map(t => Math.floor(t * eased)));
+      if (step >= steps) clearInterval(timer);
+    }, 24);
+    return () => clearInterval(timer);
+  }, []);
+
+  const stats = [
+    {
+      Icon: Leaf,
+      value: counts[0],
+      unit: "kg",
+      label: "CO₂ méně ročně",
+      note: "průměrná úspora emisí na zákazníka",
+    },
+    {
+      Icon: TrendingDown,
+      value: counts[1],
+      unit: "Kč",
+      label: "úspora na palivu",
+      note: "za rok při průměrném nájezdu 15 000 km",
+    },
+    {
+      Icon: ShieldCheck,
+      value: counts[2],
+      unit: "%",
+      label: "delší životnost",
+      note: "vstřikovačů, ventilů a DPF filtru průměrně",
+    },
+  ];
+
+  const badges = ["5+ let na trhu", "Vodíková HHO technologie", "Diagnostika zdarma", "Benzín · Diesel · Hybrid", "Bez demontáže motoru"];
+
   return (
-    <div style={{ background: C.navy, borderBottom: `3px solid ${C.limeDk}` }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 flex flex-wrap justify-center">
-        {items.map((item, i) => (
-          <div key={item} className="flex items-center gap-2" style={{ padding: "13px 16px", borderRight: i < items.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-            <div style={{ width: "5px", height: "5px", background: C.lime, flexShrink: 0 }} />
-            <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.75rem", fontWeight: 500, whiteSpace: "nowrap", fontFamily: FONT }}>{item}</span>
-          </div>
-        ))}
+    <section style={{ background: C.navy, padding: "72px 0 56px" }}>
+      <style>{`
+        @keyframes statFadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8">
+
+        {/* Heading */}
+        <div style={{ textAlign: "center", marginBottom: "52px" }}>
+          <span style={{ fontFamily: FONT, fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: C.lime }}>
+            Měřitelné výsledky
+          </span>
+          <h2 style={{ fontFamily: FONT, fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", margin: "10px 0 0" }}>
+            Proč má dekarbonizace smysl
+          </h2>
+        </div>
+
+        {/* 3 stat cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.07)" }}>
+          {stats.map(({ Icon, value, unit, label, note }, i) => (
+            <div key={label} style={{
+              background: C.navy,
+              padding: "48px 32px",
+              textAlign: "center",
+              animation: `statFadeUp 0.6s ease ${i * 0.12}s both`,
+            }}>
+              {/* Icon ring */}
+              <div style={{
+                width: "58px", height: "58px", borderRadius: "50%",
+                border: "1.5px solid rgba(140,198,63,0.3)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                margin: "0 auto 28px",
+                color: C.lime,
+              }}>
+                <Icon size={24} strokeWidth={1.5} />
+              </div>
+
+              {/* Big number */}
+              <div style={{ fontFamily: FONT, fontSize: "clamp(2.8rem, 5vw, 4rem)", fontWeight: 800, color: "#fff", letterSpacing: "-3px", lineHeight: 1 }}>
+                {value.toLocaleString("cs-CZ")}
+                <span style={{ fontSize: "1.4rem", fontWeight: 500, color: C.lime, marginLeft: "5px" }}>{unit}</span>
+              </div>
+
+              {/* Label */}
+              <div style={{ fontFamily: FONT, fontSize: "0.95rem", fontWeight: 600, color: "rgba(255,255,255,0.85)", marginTop: "16px", letterSpacing: "-0.2px" }}>
+                {label}
+              </div>
+
+              {/* Note */}
+              <div style={{ fontFamily: FONT, fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", marginTop: "6px", lineHeight: 1.65 }}>
+                {note}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Trust badges strip */}
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          {badges.map((item) => (
+            <div key={item} className="flex items-center gap-2">
+              <div style={{ width: "4px", height: "4px", background: C.lime, borderRadius: "50%", flexShrink: 0 }} />
+              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.72rem", fontWeight: 500, fontFamily: FONT, whiteSpace: "nowrap" as const }}>{item}</span>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -277,13 +378,19 @@ function Benefits() {
             </p>
 
             <div className="mt-8">
-              <Image
-                src="https://www.bezkarbonu.cz/wp-content/uploads/2025/05/Ford-Mondeo-mk4-800x533-1.webp"
-                alt="Výsledky dekarbonizace motoru"
-                width={540} height={360}
-                style={{ width: "100%", height: "auto", display: "block" }}
-                unoptimized
-              />
+              <div style={{
+                width: "100%", aspectRatio: "3/2",
+                background: `linear-gradient(135deg, ${C.offWhite} 0%, ${C.gray} 100%)`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                border: `1px solid ${C.border}`,
+                position: "relative", overflow: "hidden",
+              }}>
+                <span style={{ fontFamily: FONT, fontSize: "7rem", fontWeight: 900, color: "rgba(0,0,0,0.04)", letterSpacing: "-4px", userSelect: "none" as const, position: "absolute" }}>FOTO</span>
+                <div style={{ textAlign: "center", zIndex: 1 }}>
+                  <Fuel size={32} style={{ color: C.border, margin: "0 auto 10px" }} />
+                  <p style={{ fontFamily: FONT, fontSize: "0.78rem", color: C.textLt, margin: 0 }}>Fotografie bude doplněna</p>
+                </div>
+              </div>
               <div style={{ background: C.lime, padding: "13px 18px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <ShieldCheck size={17} style={{ color: "#fff", flexShrink: 0 }} />
                 <span style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem", fontFamily: FONT }}>Základní diagnostika vozidla ZDARMA ke každé zakázce</span>
@@ -495,9 +602,15 @@ function Locations() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: C.gray }}>
           {LOCATIONS.map((loc) => (
             <div key={loc.city} style={{ background: C.white }}>
-              <div style={{ position: "relative", height: "200px", overflow: "hidden" }}>
-                <Image src={loc.img} alt={`Pobočka ${loc.city}`} fill style={{ objectFit: "cover" }} unoptimized />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(9,45,98,0.65) 0%, transparent 55%)" }} />
+              <div style={{ position: "relative", height: "220px", overflow: "hidden", background: `linear-gradient(135deg, ${C.navyDk} 0%, #0f4a9e 100%)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ fontFamily: FONT, fontSize: "6rem", fontWeight: 900, color: "rgba(255,255,255,0.04)", letterSpacing: "-4px", userSelect: "none" as const, position: "absolute", whiteSpace: "nowrap" as const }}>
+                  {loc.city.toUpperCase()}
+                </span>
+                <div style={{ textAlign: "center", zIndex: 1 }}>
+                  <MapPin size={28} style={{ color: "rgba(255,255,255,0.15)", margin: "0 auto 8px" }} />
+                  <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.72rem", fontFamily: FONT, margin: 0 }}>Fotografie z dronu brzy</p>
+                </div>
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(9,45,98,0.85) 0%, transparent 55%)" }} />
                 <div style={{ position: "absolute", bottom: "14px", left: "18px" }}>
                   <h3 style={{ fontFamily: FONT, color: "#fff", fontSize: "1.4rem", fontWeight: 700, letterSpacing: "-0.5px", margin: 0 }}>{loc.city}</h3>
                 </div>
