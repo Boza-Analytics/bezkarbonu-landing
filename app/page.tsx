@@ -724,13 +724,13 @@ function ContactForm() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Jméno *</label>
-                      <input name="Jméno" required type="text" placeholder="Jan" style={field}
+                      <input name="Jmeno" required type="text" placeholder="Jan" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Příjmení *</label>
-                      <input name="Příjmení" required type="text" placeholder="Novák" style={field}
+                      <input name="Prijmeni" required type="text" placeholder="Novák" style={field}
                         onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                         onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                     </div>
@@ -751,7 +751,7 @@ function ContactForm() {
                   </div>
                   <div>
                     <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Pobočka *</label>
-                    <select name="Pobočka" required style={{ ...field, cursor: "pointer" }}
+                    <select name="Pobocka" required style={{ ...field, cursor: "pointer" }}
                       onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                       onBlur={e => (e.currentTarget.style.borderColor = C.border)}>
                       <option value="">Vyberte pobočku...</option>
@@ -761,7 +761,7 @@ function ContactForm() {
                   </div>
                   <div>
                     <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Zpráva (nepovinné)</label>
-                    <textarea name="Zpráva" rows={3} placeholder="Objem motoru, preferovaný termín nebo cokoliv dalšího..." style={{ ...field, resize: "none" }}
+                    <textarea name="Zprava" rows={3} placeholder="Objem motoru, preferovaný termín nebo cokoliv dalšího..." style={{ ...field, resize: "none" }}
                       onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                       onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
                   </div>
