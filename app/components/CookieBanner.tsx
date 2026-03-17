@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
+const FONT = "var(--font-dm), 'DM Sans', system-ui, sans-serif";
+
 const sendConsentToGA = (status: 'granted' | 'denied') => {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('consent', 'update', {
@@ -37,24 +39,101 @@ export default function CookieBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:max-w-sm z-[9999] p-6 bg-white border border-gray-200 rounded-2xl shadow-2xl">
-      <div className="flex flex-col gap-4">
-        <h3 className="font-bold text-gray-900">Ochrana soukromí 🍪</h3>
-        <p className="text-sm text-gray-600">
-          Pomozte nám zlepšovat web. Analytické cookies nám řeknou, co vás zajímá, ale motor vám vyčistíme i bez nich.
-        </p>
-        <div className="flex gap-2">
-          <button
-            onClick={acceptCookies}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
-          >
-            Přijmout vše
-          </button>
+    <div style={{
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 9999,
+      background: '#0d3a79',
+      borderTop: '3px solid #8cc63f',
+      fontFamily: FONT,
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '18px 24px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '24px',
+        flexWrap: 'wrap',
+      }}>
+        {/* Icon + text */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: '220px' }}>
+          <div style={{
+            width: '36px',
+            height: '36px',
+            background: '#8cc63f',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            fontSize: '18px',
+          }}>
+            🍪
+          </div>
+          <p style={{
+            margin: 0,
+            fontSize: '0.85rem',
+            color: 'rgba(255,255,255,0.85)',
+            lineHeight: 1.5,
+            fontWeight: 400,
+          }}>
+            Používáme analytické cookies ke zlepšení webu.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.8rem' }}>
+              Motor vyčistíme i bez vašeho souhlasu.
+            </span>
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', gap: '10px', flexShrink: 0 }}>
           <button
             onClick={declineCookies}
-            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors text-sm"
+            style={{
+              fontFamily: FONT,
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              padding: '9px 18px',
+              border: '1px solid rgba(255,255,255,0.25)',
+              background: 'transparent',
+              color: 'rgba(255,255,255,0.7)',
+              cursor: 'pointer',
+              borderRadius: '4px',
+              transition: 'all 0.2s',
+              letterSpacing: '0.02em',
+            }}
+            onMouseEnter={e => {
+              (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.5)';
+              (e.target as HTMLButtonElement).style.color = '#fff';
+            }}
+            onMouseLeave={e => {
+              (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.25)';
+              (e.target as HTMLButtonElement).style.color = 'rgba(255,255,255,0.7)';
+            }}
           >
             Odmítnout
+          </button>
+          <button
+            onClick={acceptCookies}
+            style={{
+              fontFamily: FONT,
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              padding: '9px 20px',
+              border: 'none',
+              background: '#8cc63f',
+              color: '#fff',
+              cursor: 'pointer',
+              borderRadius: '4px',
+              transition: 'background 0.2s',
+              letterSpacing: '0.02em',
+            }}
+            onMouseEnter={e => (e.target as HTMLButtonElement).style.background = '#6fa32e'}
+            onMouseLeave={e => (e.target as HTMLButtonElement).style.background = '#8cc63f'}
+          >
+            Přijmout vše
           </button>
         </div>
       </div>
