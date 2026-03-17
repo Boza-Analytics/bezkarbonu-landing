@@ -26,9 +26,9 @@ const FONT = "var(--font-dm), 'DM Sans', system-ui, sans-serif";
 
 /* ── SHARED STYLES ── */
 const S = {
-  tag:    { fontFamily: FONT, fontSize: "0.7rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, display: "block", marginBottom: "10px" },
+  tag:    { fontFamily: FONT, fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, display: "block", marginBottom: "10px" },
   h2:     { fontFamily: FONT, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 },
-  sub:    { fontFamily: FONT, fontSize: "1rem", lineHeight: 1.75, color: C.textMd, marginTop: "14px", fontWeight: 400 },
+  sub:    { fontFamily: FONT, fontSize: "1.05rem", lineHeight: 1.8, color: C.textMd, marginTop: "14px", fontWeight: 400 },
   divider:{ width: "32px", height: "3px", background: C.lime, display: "block", margin: "14px 0 0" },
 };
 const btnPrimary: React.CSSProperties = {
@@ -288,7 +288,7 @@ function TrustBar() {
   const badges = ["5+ let na trhu", "Vodíková HHO technologie", "Diagnostika zdarma", "Benzín · Diesel · Hybrid", "Bez demontáže motoru"];
 
   return (
-    <section style={{ background: C.navy, padding: "72px 0 56px" }}>
+    <section style={{ background: '#060f24', padding: "72px 0 56px" }}>
       <style>{`
         @keyframes statFadeUp {
           from { opacity: 0; transform: translateY(20px); }
@@ -308,13 +308,15 @@ function TrustBar() {
         </div>
 
         {/* 3 stat cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.07)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {stats.map(({ Icon, value, unit, label, note }, i) => (
             <div key={label} style={{
-              background: C.navy,
+              background: '#0d3a79',
+              borderTop: `4px solid ${C.lime}`,
               padding: "48px 32px",
               textAlign: "center",
               animation: `statFadeUp 0.6s ease ${i * 0.12}s both`,
+              boxShadow: '0 4px 32px rgba(0,0,0,0.25)',
             }}>
               {/* Icon ring */}
               <div style={{
@@ -351,7 +353,7 @@ function TrustBar() {
           {badges.map((item) => (
             <div key={item} className="flex items-center gap-2">
               <div style={{ width: "4px", height: "4px", background: C.lime, borderRadius: "50%", flexShrink: 0 }} />
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.72rem", fontWeight: 500, fontFamily: FONT, whiteSpace: "nowrap" as const }}>{item}</span>
+              <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.82rem", fontWeight: 500, fontFamily: FONT, whiteSpace: "nowrap" as const }}>{item}</span>
             </div>
           ))}
         </div>
@@ -404,7 +406,7 @@ function Benefits() {
               <div key={b.title} style={{ background: C.white, padding: "28px 22px", borderTop: `3px solid ${i < 2 ? C.navy : C.lime}` }}>
                 <div style={{ color: C.navy, marginBottom: "12px" }}>{b.icon}</div>
                 <h3 style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.textDk, marginBottom: "8px", letterSpacing: "-0.2px" }}>{b.title}</h3>
-                <p style={{ fontSize: "0.875rem", color: C.textMd, lineHeight: 1.65, fontFamily: FONT }}>{b.desc}</p>
+                <p style={{ fontSize: "0.95rem", color: C.textMd, lineHeight: 1.7, fontFamily: FONT }}>{b.desc}</p>
               </div>
             ))}
           </div>
@@ -578,8 +580,8 @@ function WhenToService() {
               onMouseEnter={e => (e.currentTarget.style.borderBottomColor = C.lime)}
               onMouseLeave={e => (e.currentTarget.style.borderBottomColor = "transparent")}>
               <div style={{ fontFamily: FONT, fontSize: "2.5rem", fontWeight: 700, color: C.gray, lineHeight: 1, marginBottom: "14px", userSelect: "none" as const }}>{item.num}</div>
-              <h3 style={{ fontFamily: FONT, fontSize: "0.95rem", fontWeight: 600, color: C.textDk, letterSpacing: "-0.2px", marginBottom: "8px" }}>{item.title}</h3>
-              <p style={{ fontSize: "0.855rem", color: C.textMd, lineHeight: 1.65, fontFamily: FONT }}>{item.desc}</p>
+              <h3 style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.textDk, letterSpacing: "-0.2px", marginBottom: "8px" }}>{item.title}</h3>
+              <p style={{ fontSize: "0.925rem", color: C.textMd, lineHeight: 1.7, fontFamily: FONT }}>{item.desc}</p>
             </div>
           ))}
         </div>
@@ -623,7 +625,7 @@ function Locations() {
                     { icon: <Mail size={14}/>, val: loc.email, href: `mailto:${loc.email}` },
                     { icon: <Clock size={14}/>, val: loc.hours, sub: loc.note },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3" style={{ fontSize: "0.875rem", color: C.textMd, fontFamily: FONT }}>
+                    <div key={i} className="flex items-start gap-3" style={{ fontSize: "0.95rem", color: C.textMd, fontFamily: FONT }}>
                       <span style={{ color: C.navy, flexShrink: 0, marginTop: "2px" }}>{item.icon}</span>
                       {item.href
                         ? <a href={item.href} style={{ color: C.textMd, textDecoration: "none" }}
@@ -681,8 +683,8 @@ function Reviews() {
                       <Star key={i} size={11} style={{ color: "#f59e0b", fill: "#f59e0b" }} />
                     ))}
                   </div>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "10px", fontStyle: "italic", fontFamily: FONT }}>&ldquo;{r.text}&rdquo;</p>
-                  <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "rgba(255,255,255,0.45)", fontFamily: FONT }}>
+                  <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", lineHeight: 1.75, marginBottom: "10px", fontStyle: "italic", fontFamily: FONT }}>&ldquo;{r.text}&rdquo;</p>
+                  <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", fontFamily: FONT }}>
                     {r.name} &mdash; <span style={{ color: C.lime }}>Google recenze</span>
                   </div>
                 </div>
@@ -720,11 +722,11 @@ function FAQ() {
                 <button onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex justify-between items-center gap-4 text-left py-4"
                   style={{ background: "none", border: "none", cursor: "pointer", fontFamily: FONT }}>
-                  <span style={{ fontSize: "0.95rem", fontWeight: 600, color: open === i ? C.navy : C.textDk }}>{faq.q}</span>
+                  <span style={{ fontSize: "1rem", fontWeight: 600, color: open === i ? C.navy : C.textDk }}>{faq.q}</span>
                   <ChevronDown size={17} style={{ color: C.navy, flexShrink: 0, transform: open === i ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s" }} />
                 </button>
                 {open === i && (
-                  <div style={{ paddingBottom: "18px", fontSize: "0.875rem", color: C.textMd, lineHeight: 1.75, fontFamily: FONT }}>{faq.a}</div>
+                  <div style={{ paddingBottom: "18px", fontSize: "0.95rem", color: C.textMd, lineHeight: 1.8, fontFamily: FONT }}>{faq.a}</div>
                 )}
               </div>
             ))}
@@ -889,11 +891,13 @@ function Footer() {
             <div className="mb-4">
                <Logo />
             </div>
-            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.85rem", maxWidth: "220px", lineHeight: 1.7, fontFamily: FONT }}>
-              Vodíková dekarbonizace motorů. Liberec a České Budějovice.<br />
-              RespiPlus Care s.r.o.<br />
+            <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", maxWidth: "230px", lineHeight: 1.8, fontFamily: FONT }}>
+              Vodíková dekarbonizace motorů.<br />
+              Liberec a České Budějovice.<br /><br />
+              <strong style={{ color: "rgba(255,255,255,0.75)" }}>RespiPlus Care s.r.o.</strong><br />
               IČO: 09701982<br />
-              Korunní 2569/108, Praha 10
+              Korunní 2569/108, Praha 10<br /><br />
+              <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
@@ -903,13 +907,13 @@ function Footer() {
               { h: "Info", links: ["O nás", "Ceník", "FAQ", "Ochrana osobních údajů"] },
             ].map((col) => (
               <div key={col.h}>
-                <h4 style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.68rem", fontWeight: 600, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px", fontFamily: FONT }}>{col.h}</h4>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                <h4 style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px", fontFamily: FONT }}>{col.h}</h4>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
                   {col.links.map((l) => (
                     <li key={l}>
-                      <a href="#" style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+                      <a href="#" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
                         onMouseEnter={e => (e.currentTarget.style.color = C.white)}
-                        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}>{l}</a>
+                        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}>{l}</a>
                     </li>
                   ))}
                 </ul>
@@ -918,18 +922,18 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
           <div className="flex gap-5 items-center">
             <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer"
-              style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.2)")}>
+              style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}>
               Vytvořilo Inetio s.r.o.
             </a>
             {["Ochrana osobních údajů", "Cookies"].map((l) => (
-              <a key={l} href="#" style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.78rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.2)")}>{l}</a>
+              <a key={l} href="#" style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}>{l}</a>
             ))}
           </div>
         </div>
@@ -1170,6 +1174,47 @@ function BeforeAfter() {
   );
 }
 
+/* ─────────────────────── FLOATING CTA ─────────────────────── */
+function FloatingCTA() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 500);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div style={{
+      position: 'fixed', bottom: '88px', right: '20px', zIndex: 9998,
+      background: C.navy,
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderTop: `3px solid ${C.lime}`,
+      padding: '18px 20px',
+      boxShadow: '0 8px 40px rgba(0,0,0,0.35)',
+      minWidth: '220px',
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(16px)',
+      pointerEvents: visible ? 'auto' : 'none',
+      transition: 'opacity 0.35s ease, transform 0.35s ease',
+    }}>
+      <p style={{ fontFamily: FONT, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase' as const, color: C.lime, margin: '0 0 10px' }}>
+        Objednejte se ihned
+      </p>
+      <a href="tel:+420601269600" style={{ display: 'flex', alignItems: 'center', gap: '9px', color: '#fff', textDecoration: 'none', fontFamily: FONT, fontWeight: 700, fontSize: '1.05rem', marginBottom: '14px', letterSpacing: '-0.3px' }}
+        onMouseEnter={e => (e.currentTarget.style.color = C.lime)}
+        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}>
+        <Phone size={15} style={{ color: C.lime, flexShrink: 0 }} />
+        +420 601 269 600
+      </a>
+      <a href="#contact" style={{ ...btnPrimary, display: 'flex', justifyContent: 'center', padding: '10px 16px', fontSize: '0.82rem', width: '100%' }}
+        onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
+        onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
+        Objednat online <ArrowRight size={14} />
+      </a>
+    </div>
+  );
+}
+
 /* ─────────────────────── PAGE ─────────────────────── */
 export default function Home() {
   return (
@@ -1188,6 +1233,7 @@ export default function Home() {
       <FAQ />
       <ContactForm />
       <Footer />
+      <FloatingCTA />
     </>
   );
 }
