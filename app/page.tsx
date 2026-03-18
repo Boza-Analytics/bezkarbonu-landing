@@ -166,6 +166,39 @@ function Navbar() {
 
 /* ─────────────────────── HERO ─────────────────────── */
 function Hero() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const handleHeroSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    
+    formData.append("access_key", "TVUJ-ACCESS-KEY-Z-WEB3FORMS");
+    formData.append("subject", "Rychlá poptávka z Hero sekce");
+    formData.append("from_name", "Čištění Vodíkem - Hero Form");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSent(true);
+      } else {
+        alert('Něco se pokazilo. Zkuste to prosím znovu.');
+      }
+    } catch (error) {
+      alert('Chyba připojení.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: "60px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0 }}>
@@ -219,23 +252,59 @@ function Hero() {
             </div>
           </div>
 
-          {/* Right — quick callback form, hidden on mobile */}
+          {/* Right — quick callback form */}
           <div className="hidden lg:block" style={{ background: "rgba(9,45,98,0.9)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px", borderTop: `3px solid ${C.lime}` }}>
-            <h3 style={{ fontFamily: FONT, color: "#fff", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "-0.3px", marginBottom: "6px" }}>Zavoláme vám zpět</h3>
-            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", marginBottom: "20px", lineHeight: 1.6 }}>Vyplňte číslo a ozveme se do 2 hodin v pracovní době.</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {["Vaše jméno", "Telefonní číslo"].map((ph) => (
-                <input key={ph} type={ph.includes("číslo") ? "tel" : "text"} placeholder={ph}
-                  style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%" }} />
-              ))}
-              <select style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%", cursor: "pointer" }}>
-                <option value="">Pobočka</option>
-                <option>Liberec</option>
-                <option>České Budějovice</option>
-              </select>
-              <button style={{ ...btnPrimary, justifyContent: "center", marginTop: "2px", width: "100%" }}>Chci být kontaktován</button>
-            </div>
-            <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.68rem", marginTop: "10px", lineHeight: 1.6 }}>Odesláním souhlasíte se zpracováním osobních údajů.</p>
+            {sent ? (
+              <div className="py-10 text-center text-white">
+                <CheckCircle2 size={40} style={{ color: C.lime, margin: "0 auto 16px" }} />
+                <h3 className="font-bold text-lg">Děkujeme!</h3>
+                <p className="opacity-70 text-sm mt-2">Ozveme se vám do 2 hodin.</p>
+              </div>
+            ) : (
+              <>
+                <h3 style={{ fontFamily: FONT, color: "#fff", fontWeight: 600, fontSize: "1.05rem", letterSpacing: "-0.3px", marginBottom: "6px" }}>Zavoláme vám zpět</h3>
+                <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", marginBottom: "20px", lineHeight: 1.6 }}>Vyplňte číslo a ozveme se do 2 hodin v pracovní době.</p>
+                
+                <form onSubmit={handleHeroSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+                  
+                  <input 
+                    name="Jmeno" 
+                    required 
+                    type="text" 
+                    placeholder="Vaše jméno"
+                    style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%" }} 
+                  />
+                  
+                  <input 
+                    name="Telefon" 
+                    required 
+                    type="tel" 
+                    placeholder="Telefonní číslo"
+                    style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%" }} 
+                  />
+                  
+                  <select 
+                    name="Pobocka" 
+                    required
+                    style={{ background: "rgba(9,45,98,1)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%", cursor: "pointer" }}
+                  >
+                    <option value="" style={{ color: "#fff" }}>Vyberte pobočku</option>
+                    <option value="Liberec">Liberec</option>
+                    <option value="Ceske Budejovice">České Budějovice</option>
+                  </select>
+
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    style={{ ...btnPrimary, justifyContent: "center", marginTop: "2px", width: "100%", opacity: isSubmitting ? 0.7 : 1 }}
+                  >
+                    {isSubmitting ? "Odesílám..." : "Chci být kontaktován"}
+                  </button>
+                </form>
+                <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.68rem", marginTop: "10px", lineHeight: 1.6 }}>Odesláním souhlasíte se zpracováním osobních údajů.</p>
+              </>
+            )}
           </div>
         </div>
       </div>
