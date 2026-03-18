@@ -175,7 +175,7 @@ function Hero() {
 
     const formData = new FormData(e.currentTarget);
     
-    formData.append("access_key", "TVUJ-ACCESS-KEY-Z-WEB3FORMS");
+    formData.append("access_key", "fd05bfc2-48aa-4574-9656-e800ba197809");
     formData.append("subject", "Rychlá poptávka z Hero sekce");
     formData.append("from_name", "Čištění Vodíkem - Hero Form");
 
