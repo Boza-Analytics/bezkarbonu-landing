@@ -424,7 +424,7 @@ function TrustBar() {
           {badges.map((item) => (
             <div key={item} className="flex items-center gap-2">
               <div style={{ width: "4px", height: "4px", background: C.lime, borderRadius: "50%", flexShrink: 0 }} />
-              <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.82rem", fontWeight: 500, fontFamily: FONT, whiteSpace: "nowrap" as const }}>{item}</span>
+              <span style={{ color: "#374151", fontSize: "0.82rem", fontWeight: 500, fontFamily: FONT, whiteSpace: "nowrap" as const }}>{item}</span>
             </div>
           ))}
         </div>
