@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`} // TODO: Add GA ID
+          src={`https://www.googletagmanager.com/gtag/js?id=G-RNLHTENSDQ`}
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -45,7 +45,7 @@ export default function RootLayout({
               'analytics_storage': 'denied'
             });
 
-            gtag('config', 'G-XXXXXXXXXX'); // SEM DEJ ZNOVU SVÉ ID
+            gtag('config', 'G-RNLHTENSDQ');
           `}
         </Script>
       </head>

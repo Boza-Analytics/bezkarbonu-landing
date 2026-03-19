@@ -132,7 +132,8 @@ function Navbar() {
         <a href="tel:+420601269600" className="hidden md:flex items-center gap-2"
           style={{ background: C.lime, color: "#fff", fontWeight: 600, fontSize: "0.875rem", padding: "8px 16px", textDecoration: "none", fontFamily: FONT, transition: "background 0.2s" }}
           onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
-          onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
+          onMouseLeave={e => (e.currentTarget.style.background = C.lime)}
+          onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'phone_click', { event_category: 'contact', send_to: 'G-RNLHTENSDQ' }); }}>
           <Phone size={13} /> +420 601 269 600
         </a>
 
@@ -187,6 +188,9 @@ function Hero() {
 
       if (data.success) {
         setSent(true);
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'generate_lead', { event_category: 'form', event_label: 'hero_form', send_to: 'G-RNLHTENSDQ' });
+        }
       } else {
         alert('Něco se pokazilo. Zkuste to prosím znovu.');
       }
@@ -843,7 +847,10 @@ function ContactForm() {
       const data = await response.json();
 
       if (data.success) {
-        setSent(true); 
+        setSent(true);
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'generate_lead', { event_category: 'form', event_label: 'contact_form', send_to: 'G-RNLHTENSDQ' });
+        }
       } else {
         alert('Něco se pokazilo při odesílání. Zkuste to prosím znovu.');
       }
@@ -975,7 +982,7 @@ function Footer() {
               <strong style={{ color: "rgba(255,255,255,0.75)" }}>RespiPlus Care s.r.o.</strong><br />
               IČO: 09701982<br />
               Korunní 2569/108, Praha 10<br /><br />
-              <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
+              <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }} onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'email_click', { event_category: 'contact', send_to: 'G-RNLHTENSDQ' }); }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
@@ -1317,6 +1324,23 @@ function EmissionsProof() {
           </div>
         </div>
 
+        {/* Protocol photos */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_80px_1fr] gap-4 mt-4">
+          <div style={{ position: "relative", height: "220px", overflow: "hidden" }}>
+            <img src="/emise-pred.jpg" alt="Emisní protokol PŘED dekarbonizací" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "brightness(0.9)" }} />
+            <div style={{ position: "absolute", top: "10px", left: "10px", background: "#ef4444", padding: "4px 10px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em" }}>PROTOKOL PŘED</span>
+            </div>
+          </div>
+          <div />
+          <div style={{ position: "relative", height: "220px", overflow: "hidden" }}>
+            <img src="/emise-po.jpg" alt="Emisní protokol PO dekarbonizaci" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "brightness(0.9)" }} />
+            <div style={{ position: "absolute", top: "10px", left: "10px", background: C.lime, padding: "4px 10px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em" }}>PROTOKOL PO</span>
+            </div>
+          </div>
+        </div>
+
         {/* Stats bar */}
         <div className="grid grid-cols-3 gap-px mt-5" style={{ background: "rgba(255,255,255,0.06)" }}>
           {[
@@ -1367,7 +1391,8 @@ function FloatingCTA() {
       </p>
       <a href="tel:+420601269600" style={{ display: 'flex', alignItems: 'center', gap: '9px', color: '#fff', textDecoration: 'none', fontFamily: FONT, fontWeight: 700, fontSize: '1.05rem', marginBottom: '14px', letterSpacing: '-0.3px' }}
         onMouseEnter={e => (e.currentTarget.style.color = C.lime)}
-        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}>
+        onMouseLeave={e => (e.currentTarget.style.color = '#fff')}
+        onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'phone_click', { event_category: 'contact', send_to: 'G-RNLHTENSDQ' }); }}>
         <Phone size={15} style={{ color: C.lime, flexShrink: 0 }} />
         +420 601 269 600
       </a>
