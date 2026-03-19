@@ -1198,7 +1198,7 @@ function BeforeAfter() {
               <Image
                 src="/turbo-pred.jpg"
                 alt="Turbo před dekarbonizací — uhlíkové nánosy"
-                width={600} height={395}
+                width={1349} height={842}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
               <div style={{
@@ -1219,7 +1219,7 @@ function BeforeAfter() {
               <Image
                 src="/turbo-po.jpg"
                 alt="Turbo po dekarbonizaci — čisté jako z výroby"
-                width={600} height={395}
+                width={1349} height={843}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
               <div style={{
