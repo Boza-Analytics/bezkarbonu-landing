@@ -74,7 +74,7 @@ const LOCATIONS = [
     email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
-    img: "/auto-peugeot.jpg",
+    img: "/ceske-budejovice.jpg",
   },
 ];
 const FAQS = [
