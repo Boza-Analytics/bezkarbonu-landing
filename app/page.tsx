@@ -521,7 +521,7 @@ function HowItWorks() {
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[
                 { num: "0", label: "chemikálií použito" },
-                { num: "30–60 min", label: "a hotovo" },
+                { num: "50–80 min", label: "a hotovo" },
               ].map((s) => (
                 <div key={s.label} style={{ background: C.navyDk, padding: "20px 24px" }}>
                   <div style={{ fontFamily: FONT, fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: C.lime, letterSpacing: "-1px" }}>{s.num}</div>
