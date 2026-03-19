@@ -578,10 +578,9 @@ function Pricing() {
             <h2 style={{ ...S.h2, color: C.textDk }}>Transparentní ceny, žádná překvapení</h2>
             <div style={S.divider} />
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: C.white, border: `1px solid ${C.border}`, padding: "8px 16px" }}>
-            <CheckCircle2 size={15} style={{ color: C.lime, flexShrink: 0 }} />
-            <span style={{ fontFamily: FONT, fontSize: "0.875rem", color: C.textMd, fontWeight: 500 }}>Ceny jsou uvedeny s DPH</span>
-          </div>
+          <p style={{ fontFamily: FONT, fontSize: "0.875rem", color: C.textLt, maxWidth: "300px", lineHeight: 1.7 }}>
+            Objem motoru najdete v technickém průkazu pod „zdvihový objem".
+          </p>
         </div>
 
         {/* 2-column fuel cards */}
