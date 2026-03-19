@@ -107,6 +107,7 @@ function Navbar() {
   const links = [
     { label: "O službě", href: "#about" },
     { label: "Ceník", href: "#pricing" },
+    { label: "Výsledky", href: "#results" },
     { label: "Pobočky", href: "#locations" },
     { label: "Kontakt", href: "#contact" },
   ];
@@ -212,7 +213,7 @@ function Hero() {
 
           {/* Left — copy */}
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Liberec &amp; České Budějovice</span>
+            <span style={{ ...S.tag, color: C.lime }}>Prodlužte životnost vašemu motoru, snižte emise a obnovte výkon.</span>
             <div style={{ width: "40px", height: "3px", background: C.lime, marginBottom: "20px" }} />
             <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, letterSpacing: "-1.5px", margin: 0 }}>
               Váš motor si zaslouží<br />
@@ -517,7 +518,7 @@ function HowItWorks() {
             />
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[
-                { num: "0", label: "chemikálií použito" },
+                { num: "H₂O", label: "jediný vedlejší produkt" },
                 { num: "50–80 min", label: "a hotovo" },
               ].map((s) => (
                 <div key={s.label} style={{ background: C.navyDk, padding: "20px 24px" }}>
@@ -979,7 +980,6 @@ function Footer() {
           </div>
           <div className="flex flex-wrap gap-10">
             {[
-              { h: "Služby", links: ["Dekarbonizace motoru", "Mobilní dekarbonizace", "Diagnostika vozidla", "B2B & flotily"] },
               { h: "Pobočky", links: ["Liberec", "České Budějovice"] },
               { h: "Info", links: ["O nás", "Ceník", "FAQ", "Ochrana osobních údajů"] },
             ].map((col) => (
@@ -1186,7 +1186,7 @@ function ProcessAnimation() {
 /* ─────────────────────── BEFORE / AFTER ─────────────────────── */
 function BeforeAfter() {
   return (
-    <section style={{ background: C.offWhite, padding: "80px 0" }}>
+    <section id="results" style={{ background: C.offWhite, padding: "80px 0" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <span style={{ ...S.tag, color: C.navy }}>Výsledky</span>
@@ -1245,6 +1245,100 @@ function BeforeAfter() {
   );
 }
 
+/* ─────────────────────── EMISSIONS PROOF ─────────────────────── */
+function EmissionsProof() {
+  return (
+    <section style={{ background: C.navy, padding: "80px 0" }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-8">
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <span style={{ ...S.tag, color: C.lime }}>Měřitelný důkaz</span>
+          <h2 style={{ ...S.h2, color: C.white }}>Reálný emisní protokol — před a po</h2>
+          <div style={{ ...S.divider, margin: "14px auto 0" }} />
+          <p style={{ fontFamily: FONT, fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginTop: "16px" }}>
+            Hyundai i30 D4FB diesel · 219 808 km · Měření DEKRA
+          </p>
+        </div>
+
+        {/* Comparison */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_80px_1fr] gap-4 items-stretch">
+
+          {/* PŘED */}
+          <div style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.25)", borderTop: "4px solid #ef4444", padding: "32px 28px" }}>
+            <div style={{ display: "inline-block", background: "#ef4444", padding: "5px 14px", marginBottom: "24px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em" }}>PŘED DEKARBONIZACÍ</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {[
+                { label: "Kouřivost naměřená", val: "1,35", unit: "m⁻¹" },
+                { label: "Rozpětí 4 měření", val: "0,77", unit: "m⁻¹" },
+              ].map(({ label, val, unit }) => (
+                <div key={label}>
+                  <div style={{ fontFamily: FONT, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em", marginBottom: "5px" }}>{label}</div>
+                  <div style={{ fontFamily: FONT, fontSize: "3rem", fontWeight: 800, color: "#ef4444", letterSpacing: "-2px", lineHeight: 1 }}>
+                    {val}<span style={{ fontSize: "1.1rem", fontWeight: 500, color: "rgba(255,255,255,0.35)", marginLeft: "5px" }}>{unit}</span>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop: "4px", padding: "10px 14px", background: "rgba(239,68,68,0.12)", display: "flex", alignItems: "center", gap: "8px" }}>
+                <span style={{ fontFamily: FONT, fontSize: "0.85rem", color: "rgba(255,255,255,0.5)" }}>Limit STK max 0,25 m⁻¹ —</span>
+                <strong style={{ fontFamily: FONT, color: "#ef4444", fontSize: "0.85rem" }}>NEVYHOVUJE</strong>
+              </div>
+            </div>
+          </div>
+
+          {/* Arrow */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+            <ArrowRight size={28} style={{ color: C.lime }} />
+            <span style={{ fontFamily: FONT, fontSize: "0.62rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" as const, writingMode: "vertical-lr" as const }}>dekarbonizace</span>
+          </div>
+
+          {/* PO */}
+          <div style={{ background: "rgba(140,198,63,0.08)", border: `1px solid rgba(140,198,63,0.25)`, borderTop: `4px solid ${C.lime}`, padding: "32px 28px" }}>
+            <div style={{ display: "inline-block", background: C.lime, padding: "5px 14px", marginBottom: "24px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em" }}>PO DEKARBONIZACI</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {[
+                { label: "Kouřivost naměřená", val: "0,25", unit: "m⁻¹" },
+                { label: "Rozpětí 4 měření", val: "0,07", unit: "m⁻¹" },
+              ].map(({ label, val, unit }) => (
+                <div key={label}>
+                  <div style={{ fontFamily: FONT, fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em", marginBottom: "5px" }}>{label}</div>
+                  <div style={{ fontFamily: FONT, fontSize: "3rem", fontWeight: 800, color: C.lime, letterSpacing: "-2px", lineHeight: 1 }}>
+                    {val}<span style={{ fontSize: "1.1rem", fontWeight: 500, color: "rgba(255,255,255,0.35)", marginLeft: "5px" }}>{unit}</span>
+                  </div>
+                </div>
+              ))}
+              <div style={{ marginTop: "4px", padding: "10px 14px", background: "rgba(140,198,63,0.12)", display: "flex", alignItems: "center", gap: "8px" }}>
+                <span style={{ fontFamily: FONT, fontSize: "0.85rem", color: "rgba(255,255,255,0.5)" }}>Limit STK max 0,25 m⁻¹ —</span>
+                <strong style={{ fontFamily: FONT, color: C.lime, fontSize: "0.85rem" }}>VYHOVUJE ✓</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats bar */}
+        <div className="grid grid-cols-3 gap-px mt-5" style={{ background: "rgba(255,255,255,0.06)" }}>
+          {[
+            { num: "−81 %", label: "pokles kouřivosti" },
+            { num: "−91 %", label: "pokles rozpětí" },
+            { num: "219 808 km", label: "nájezd vozidla" },
+          ].map((s) => (
+            <div key={s.label} style={{ background: C.navyDk, padding: "20px 24px", textAlign: "center" }}>
+              <div style={{ fontFamily: FONT, fontSize: "1.7rem", fontWeight: 800, color: C.lime, letterSpacing: "-1px" }}>{s.num}</div>
+              <div style={{ fontFamily: FONT, fontSize: "0.72rem", color: "rgba(255,255,255,0.35)", marginTop: "4px", textTransform: "uppercase" as const, letterSpacing: "0.08em" }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <p style={{ fontFamily: FONT, fontSize: "0.75rem", color: "rgba(255,255,255,0.2)", textAlign: "center", marginTop: "16px", lineHeight: 1.6 }}>
+          Protokoly č. CZ-461131-23-08-0507 (před) a CZ-461131-28-08-0761 (po) · Měřicí přístroj ACTIA CZ s.r.o., AT605, R+OBD · DEKRA DATA SME
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────────────────── FLOATING CTA ─────────────────────── */
 function FloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -1297,6 +1391,7 @@ export default function Home() {
       <HowItWorks />
       <ProcessAnimation />
       <BeforeAfter />
+      <EmissionsProof />
       <Pricing />
       <WhenToService />
       <Locations />

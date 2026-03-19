@@ -1,16 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563eb" />
-      <stop offset="100%" stop-color="#1e40af" />
-    </linearGradient>
-  </defs>
-  
-  <rect width="24" height="24" rx="6" fill="url(#grad)" />
-  
-  <g fill="none" stroke="#8cc63f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 4.69l4.66 4.66a6.5 6.5 0 1 1-9.31 0z" />
-    <path d="M12 11v4" />
-    <path d="M10 13h4" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0d3a79"/>
+  <path d="M16 5.5c-.4 0-9 11-9 16.2a9 9 0 0 0 18 0C25 16.5 16.4 5.5 16 5.5z" fill="#8cc63f"/>
+  <text x="16" y="24" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="700" font-family="system-ui,sans-serif" letter-spacing="-0.5">H₂O</text>
 </svg>
