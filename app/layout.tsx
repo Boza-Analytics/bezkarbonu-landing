@@ -207,7 +207,7 @@ export default function RootLayout({
       <head>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-RNLHTENSDQ`}
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-18028160012`}
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -221,6 +221,7 @@ export default function RootLayout({
             });
 
             gtag('config', 'G-RNLHTENSDQ');
+            gtag('config', 'AW-18028160012');
           `}
         </Script>
         <script

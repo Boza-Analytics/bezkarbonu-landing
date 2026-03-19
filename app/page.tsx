@@ -190,6 +190,7 @@ function Hero() {
         setSent(true);
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'generate_lead', { event_category: 'form', event_label: 'hero_form', send_to: 'G-RNLHTENSDQ' });
+          (window as any).gtag('event', 'conversion', { send_to: 'AW-18028160012/yuN9CJyp9oscEIzIv5RD' });
         }
       } else {
         alert('Něco se pokazilo. Zkuste to prosím znovu.');
@@ -850,6 +851,7 @@ function ContactForm() {
         setSent(true);
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'generate_lead', { event_category: 'form', event_label: 'contact_form', send_to: 'G-RNLHTENSDQ' });
+          (window as any).gtag('event', 'conversion', { send_to: 'AW-18028160012/yuN9CJyp9oscEIzIv5RD' });
         }
       } else {
         alert('Něco se pokazilo při odesílání. Zkuste to prosím znovu.');
