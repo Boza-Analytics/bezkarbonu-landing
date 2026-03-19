@@ -10,13 +10,13 @@ const dm = DM_Sans({
   variable: "--font-dm",
 });
 
-const SITE_URL = "https://www.bezkarbonu.cz";
+const SITE_URL = "https://www.cistenivodikem.cz";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Vodíková dekarbonizace motoru | Liberec & České Budějovice | Bezkarbonu.cz",
-    template: "%s | Bezkarbonu.cz",
+    default: "Vodíková dekarbonizace motoru | Liberec & České Budějovice | CisteniVodikem.cz",
+    template: "%s | CisteniVodikem.cz",
   },
   description:
     "Profesionální vodíková dekarbonizace benzínových a dieselových motorů bez demontáže. Obnovte výkon, snižte spotřebu a prodlužte životnost motoru za 50–80 minut. Liberec a České Budějovice.",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "Obnovte výkon, snižte spotřebu a prodlužte životnost motoru za 50–80 minut. Bez demontáže, bez chemikálií — měřitelný výsledek garantován.",
     url: SITE_URL,
-    siteName: "Bezkarbonu.cz",
+    siteName: "CisteniVodikem.cz",
     locale: "cs_CZ",
     type: "website",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vodíková dekarbonizace motoru | Bezkarbonu.cz",
+    title: "Vodíková dekarbonizace motoru | CisteniVodikem.cz",
     description:
       "Obnovte výkon, snižte spotřebu a prodlužte životnost motoru za 50–80 minut. Liberec & České Budějovice.",
     images: ["/motor-detail.jpg"],
@@ -78,12 +78,12 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}/#business`,
-      name: "Bezkarbonu.cz — Vodíková dekarbonizace",
+      name: "Čištění Vodíkem — Vodíková dekarbonizace",
       description:
         "Profesionální vodíková dekarbonizace benzínových a dieselových motorů bez demontáže. Obnovte výkon, snižte spotřebu a prodlužte životnost motoru.",
       url: SITE_URL,
       telephone: "+420",
-      email: "info@bezkarbonu.cz",
+      email: "info@cistenivodikem.cz",
       legalName: "RespiPlus Care s.r.o.",
       taxID: "09701982",
       priceRange: "od 1 490 Kč",
