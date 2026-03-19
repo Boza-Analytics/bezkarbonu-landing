@@ -48,11 +48,8 @@ const btnOutline: React.CSSProperties = {
 
 /* ── DATA ── */
 const PRICING = [
-  { vol: "do 1 300 cm³", price: "2 690", time: "50 min" },
-  { vol: "do 1 900 cm³", price: "2 990", time: "60 min", popular: true },
-  { vol: "do 2 500 cm³", price: "3 290", time: "70 min", best: true },
-  { vol: "do 5 000 cm³", price: "3 990", time: "80 min" },
-  { vol: "nad 5 000 cm³", price: "5 990", time: "120 min" },
+  { label: "do 1,9 l", benzin: "2 390", diesel: "2 690", time: "50–60 min" },
+  { label: "nad 2,0 l", benzin: "2 890", diesel: "3 190", time: "60–80 min" },
 ];
 const BENEFITS = [
   { icon: <Fuel size={22}/>, title: "Spotřeba klesne", desc: "Čistý motor spaluje efektivněji. Zákazníci hlásí úsporu až 1 litr na 100 km hned po první dekarbonizaci." },
@@ -538,82 +535,106 @@ function HowItWorks() {
 
 /* ─────────────────────── PRICING ─────────────────────── */
 function Pricing() {
+  const fuelCols = [
+    {
+      key: "benzin" as const,
+      label: "Benzín / LPG / CNG",
+      accent: C.lime,
+      accentDk: C.limeDk,
+      textOnAccent: "#fff",
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 22V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+          <path d="M3 11h12"/>
+          <path d="M15 6h1a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2v0a2 2 0 0 0 2-2V9l-3-3"/>
+          <line x1="3" y1="22" x2="15" y2="22"/>
+        </svg>
+      ),
+    },
+    {
+      key: "diesel" as const,
+      label: "Diesel",
+      accent: C.navy,
+      accentDk: C.navyDk,
+      textOnAccent: "#fff",
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="12" cy="5" rx="7" ry="3"/>
+          <path d="M5 5v6c0 1.66 3.13 3 7 3s7-1.34 7-3V5"/>
+          <path d="M5 11v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/>
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <section id="pricing" className="py-16 lg:py-24" style={{ background: C.offWhite }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8">
+
+        {/* Header */}
         <div className="flex flex-wrap justify-between items-end gap-6 mb-10">
           <div>
             <span style={{ ...S.tag, color: C.navy }}>Ceník</span>
             <h2 style={{ ...S.h2, color: C.textDk }}>Transparentní ceny, žádná překvapení</h2>
             <div style={S.divider} />
           </div>
-          <p style={{ fontFamily: FONT, fontSize: "0.875rem", color: C.textLt, maxWidth: "340px", lineHeight: 1.7 }}>
-            Objem motoru najdete v technickém průkazu pod "zdvihový objem".
-          </p>
-        </div>
-
-        {/* Desktop table — hidden on mobile */}
-        <div className="hidden sm:block" style={{ border: `1px solid ${C.border}`, background: C.white }}>
-          <div className="grid" style={{ gridTemplateColumns: "1fr 1fr 100px 1fr", background: C.navy, padding: "12px 24px" }}>
-            {["Objem motoru", "Cena s DPH", "Čas", ""].map((h) => (
-              <div key={h} style={{ fontSize: "0.72rem", fontWeight: 500, color: "rgba(255,255,255,0.5)", fontFamily: FONT }}>{h}</div>
-            ))}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: C.white, border: `1px solid ${C.border}`, padding: "8px 16px" }}>
+            <CheckCircle2 size={15} style={{ color: C.lime, flexShrink: 0 }} />
+            <span style={{ fontFamily: FONT, fontSize: "0.875rem", color: C.textMd, fontWeight: 500 }}>Ceny jsou uvedeny s DPH</span>
           </div>
-          {PRICING.map((tier, i) => (
-            <div key={tier.vol} className="grid items-center" style={{
-              gridTemplateColumns: "1fr 1fr 100px 1fr",
-              padding: "18px 24px",
-              borderBottom: i < PRICING.length - 1 ? `1px solid ${C.border}` : "none",
-              background: tier.best ? "rgba(140,198,63,0.05)" : i % 2 === 0 ? C.white : "#fafbfc",
-              borderLeft: tier.best ? `4px solid ${C.lime}` : "4px solid transparent",
-            }}>
-              <div style={{ fontSize: "0.95rem", fontWeight: 500, color: C.textDk, fontFamily: FONT }}>{tier.vol}</div>
-              <div style={{ fontFamily: FONT, fontSize: "1.5rem", fontWeight: 700, color: tier.best ? C.lime : C.navy, letterSpacing: "-0.5px" }}>
-                {tier.price} <span style={{ fontSize: "0.85rem", fontWeight: 400, color: C.textLt }}>Kč</span>
-              </div>
-              <div className="flex items-center gap-1" style={{ fontSize: "0.82rem", color: C.textLt, fontFamily: FONT }}>
-                <Clock size={12}/> {tier.time}
-              </div>
-              <div className="flex gap-2">
-                {tier.best && <span style={{ background: C.lime, color: "#fff", fontSize: "0.65rem", fontWeight: 600, padding: "3px 9px", fontFamily: FONT }}>Nejprodávanější</span>}
-                {tier.popular && !tier.best && <span style={{ border: `1px solid ${C.navy}`, color: C.navy, fontSize: "0.65rem", fontWeight: 600, padding: "3px 9px", fontFamily: FONT }}>Oblíbené</span>}
-              </div>
-            </div>
-          ))}
         </div>
 
-        {/* Mobile cards */}
-        <div className="sm:hidden grid grid-cols-1 gap-2">
-          {PRICING.map((tier) => (
-            <div key={tier.vol} style={{
-              background: tier.best ? C.lime : C.white,
-              border: `1px solid ${tier.best ? C.lime : C.border}`,
-              borderLeft: tier.best ? `4px solid ${C.limeDk}` : `4px solid ${C.border}`,
-              padding: "16px 18px",
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-            }}>
-              <div>
-                <div style={{ fontSize: "0.75rem", color: tier.best ? "rgba(255,255,255,0.7)" : C.textLt, fontFamily: FONT }}>Motor {tier.vol}</div>
-                {tier.best && <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.8)", fontFamily: FONT, marginTop: "2px" }}>✓ Nejprodávanější</div>}
-              </div>
-              <div style={{ textAlign: "right" }}>
-                <div style={{ fontFamily: FONT, fontSize: "1.4rem", fontWeight: 700, color: tier.best ? "#fff" : C.navy, letterSpacing: "-0.5px" }}>
-                  {tier.price} Kč
+        {/* 2-column fuel cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {fuelCols.map((fuel) => (
+            <div key={fuel.key} style={{ background: C.white, border: `1px solid ${C.border}`, overflow: "hidden" }}>
+              {/* Card header */}
+              <div style={{ background: fuel.accent, padding: "20px 24px", display: "flex", alignItems: "center", gap: "14px" }}>
+                <div style={{ color: fuel.textOnAccent, opacity: 0.9 }}>{fuel.icon}</div>
+                <div>
+                  <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: "1.1rem", color: fuel.textOnAccent, letterSpacing: "-0.3px" }}>{fuel.label}</div>
+                  <div style={{ fontFamily: FONT, fontSize: "0.72rem", color: fuel.textOnAccent, opacity: 0.7, marginTop: "2px", letterSpacing: "0.04em" }}>cena s DPH</div>
                 </div>
-                <div style={{ fontSize: "0.72rem", color: tier.best ? "rgba(255,255,255,0.6)" : C.textLt, fontFamily: FONT }}>{tier.time}</div>
               </div>
+
+              {/* Rows */}
+              {PRICING.map((tier, i) => (
+                <div key={tier.label} style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "center",
+                  padding: "18px 24px",
+                  borderBottom: i < PRICING.length - 1 ? `1px solid ${C.border}` : "none",
+                  background: i === 1 ? "#fafbfc" : C.white,
+                }}>
+                  <div>
+                    <div style={{ fontFamily: FONT, fontSize: "0.78rem", fontWeight: 600, color: C.textLt, textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: "3px" }}>
+                      Objem motoru
+                    </div>
+                    <div style={{ fontFamily: FONT, fontSize: "1.05rem", fontWeight: 700, color: C.textDk }}>{tier.label}</div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ fontFamily: FONT, fontSize: "2rem", fontWeight: 800, color: fuel.accent, letterSpacing: "-1px", lineHeight: 1 }}>
+                      {tier[fuel.key]}
+                      <span style={{ fontSize: "1rem", fontWeight: 500, color: C.textLt, marginLeft: "4px" }}>Kč</span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "4px", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <Clock size={11} style={{ color: C.textLt }} />
+                      <span style={{ fontFamily: FONT, fontSize: "0.78rem", color: C.textLt }}>{tier.time}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-          <div style={{ background: C.white, border: `1px solid ${C.border}`, borderLeft: `4px solid ${C.lime}`, padding: "15px 18px", fontSize: "0.875rem", color: C.textMd, lineHeight: 1.65, fontFamily: FONT }}>
-            🎁 <strong style={{ color: C.textDk }}>Diagnostika zdarma</strong> (hodnota 300 Kč) ke každé dekarbonizaci. Ozón dezinfekce interiéru za příplatek 500 Kč.
-          </div>
-          <div style={{ background: C.white, border: `1px solid ${C.border}`, borderLeft: `4px solid ${C.navy}`, padding: "15px 18px", fontSize: "0.875rem", color: C.textMd, lineHeight: 1.65, fontFamily: FONT }}>
-            Spravujete firemní flotilu?{" "}<a href="#contact" style={{ color: C.navy, fontWeight: 600, textDecoration: "none" }}>Vyžádejte B2B ceník</a>{" "}— tarify bez DPH pro pravidelné zákazníky.
-          </div>
+        {/* Bottom note */}
+        <div style={{ marginTop: "16px", background: C.white, border: `1px solid ${C.border}`, borderLeft: `4px solid ${C.lime}`, padding: "15px 20px", display: "flex", alignItems: "center", gap: "10px" }}>
+          <ShieldCheck size={17} style={{ color: C.lime, flexShrink: 0 }} />
+          <span style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, lineHeight: 1.6 }}>
+            <strong style={{ color: C.textDk }}>Diagnostika zdarma</strong> ke každé dekarbonizaci (hodnota 300 Kč). Objem motoru najdete v technickém průkazu pod „zdvihový objem".
+          </span>
         </div>
+
       </div>
     </section>
   );
