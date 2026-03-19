@@ -68,7 +68,7 @@ const LOCATIONS = [
     email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
-    img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/06/VW-Golf-na-dekarbonizaci-1-500x499.jpg",
+    img: "/auto-vw.jpg",
   },
   {
     city: "České Budějovice",
@@ -77,7 +77,7 @@ const LOCATIONS = [
     email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
-    img: "https://www.bezkarbonu.cz/wp-content/uploads/2025/05/Ford-Mondeo-mk4-800x533-1.webp",
+    img: "/auto-peugeot.jpg",
   },
 ];
 const FAQS = [
@@ -451,19 +451,12 @@ function Benefits() {
             </p>
 
             <div className="mt-8">
-              <div style={{
-                width: "100%", aspectRatio: "3/2",
-                background: `linear-gradient(135deg, ${C.offWhite} 0%, ${C.gray} 100%)`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                border: `1px solid ${C.border}`,
-                position: "relative", overflow: "hidden",
-              }}>
-                <span style={{ fontFamily: FONT, fontSize: "7rem", fontWeight: 900, color: "rgba(0,0,0,0.04)", letterSpacing: "-4px", userSelect: "none" as const, position: "absolute" }}>FOTO</span>
-                <div style={{ textAlign: "center", zIndex: 1 }}>
-                  <Fuel size={32} style={{ color: C.border, margin: "0 auto 10px" }} />
-                  <p style={{ fontFamily: FONT, fontSize: "0.78rem", color: C.textLt, margin: 0 }}>Fotografie bude doplněna</p>
-                </div>
-              </div>
+              <Image
+                src="/auto-peugeot.jpg"
+                alt="Vodíková dekarbonizace — přístroj připojený k motoru"
+                width={1080} height={1080}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
               <div style={{ background: C.lime, padding: "13px 18px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <ShieldCheck size={17} style={{ color: "#fff", flexShrink: 0 }} />
                 <span style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem", fontFamily: FONT }}>Základní diagnostika vozidla ZDARMA ke každé zakázce</span>
@@ -520,11 +513,10 @@ function HowItWorks() {
 
           <div>
             <Image
-              src="https://www.bezkarbonu.cz/wp-content/uploads/2023/06/zakarbonovany-egr-ventil-115_1920-500x251.jpg"
-              alt="Zakarbonatovaný EGR ventil před a po dekarbonizaci"
-              width={540} height={270}
+              src="/motor-detail.jpg"
+              alt="Motor při vodíkové dekarbonizaci — HHO hadice připojená k sání"
+              width={1400} height={933}
               style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.lime}` }}
-              unoptimized
             />
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[
@@ -675,15 +667,9 @@ function Locations() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: C.gray }}>
           {LOCATIONS.map((loc) => (
             <div key={loc.city} style={{ background: C.white }}>
-              <div style={{ position: "relative", height: "220px", overflow: "hidden", background: `linear-gradient(135deg, ${C.navyDk} 0%, #0f4a9e 100%)`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ fontFamily: FONT, fontSize: "6rem", fontWeight: 900, color: "rgba(255,255,255,0.04)", letterSpacing: "-4px", userSelect: "none" as const, position: "absolute", whiteSpace: "nowrap" as const }}>
-                  {loc.city.toUpperCase()}
-                </span>
-                <div style={{ textAlign: "center", zIndex: 1 }}>
-                  <MapPin size={28} style={{ color: "rgba(255,255,255,0.15)", margin: "0 auto 8px" }} />
-                  <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.72rem", fontFamily: FONT, margin: 0 }}>Fotografie z dronu brzy</p>
-                </div>
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(9,45,98,0.85) 0%, transparent 55%)" }} />
+              <div style={{ position: "relative", height: "240px", overflow: "hidden" }}>
+                <Image src={loc.img} alt={`Pobočka ${loc.city}`} fill style={{ objectFit: "cover", objectPosition: "center" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(9,45,98,0.85) 0%, transparent 60%)" }} />
                 <div style={{ position: "absolute", bottom: "14px", left: "18px" }}>
                   <h3 style={{ fontFamily: FONT, color: "#fff", fontSize: "1.4rem", fontWeight: 700, letterSpacing: "-0.5px", margin: 0 }}>{loc.city}</h3>
                 </div>
