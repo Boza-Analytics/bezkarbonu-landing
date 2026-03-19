@@ -1194,49 +1194,43 @@ function BeforeAfter() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* BEFORE */}
           <div>
-            <div style={{
-              position: "relative", background: C.gray,
-              aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center",
-              borderLeft: `4px solid #ef4444`,
-              overflow: "hidden",
-            }}>
-              <div style={{ textAlign: "center", color: C.textLt }}>
-                <Fuel size={40} style={{ margin: "0 auto 12px", opacity: 0.3 }} />
-                <p style={{ fontFamily: FONT, fontSize: "0.8rem", opacity: 0.5 }}>Foto bude doplněno</p>
-              </div>
+            <div style={{ position: "relative", borderLeft: `4px solid #ef4444`, overflow: "hidden", lineHeight: 0 }}>
+              <Image
+                src="/turbo-pred.jpg"
+                alt="Turbo před dekarbonizací — uhlíkové nánosy"
+                width={600} height={395}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
               <div style={{
                 position: "absolute", top: "12px", left: "12px",
                 background: "#ef4444", color: "#fff",
-                fontFamily: FONT, fontWeight: 700, fontSize: "0.72rem",
-                letterSpacing: "0.1em", padding: "5px 12px",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.75rem",
+                letterSpacing: "0.1em", padding: "5px 14px",
               }}>PŘED</div>
             </div>
-            <p style={{ fontFamily: FONT, fontSize: "0.82rem", color: C.textLt, marginTop: "10px", lineHeight: 1.6 }}>
-              Uhlíkové nánosy ucpávají ventily, vstřikovače a EGR. Motor ztrácí výkon a spaluje více paliva.
+            <p style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, marginTop: "12px", lineHeight: 1.65 }}>
+              Uhlíkové nánosy ucpávají lopatky turbodmychadla, EGR ventil a DPF filtr. Motor ztrácí výkon a spaluje více paliva.
             </p>
           </div>
 
           {/* AFTER */}
           <div>
-            <div style={{
-              position: "relative", background: C.gray,
-              aspectRatio: "4/3", display: "flex", alignItems: "center", justifyContent: "center",
-              borderLeft: `4px solid ${C.lime}`,
-              overflow: "hidden",
-            }}>
-              <div style={{ textAlign: "center", color: C.textLt }}>
-                <Leaf size={40} style={{ margin: "0 auto 12px", opacity: 0.3 }} />
-                <p style={{ fontFamily: FONT, fontSize: "0.8rem", opacity: 0.5 }}>Foto bude doplněno</p>
-              </div>
+            <div style={{ position: "relative", borderLeft: `4px solid ${C.lime}`, overflow: "hidden", lineHeight: 0 }}>
+              <Image
+                src="/turbo-po.jpg"
+                alt="Turbo po dekarbonizaci — čisté jako z výroby"
+                width={600} height={395}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
               <div style={{
                 position: "absolute", top: "12px", left: "12px",
                 background: C.lime, color: "#fff",
-                fontFamily: FONT, fontWeight: 700, fontSize: "0.72rem",
-                letterSpacing: "0.1em", padding: "5px 12px",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.75rem",
+                letterSpacing: "0.1em", padding: "5px 14px",
               }}>PO</div>
             </div>
-            <p style={{ fontFamily: FONT, fontSize: "0.82rem", color: C.textLt, marginTop: "10px", lineHeight: 1.6 }}>
-              Po dekarbonizaci jsou díly čisté jako z výroby. Výkon, spotřeba i emise se vrátí na tovární hodnoty.
+            <p style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, marginTop: "12px", lineHeight: 1.65 }}>
+              Po vodíkové dekarbonizaci jsou lopatky čisté jako z výroby. Výkon, spotřeba i emise se vrátí na tovární hodnoty.
             </p>
           </div>
         </div>
