@@ -1325,18 +1325,17 @@ function EmissionsProof() {
         </div>
 
         {/* Protocol photos */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_80px_1fr] gap-4 mt-4">
-          <div style={{ position: "relative", height: "220px", overflow: "hidden" }}>
-            <img src="/emise-pred.jpg" alt="Emisní protokol PŘED dekarbonizací" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "brightness(0.9)" }} />
-            <div style={{ position: "absolute", top: "10px", left: "10px", background: "#ef4444", padding: "4px 10px" }}>
-              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em" }}>PROTOKOL PŘED</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <img src="/emise-pred.jpg" alt="Emisní protokol PŘED dekarbonizací" style={{ width: "100%", height: "auto", display: "block" }} />
+            <div style={{ position: "absolute", top: "10px", left: "10px", background: "#ef4444", padding: "4px 12px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.08em" }}>PROTOKOL PŘED</span>
             </div>
           </div>
-          <div />
-          <div style={{ position: "relative", height: "220px", overflow: "hidden" }}>
-            <img src="/emise-po.jpg" alt="Emisní protokol PO dekarbonizaci" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "brightness(0.9)" }} />
-            <div style={{ position: "absolute", top: "10px", left: "10px", background: C.lime, padding: "4px 10px" }}>
-              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em" }}>PROTOKOL PO</span>
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <img src="/emise-po.jpg" alt="Emisní protokol PO dekarbonizaci" style={{ width: "100%", height: "auto", display: "block" }} />
+            <div style={{ position: "absolute", top: "10px", left: "10px", background: C.lime, padding: "4px 12px" }}>
+              <span style={{ fontFamily: FONT, color: "#fff", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.08em" }}>PROTOKOL PO</span>
             </div>
           </div>
         </div>
