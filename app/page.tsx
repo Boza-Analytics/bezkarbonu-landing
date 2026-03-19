@@ -217,7 +217,7 @@ function Hero() {
 
           {/* Left — copy */}
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Prodlužte životnost vašemu motoru, snižte emise a obnovte výkon.</span>
+            <span style={{ ...S.tag, color: C.lime }}>Prodlužte životnost vašemu motoru, snižte emise a obnovte výkon</span>
             <div style={{ width: "40px", height: "3px", background: C.lime, marginBottom: "20px" }} />
             <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, letterSpacing: "-1.5px", margin: 0 }}>
               Váš motor si zaslouží<br />
@@ -1294,7 +1294,7 @@ function EmissionsProof() {
           </div>
 
           {/* Arrow */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+          <div className="hidden md:flex" style={{ flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "8px" }}>
             <ArrowRight size={28} style={{ color: C.lime }} />
             <span style={{ fontFamily: FONT, fontSize: "0.62rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" as const, writingMode: "vertical-lr" as const }}>dekarbonizace</span>
           </div>
