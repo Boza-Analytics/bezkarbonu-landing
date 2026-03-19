@@ -174,7 +174,7 @@ function Hero() {
 
     const formData = new FormData(e.currentTarget);
     
-    formData.append("access_key", "fd05bfc2-48aa-4574-9656-e800ba197809");
+    formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
     formData.append("subject", "Rychlá poptávka z Hero sekce");
     formData.append("from_name", "Čištění Vodíkem - Hero Form");
 
@@ -836,7 +836,7 @@ function ContactForm() {
 
     const formData = new FormData(e.currentTarget);
     
-    formData.append("access_key", "f5a890ca-be50-4128-b31d-dd19d00053f0");
+    formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
