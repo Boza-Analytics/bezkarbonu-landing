@@ -63,7 +63,7 @@ const LOCATIONS = [
     address: "Tanvaldská 1458, Liberec",
     phone: "+420 601 269 600",
     email: "info@cistenivodikem.cz",
-    hours: "Po–Pá: 8:00–18:00",
+    hours: "Po–Pá: 8:00–16:00",
     note: "Nutné objednat se předem",
     img: "/liberec.jpg",
   },
@@ -757,8 +757,8 @@ function Reviews() {
           <div className="grid grid-cols-1 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
             {REVIEWS.map((r) => (
               <div key={r.name} className="flex flex-col sm:flex-row gap-4 items-start" style={{ background: C.navyDk, padding: "22px 24px" }}>
-                <div style={{ width: "48px", height: "48px", flexShrink: 0, overflow: "hidden", position: "relative" }}>
-                  <Image src={r.img} alt={r.name} fill style={{ objectFit: "cover" }} unoptimized />
+                <div style={{ width: "48px", height: "48px", flexShrink: 0, borderRadius: "50%", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.95rem", color: C.navyDk, fontFamily: FONT }}>
+                  {r.initials}
                 </div>
                 <div>
                   <div className="flex gap-0.5 mb-2">
