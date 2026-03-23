@@ -106,31 +106,63 @@ function Logo() {
 /* ─────────────────────── NAVBAR ─────────────────────── */
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileLocOpen, setMobileLocOpen] = useState(false);
+
   const links = [
     { label: "O službě", href: "#about" },
     { label: "Ceník", href: "#pricing" },
     { label: "Výsledky", href: "#results" },
-    { label: "Pobočky", href: "#locations" },
-    { label: "Liberec", href: "/dekarbonizace-liberec" },
-    { label: "Č. Budějovice", href: "/dekarbonizace-ceske-budejovice" },
     { label: "Kontakt", href: "#contact" },
   ];
+
+  const locationLinks = [
+    { label: "Liberec", href: "/dekarbonizace-liberec" },
+    { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" },
+  ];
+
+  const linkStyle: React.CSSProperties = { color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" };
+
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: C.navyDk, borderBottom: `3px solid ${C.lime}` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8" style={{ height: "60px" }}>
-        
+
         <a href="#" style={{ textDecoration: "none" }}>
           <Logo />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+            <a key={l.href} href={l.href} style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}>
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}>
               {l.label}
             </a>
           ))}
+
+          {/* Pobočky dropdown */}
+          <div style={{ position: "relative" }}
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}>
+            <a href="#locations" style={{ ...linkStyle, display: "flex", alignItems: "center", gap: "4px" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}>
+              Pobočky
+              <ChevronDown size={13} style={{ transition: "transform 0.2s", transform: dropdownOpen ? "rotate(180deg)" : "rotate(0)" }} />
+            </a>
+            {dropdownOpen && (
+              <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: "8px", background: C.navyDk, border: `1px solid rgba(255,255,255,0.1)`, borderTop: `2px solid ${C.lime}`, minWidth: "200px", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>
+                {locationLinks.map((l) => (
+                  <a key={l.href} href={l.href}
+                    style={{ display: "block", padding: "12px 18px", color: "rgba(255,255,255,0.8)", fontSize: "0.875rem", fontWeight: 600, fontFamily: FONT, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.06)", transition: "background 0.15s, color 0.15s" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.color = "#fff"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(255,255,255,0.8)"; }}>
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <a href="tel:+420601269600" className="hidden md:flex items-center gap-2"
@@ -155,6 +187,22 @@ function Navbar() {
               {l.label}
             </a>
           ))}
+          {/* Mobile pobočky accordion */}
+          <button onClick={() => setMobileLocOpen(!mobileLocOpen)}
+            style={{ background: "none", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", padding: 0, fontFamily: FONT }}>
+            <span style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", fontWeight: 700 }}>Pobočky</span>
+            <ChevronDown size={16} style={{ color: "rgba(255,255,255,0.6)", transform: mobileLocOpen ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s" }} />
+          </button>
+          {mobileLocOpen && (
+            <div style={{ paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "12px", borderLeft: `2px solid ${C.lime}` }}>
+              {locationLinks.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+                  style={{ color: C.lime, fontSize: "0.95rem", fontWeight: 600, textDecoration: "none", fontFamily: FONT }}>
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          )}
           <a href="tel:+420601269600" style={{ ...btnPrimary, justifyContent: "center", marginTop: "8px" }}>
             <Phone size={13}/> +420 601 269 600
           </a>
