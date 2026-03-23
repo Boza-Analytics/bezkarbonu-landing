@@ -128,6 +128,8 @@ function Hero() {
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
+    formData.append("subject", "Rychlá poptávka — České Budějovice");
+    formData.append("from_name", "Čištění Vodíkem - České Budějovice");
     try {
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const data = await response.json();
@@ -135,8 +137,13 @@ function Hero() {
         setSent(true);
         if (typeof window !== "undefined" && (window as any).gtag) {
           (window as any).gtag("event", "generate_lead", { event_category: "form", event_label: "hero_cb", send_to: "G-RNLHTENSDQ" });
+          (window as any).gtag("event", "conversion", { send_to: "AW-18028160012/yuN9CJyp9oscEIzIv5RD" });
         }
+      } else {
+        alert("Něco se pokazilo. Zkuste to prosím znovu.");
       }
+    } catch {
+      alert("Chyba připojení. Zkontrolujte svůj internet a zkuste to znovu.");
     } finally {
       setIsSubmitting(false);
     }
