@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   Zap, Fuel, ShieldCheck, Clock, Leaf, Wrench,
@@ -108,6 +108,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileLocOpen, setMobileLocOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const links = [
     { label: "O službě", href: "#about" },
@@ -142,8 +143,8 @@ function Navbar() {
 
           {/* Pobočky dropdown */}
           <div style={{ position: "relative" }}
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}>
+            onMouseEnter={() => { if (closeTimer.current) clearTimeout(closeTimer.current); setDropdownOpen(true); }}
+            onMouseLeave={() => { closeTimer.current = setTimeout(() => setDropdownOpen(false), 200); }}>
             <a href="#locations" style={{ ...linkStyle, display: "flex", alignItems: "center", gap: "4px" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}>
