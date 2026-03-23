@@ -989,17 +989,17 @@ function Footer() {
           </div>
           <div className="flex flex-wrap gap-10">
             {[
-              { h: "Pobočky", links: ["Liberec", "České Budějovice"] },
-              { h: "Info", links: ["O nás", "Ceník", "FAQ", "Ochrana osobních údajů"] },
+              { h: "Pobočky", links: [{ label: "Liberec", href: "/dekarbonizace-liberec" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
+              { h: "Info", links: [{ label: "O nás", href: "#about" }, { label: "Ceník", href: "#pricing" }, { label: "FAQ", href: "#faq" }, { label: "Ochrana osobních údajů", href: "#" }] },
             ].map((col) => (
               <div key={col.h}>
                 <h4 style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px", fontFamily: FONT }}>{col.h}</h4>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
                   {col.links.map((l) => (
-                    <li key={l}>
-                      <a href="#" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
+                    <li key={l.label}>
+                      <a href={l.href} style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
                         onMouseEnter={e => (e.currentTarget.style.color = C.white)}
-                        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}>{l}</a>
+                        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}>{l.label}</a>
                     </li>
                   ))}
                 </ul>
