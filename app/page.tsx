@@ -66,6 +66,7 @@ const LOCATIONS = [
     hours: "Po–Pá: 8:00–16:00",
     note: "Nutné objednat se předem",
     img: "/liberec.jpg",
+    pageUrl: "/dekarbonizace-liberec",
   },
   {
     city: "České Budějovice",
@@ -75,6 +76,7 @@ const LOCATIONS = [
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
     img: "/ceske-budejovice.jpg",
+    pageUrl: "/dekarbonizace-ceske-budejovice",
   },
 ];
 const FAQS = [
@@ -109,6 +111,8 @@ function Navbar() {
     { label: "Ceník", href: "#pricing" },
     { label: "Výsledky", href: "#results" },
     { label: "Pobočky", href: "#locations" },
+    { label: "Liberec", href: "/dekarbonizace-liberec" },
+    { label: "Č. Budějovice", href: "/dekarbonizace-ceske-budejovice" },
     { label: "Kontakt", href: "#contact" },
   ];
   return (
@@ -693,13 +697,16 @@ function Locations() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: C.gray }}>
           {LOCATIONS.map((loc) => (
             <div key={loc.city} style={{ background: C.white }}>
-              <div style={{ position: "relative", height: "240px", overflow: "hidden" }}>
-                <Image src={loc.img} alt={`Pobočka ${loc.city}`} fill style={{ objectFit: "cover", objectPosition: "center" }} />
+              <a href={loc.pageUrl} style={{ display: "block", position: "relative", height: "240px", overflow: "hidden", textDecoration: "none" }}>
+                <Image src={loc.img} alt={`Pobočka ${loc.city}`} fill style={{ objectFit: "cover", objectPosition: "center", transition: "transform 0.4s ease" }}
+                  onMouseOver={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)")}
+                  onMouseOut={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(9,45,98,0.85) 0%, transparent 60%)" }} />
                 <div style={{ position: "absolute", bottom: "14px", left: "18px" }}>
                   <h3 style={{ fontFamily: FONT, color: "#fff", fontSize: "1.4rem", fontWeight: 700, letterSpacing: "-0.5px", margin: 0 }}>{loc.city}</h3>
+                  <span style={{ fontFamily: FONT, fontSize: "0.78rem", color: C.lime, fontWeight: 600, letterSpacing: "0.04em" }}>Více o pobočce →</span>
                 </div>
-              </div>
+              </a>
               <div style={{ padding: "24px", borderTop: `4px solid ${C.navy}` }}>
                 <div className="flex flex-col gap-3 mb-5">
                   {[
