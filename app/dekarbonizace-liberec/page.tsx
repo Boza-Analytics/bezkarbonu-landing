@@ -507,6 +507,8 @@ function ContactForm() {
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
+    formData.append("subject", "Nová poptávka — Liberec");
+    formData.append("from_name", "Čištění Vodíkem - Liberec kontaktní formulář");
     try {
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const data = await response.json();
