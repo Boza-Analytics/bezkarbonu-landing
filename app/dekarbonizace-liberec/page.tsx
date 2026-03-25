@@ -420,7 +420,7 @@ function Reviews() {
             <span style={{ ...S.tag, color: C.lime }}>Zákazníci</span>
             <h2 style={{ ...S.h2, color: C.white }}>Co říkají spokojení zákazníci</h2>
             <div style={{ ...S.divider }} />
-            <p style={{ ...S.sub, color: "rgba(255,255,255,0.55)" }}>Přes 500 spokojených zákazníků. Průměrné hodnocení 4,9 z 5 na Google.</p>
+            <p style={{ ...S.sub, color: "rgba(255,255,255,0.55)" }}>Přes 500 spokojených zákazníků. Průměrné hodnocení 4,9 z 5.</p>
             <div className="flex items-center gap-1 mt-5">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} size={16} style={{ color: "#f59e0b", fill: "#f59e0b" }} />

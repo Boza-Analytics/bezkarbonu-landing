@@ -800,7 +800,7 @@ function Reviews() {
             <h2 style={{ ...S.h2, color: C.white }}>Co říkají ti, kteří to zkusili</h2>
             <div style={{ ...S.divider }} />
             <p style={{ ...S.sub, color: "rgba(255,255,255,0.55)" }}>
-              Přes 500 spokojených zákazníků. Průměrné hodnocení 4,9 z 5 na Google.
+              Přes 500 spokojených zákazníků. Průměrné hodnocení 4,9 z 5.
             </p>
             <div className="flex items-center gap-1 mt-5">
               {Array.from({ length: 5 }).map((_, i) => (
