@@ -431,8 +431,8 @@ function Reviews() {
           <div className="grid grid-cols-1 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
             {REVIEWS.map((r) => (
               <div key={r.name} className="flex flex-col sm:flex-row gap-4 items-start" style={{ background: C.navyDk, padding: "22px 24px" }}>
-                <div style={{ width: "48px", height: "48px", flexShrink: 0, borderRadius: "50%", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.95rem", color: C.navyDk, fontFamily: FONT }}>
-                  {r.initials}
+                <div style={{ width: "48px", height: "48px", flexShrink: 0, borderRadius: "50%", overflow: "hidden", position: "relative" }}>
+                  <Image src={r.carImg} alt={`Auto zákazníka ${r.name}`} fill style={{ objectFit: "cover" }} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div className="flex gap-0.5 mb-2">
@@ -444,9 +444,6 @@ function Reviews() {
                   <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", fontFamily: FONT }}>
                     {r.name} &mdash; <span style={{ color: C.lime }}>Google recenze</span>
                   </div>
-                </div>
-                <div style={{ flexShrink: 0, width: "160px", overflow: "hidden" }} className="hidden sm:block">
-                  <Image src={r.carImg} alt={`Auto zákazníka ${r.name}`} width={320} height={240} style={{ width: "100%", height: "110px", objectFit: "cover", display: "block" }} />
                 </div>
               </div>
             ))}
