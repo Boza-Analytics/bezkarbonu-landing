@@ -88,9 +88,9 @@ const FAQS = [
   { q: "Pro jaká auta to funguje?", a: "Pro všechna vozidla s benzínovým, dieselovým nebo hybridním motorem. Sloužíme osobním autům, dodávkám i firemním flotilám. Nevhodné pouze pro čistě elektrická vozidla." },
 ];
 const REVIEWS = [
-  { name: "Martin N.", text: "Byl jsem skeptický, ale po dekarbonizaci motor nastartoval jako nový. Cukání zmizelo úplně. Přišel jsem i s druhým autem.", initials: "MN", img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/11/IMG_5720-2-500x467.jpg" },
-  { name: "Petra K.", text: "Rychlá obsluha, příjemné prostředí a okamžitě znatelný výsledek. Motor je výrazně tišší a auto táhne líp. Doporučuju všem.", initials: "PK", img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/11/IMG_5725-2-1-500x597.jpg" },
-  { name: "Tomáš H.", text: "Spotřeba klesla o skoro litr na stovce. Za cenu jedné dekarbonizace se mi to vrátí do půl roku. Škoda, že jsem to neudělal dřív.", initials: "TH", img: "https://www.bezkarbonu.cz/wp-content/uploads/2023/10/IMG_6455-500x667.jpeg" },
+  { name: "Martin N.", text: "Byl jsem skeptický, ale po dekarbonizaci motor nastartoval jako nový. Cukání zmizelo úplně. Přišel jsem i s druhým autem.", initials: "MN", carImg: "/review-vw-caddy.jpg" },
+  { name: "Petra K.", text: "Rychlá obsluha, příjemné prostředí a okamžitě znatelný výsledek. Motor je výrazně tišší a auto táhne líp. Doporučuju všem.", initials: "PK", carImg: "/review-volvo.jpg" },
+  { name: "Tomáš H.", text: "Spotřeba klesla o skoro litr na stovce. Za cenu jedné dekarbonizace se mi to vrátí do půl roku. Škoda, že jsem to neudělal dřív.", initials: "TH", carImg: "/review-vw-touareg.jpg" },
 ];
 
 /* ─────────────────────── LOGO COMPONENT ─────────────────────── */
@@ -816,7 +816,7 @@ function Reviews() {
                 <div style={{ width: "48px", height: "48px", flexShrink: 0, borderRadius: "50%", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.95rem", color: C.navyDk, fontFamily: FONT }}>
                   {r.initials}
                 </div>
-                <div>
+                <div style={{ flex: 1 }}>
                   <div className="flex gap-0.5 mb-2">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} size={11} style={{ color: "#f59e0b", fill: "#f59e0b" }} />
@@ -826,6 +826,9 @@ function Reviews() {
                   <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", fontFamily: FONT }}>
                     {r.name} &mdash; <span style={{ color: C.lime }}>Google recenze</span>
                   </div>
+                </div>
+                <div style={{ flexShrink: 0, width: "160px", overflow: "hidden" }} className="hidden sm:block">
+                  <Image src={r.carImg} alt={`Auto zákazníka ${r.name}`} width={320} height={240} style={{ width: "100%", height: "110px", objectFit: "cover", display: "block" }} />
                 </div>
               </div>
             ))}
