@@ -1264,7 +1264,8 @@ function BeforeAfter() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Example 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ marginBottom: "48px" }}>
           {/* BEFORE */}
           <div>
             <div style={{ position: "relative", borderLeft: `4px solid #ef4444`, overflow: "hidden", lineHeight: 0 }}>
@@ -1304,6 +1305,51 @@ function BeforeAfter() {
             </div>
             <p style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, marginTop: "12px", lineHeight: 1.65 }}>
               Po vodíkové dekarbonizaci jsou lopatky čisté jako z výroby. Výkon, spotřeba i emise se vrátí na tovární hodnoty.
+            </p>
+          </div>
+        </div>
+
+        {/* Example 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* BEFORE 2 */}
+          <div>
+            <div style={{ position: "relative", borderLeft: `4px solid #ef4444`, overflow: "hidden", lineHeight: 0 }}>
+              <Image
+                src="/turbo2-pred.jpg"
+                alt="Díl motoru před dekarbonizací — uhlíkové usazeniny"
+                width={1349} height={842}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div style={{
+                position: "absolute", top: "12px", left: "12px",
+                background: "#ef4444", color: "#fff",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.75rem",
+                letterSpacing: "0.1em", padding: "5px 14px",
+              }}>PŘED</div>
+            </div>
+            <p style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, marginTop: "12px", lineHeight: 1.65 }}>
+              Dlouhodobé usazeniny karbonu na dílu motoru omezují průtok plynů a snižují účinnost celého systému.
+            </p>
+          </div>
+
+          {/* AFTER 2 */}
+          <div>
+            <div style={{ position: "relative", borderLeft: `4px solid ${C.lime}`, overflow: "hidden", lineHeight: 0 }}>
+              <Image
+                src="/turbo2-po.jpg"
+                alt="Díl motoru po dekarbonizaci — čistý povrch"
+                width={1349} height={843}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div style={{
+                position: "absolute", top: "12px", left: "12px",
+                background: C.lime, color: "#fff",
+                fontFamily: FONT, fontWeight: 700, fontSize: "0.75rem",
+                letterSpacing: "0.1em", padding: "5px 14px",
+              }}>PO</div>
+            </div>
+            <p style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, marginTop: "12px", lineHeight: 1.65 }}>
+              Vodík rozloží veškerý karbon bez mechanického zásahu. Díl je čistý, průtok obnoven, motor pracuje efektivněji.
             </p>
           </div>
         </div>
