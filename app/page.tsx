@@ -1313,12 +1313,12 @@ function BeforeAfter() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* BEFORE 2 */}
           <div>
-            <div style={{ position: "relative", borderLeft: `4px solid #ef4444`, overflow: "hidden", lineHeight: 0 }}>
+            <div style={{ position: "relative", borderLeft: `4px solid #ef4444`, overflow: "hidden", lineHeight: 0, height: "280px" }}>
               <Image
                 src="/turbo2-pred.jpg"
                 alt="Díl motoru před dekarbonizací — uhlíkové usazeniny"
-                width={1349} height={842}
-                style={{ width: "100%", height: "auto", display: "block" }}
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               <div style={{
                 position: "absolute", top: "12px", left: "12px",
@@ -1334,12 +1334,12 @@ function BeforeAfter() {
 
           {/* AFTER 2 */}
           <div>
-            <div style={{ position: "relative", borderLeft: `4px solid ${C.lime}`, overflow: "hidden", lineHeight: 0 }}>
+            <div style={{ position: "relative", borderLeft: `4px solid ${C.lime}`, overflow: "hidden", lineHeight: 0, height: "280px" }}>
               <Image
                 src="/turbo2-po.jpg"
                 alt="Díl motoru po dekarbonizaci — čistý povrch"
-                width={1349} height={843}
-                style={{ width: "100%", height: "auto", display: "block" }}
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               <div style={{
                 position: "absolute", top: "12px", left: "12px",
