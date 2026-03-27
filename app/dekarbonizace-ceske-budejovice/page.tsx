@@ -628,16 +628,16 @@ function Footer() {
             <div className="mb-4"><Logo /></div>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", maxWidth: "230px", lineHeight: 1.8, fontFamily: FONT }}>
               Vodíková dekarbonizace motorů.<br />
-              Liberec a České Budějovice.<br /><br />
-              <strong style={{ color: "rgba(255,255,255,0.75)" }}>RespiPlus Care s.r.o.</strong><br />
-              IČO: 09701982<br />
-              Korunní 2569/108, Praha 10<br /><br />
+              Praha Letňany a České Budějovice.<br /><br />
+              <strong style={{ color: "rgba(255,255,255,0.75)" }}>Jakub Franc</strong><br />
+              IČ: 04874455<br />
+              Jiráskova 637/33, Česká Lípa 47001<br /><br />
               <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
             {[
-              { h: "Pobočky", links: [{ label: "Liberec", href: "/dekarbonizace-liberec" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
+              { h: "Pobočky", links: [{ label: "Praha Letňany", href: "/dekarbonizace-praha-letnany" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
               { h: "Info", links: [{ label: "Hlavní stránka", href: "/" }, { label: "Ceník", href: "/#pricing" }, { label: "FAQ", href: "#faq" }] },
             ].map((col) => (
               <div key={col.h}>
@@ -654,7 +654,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · Jakub Franc</p>
           <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT }}>
             Vytvořilo Inetio s.r.o.

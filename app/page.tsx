@@ -59,14 +59,14 @@ const BENEFITS = [
 ];
 const LOCATIONS = [
   {
-    city: "Liberec",
-    address: "Tanvaldská 1458, Liberec",
+    city: "Praha Letňany",
+    address: "Toužimská 720, Praha Letňany",
     phone: "+420 601 269 600",
     email: "info@cistenivodikem.cz",
-    hours: "Po–Pá: 8:00–16:00",
+    hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
-    img: "/liberec.jpg",
-    pageUrl: "/dekarbonizace-liberec",
+    img: "/praha-letnany.jpg",
+    pageUrl: "/dekarbonizace-praha-letnany",
   },
   {
     city: "České Budějovice",
@@ -118,7 +118,7 @@ function Navbar() {
   ];
 
   const locationLinks = [
-    { label: "Liberec", href: "/dekarbonizace-liberec" },
+    { label: "Praha Letňany", href: "/dekarbonizace-praha-letnany" },
     { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" },
   ];
 
@@ -346,7 +346,7 @@ function Hero() {
                     style={{ background: "rgba(9,45,98,1)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%", cursor: "pointer" }}
                   >
                     <option value="" style={{ color: "#fff" }}>Vyberte pobočku</option>
-                    <option value="Liberec">Liberec</option>
+                    <option value="Praha Letnany">Praha Letňany</option>
                     <option value="Ceske Budejovice">České Budějovice</option>
                   </select>
 
@@ -741,7 +741,7 @@ function Locations() {
         <h2 style={{ ...S.h2, color: C.textDk }}>Dvě pobočky, jedno číslo</h2>
         <div style={S.divider} />
         <p style={{ ...S.sub, marginBottom: "40px", maxWidth: "480px" }}>
-          Liberec a České Budějovice. Stačí zavolat nebo vyplnit formulář — domluvíme termín do 24 hodin.
+          Praha Letňany a České Budějovice. Stačí zavolat nebo vyplnit formulář — domluvíme termín do 24 hodin.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ background: C.gray }}>
           {LOCATIONS.map((loc) => (
@@ -996,7 +996,7 @@ function ContactForm() {
                       onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
                       onBlur={e => (e.currentTarget.style.borderColor = C.border)}>
                       <option value="">Vyberte pobočku...</option>
-                      <option value="Liberec">Liberec — Tanvaldská 1458</option>
+                      <option value="Praha Letňany">Praha Letňany — Toužimská 720</option>
                       <option value="České Budějovice">České Budějovice — Rudolfovská tř. 612</option>
                     </select>
                   </div>
@@ -1038,16 +1038,16 @@ function Footer() {
             </div>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", maxWidth: "230px", lineHeight: 1.8, fontFamily: FONT }}>
               Vodíková dekarbonizace motorů.<br />
-              Liberec a České Budějovice.<br /><br />
-              <strong style={{ color: "rgba(255,255,255,0.75)" }}>RespiPlus Care s.r.o.</strong><br />
-              IČO: 09701982<br />
-              Korunní 2569/108, Praha 10<br /><br />
+              Praha Letňany a České Budějovice.<br /><br />
+              <strong style={{ color: "rgba(255,255,255,0.75)" }}>Jakub Franc</strong><br />
+              IČ: 04874455<br />
+              Jiráskova 637/33, Česká Lípa 47001<br /><br />
               <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }} onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'email_click', { event_category: 'contact', send_to: 'G-RNLHTENSDQ' }); }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
             {[
-              { h: "Pobočky", links: [{ label: "Liberec", href: "/dekarbonizace-liberec" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
+              { h: "Pobočky", links: [{ label: "Praha Letňany", href: "/dekarbonizace-praha-letnany" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
               { h: "Info", links: [{ label: "O nás", href: "#about" }, { label: "Ceník", href: "#pricing" }, { label: "FAQ", href: "#faq" }, { label: "Ochrana osobních údajů", href: "#" }] },
             ].map((col) => (
               <div key={col.h}>
@@ -1066,7 +1066,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · Jakub Franc</p>
           <div className="flex gap-5 items-center">
             <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer"
               style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}

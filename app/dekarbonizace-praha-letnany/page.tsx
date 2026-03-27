@@ -50,8 +50,8 @@ const REVIEWS = [
 ];
 
 const FAQS = [
-  { q: "Jak se objednám na dekarbonizaci v Liberci?", a: "Zavolejte nám na +420 601 269 600, napište e-mail nebo vyplňte formulář níže. Ozveme se do 24 hodin a domluvíme termín, který vám vyhovuje. Fungujeme výhradně na objednání." },
-  { q: "Kde přesně se pobočka v Liberci nachází?", a: "Naše liberecká pobočka sídlí na adrese Tanvaldská 1458, Liberec. Snadno dostupné z centra i okolních čtvrtí — parkování přímo u provozovny." },
+  { q: "Jak se objednám na dekarbonizaci v Praze Letňanech?", a: "Zavolejte nám na +420 601 269 600, napište e-mail nebo vyplňte formulář níže. Ozveme se do 24 hodin a domluvíme termín, který vám vyhovuje. Fungujeme výhradně na objednání." },
+  { q: "Kde přesně se pobočka v Praze Letňanech nachází?", a: "Naše pražská pobočka sídlí na adrese Toužimská 720, Praha Letňany. Snadno dostupné z centra i okolních čtvrtí — parkování přímo u provozovny." },
   { q: "Jak dlouho vodíková dekarbonizace trvá?", a: "Záleží na objemu motoru. Počítejte s 50 minutami u malých motorů, u větších až 80 minut. Celou dobu počkáte přímo u nás." },
   { q: "Je vodíková metoda opravdu bezpečná?", a: "Ano, vodíková dekarbonizace je nejšetrnější dostupná metoda. Pracuje pouze s vodíko-kyslíkovou směsí — bez jakýchkoliv chemikálií. Na konci procesu zbyde jen voda a CO₂. Motor zůstane netknutý, olej nevyměňujete." },
   { q: "Pro jaká auta to funguje?", a: "Pro všechna vozidla s benzínovým, dieselovým nebo hybridním motorem. Sloužíme osobním autům, dodávkám i firemním flotilám. Nevhodné pouze pro čistě elektrická vozidla." },
@@ -128,15 +128,15 @@ function Hero() {
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
-    formData.append("subject", "Rychlá poptávka — Liberec");
-    formData.append("from_name", "Čištění Vodíkem - Liberec");
+    formData.append("subject", "Rychlá poptávka — Praha Letňany");
+    formData.append("from_name", "Čištění Vodíkem - Praha Letňany");
     try {
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const data = await response.json();
       if (data.success) {
         setSent(true);
         if (typeof window !== "undefined" && (window as any).gtag) {
-          (window as any).gtag("event", "generate_lead", { event_category: "form", event_label: "hero_liberec", send_to: "G-RNLHTENSDQ" });
+          (window as any).gtag("event", "generate_lead", { event_category: "form", event_label: "hero_praha_letnany", send_to: "G-RNLHTENSDQ" });
           (window as any).gtag("event", "conversion", { send_to: "AW-18028160012/yuN9CJyp9oscEIzIv5RD" });
         }
       } else {
@@ -153,8 +153,8 @@ function Hero() {
     <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: "60px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0 }}>
         <Image
-          src="/liberec.jpg"
-          alt="Liberec — vodíková dekarbonizace motoru" fill
+          src="/praha-letnany.jpg"
+          alt="Praha Letňany — vodíková dekarbonizace motoru" fill
           style={{ objectFit: "cover", objectPosition: "center" }} priority
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(9,45,98,0.96) 0%, rgba(9,45,98,0.85) 55%, rgba(9,45,98,0.6) 100%)" }} />
@@ -166,25 +166,25 @@ function Hero() {
         <nav aria-label="breadcrumb" className="flex items-center gap-1 mb-6" style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", fontFamily: FONT }}>
           <a href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Hlavní stránka</a>
           <ChevronRight size={12} />
-          <span style={{ color: "rgba(255,255,255,0.8)" }}>Dekarbonizace Liberec</span>
+          <span style={{ color: "rgba(255,255,255,0.8)" }}>Dekarbonizace Praha Letňany</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-center">
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Vodíková dekarbonizace motoru · Liberec</span>
+            <span style={{ ...S.tag, color: C.lime }}>Vodíková dekarbonizace motoru · Praha Letňany</span>
             <div style={{ width: "40px", height: "3px", background: C.lime, marginBottom: "20px" }} />
             <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, letterSpacing: "-1.5px", margin: 0 }}>
               Dekarbonizace motoru<br />
-              <span style={{ color: C.lime }}>přímo v Liberci</span>
+              <span style={{ color: C.lime }}>přímo v Praze Letňanech</span>
             </h1>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", lineHeight: 1.75, marginTop: "20px", maxWidth: "520px" }}>
-              Profesionální vodíková dekarbonizace na pobočce Liberec — Tanvaldská 1458. Obnovíme výkon vašeho motoru, snížíme spotřebu a připravíme vás na STK. Bez demontáže, za 50–80 minut.
+              Profesionální vodíková dekarbonizace na pobočce Praha Letňany — Toužimská 720. Obnovíme výkon vašeho motoru, snížíme spotřebu a připravíme vás na STK. Bez demontáže, za 50–80 minut.
             </p>
             <div className="flex flex-wrap gap-3 mt-8">
               <a href="#contact" style={btnPrimary}
                 onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
                 onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
-                Objednat v Liberci <ArrowRight size={15}/>
+                Objednat v Praze Letňanech <ArrowRight size={15}/>
               </a>
               <a href="tel:+420601269600" style={{ ...btnPrimary, background: "transparent", border: "1.5px solid rgba(255,255,255,0.35)" }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)")}
@@ -195,7 +195,7 @@ function Hero() {
             <div className="flex flex-wrap gap-6 sm:gap-8 mt-10 pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
               {[
                 { num: "50–80 min", label: "procedura" },
-                { num: "Po–Pá", label: "8:00–16:00" },
+                { num: "Po–Pá", label: "8:00–18:00" },
                 { num: "100%", label: "bez chemikálií" },
               ].map((s, i) => (
                 <div key={s.label} style={{ paddingRight: i < 2 ? "20px" : "0", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none" }}>
@@ -219,7 +219,7 @@ function Hero() {
                 <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", marginBottom: "20px", lineHeight: 1.6 }}>Vyplňte číslo a ozveme se do 2 hodin v pracovní době.</p>
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
-                  <input name="Pobocka" type="hidden" value="Liberec" />
+                  <input name="Pobocka" type="hidden" value="Praha Letňany" />
                   <input name="Jmeno" required type="text" placeholder="Vaše jméno"
                     style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", padding: "10px 12px", color: "#fff", fontFamily: FONT, fontSize: "0.875rem", outline: "none", width: "100%" }} />
                   <input name="Telefon" required type="tel" placeholder="Telefonní číslo"
@@ -245,8 +245,8 @@ function LocationInfo() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
-            { icon: <MapPin size={18}/>, title: "Adresa pobočky", val: "Tanvaldská 1458, Liberec", sub: "Parkování přímo u provozovny", href: "https://maps.google.com/?q=Tanvaldsk%C3%A1+1458,+Liberec" },
-            { icon: <Clock size={18}/>, title: "Otevírací doba", val: "Po–Pá: 8:00–16:00", sub: "Výhradně na objednání" },
+            { icon: <MapPin size={18}/>, title: "Kde nás najdete", val: "Toužimská 720, Praha Letňany", sub: "Zobrazit na Google", href: "https://maps.google.com/?q=Tou%C5%BEimsk%C3%A1+720,+Praha+Let%C5%88any" },
+            { icon: <Clock size={18}/>, title: "Otevírací doba", val: "Po–Pá: 8:00–18:00", sub: "Nutné objednat se předem" },
             { icon: <Phone size={18}/>, title: "Telefonní kontakt", val: "+420 601 269 600", sub: "Odpovíme do 24 hodin", href: "tel:+420601269600" },
           ].map((item) => (
             <div key={item.title} className="flex items-start gap-4">
@@ -257,7 +257,10 @@ function LocationInfo() {
                   ? <a href={item.href} style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.white, textDecoration: "none" }}>{item.val}</a>
                   : <div style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.white }}>{item.val}</div>
                 }
-                <div style={{ fontFamily: FONT, fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "2px" }}>{item.sub}</div>
+                {item.href && item.sub
+                  ? <a href={item.href} style={{ fontFamily: FONT, fontSize: "0.8rem", color: C.lime, marginTop: "2px", display: "block", textDecoration: "none" }}>{item.sub}</a>
+                  : <div style={{ fontFamily: FONT, fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "2px" }}>{item.sub}</div>
+                }
               </div>
             </div>
           ))}
@@ -269,7 +272,7 @@ function LocationInfo() {
 
 function Benefits() {
   const items = [
-    { icon: <Fuel size={22}/>, title: "Nižší spotřeba paliva", desc: "Čistý motor spaluje efektivněji. Zákazníci z Liberce hlásí úsporu až 1 litr na 100 km hned po první dekarbonizaci." },
+    { icon: <Fuel size={22}/>, title: "Nižší spotřeba paliva", desc: "Čistý motor spaluje efektivněji. Zákazníci hlásí úsporu až 1 litr na 100 km hned po první dekarbonizaci." },
     { icon: <Zap size={22}/>, title: "Výkon jako z výroby", desc: "Uhlíkové nánosy brzdí motor. Po jejich odstranění se výkon i akcelerace vrátí na tovární hodnoty." },
     { icon: <Wrench size={22}/>, title: "Méně výdajů za opravy", desc: "Čisté vstřikovače, ventily a DPF filtr se opotřebovávají mnohem pomaleji. Ušetříte na opravách v servisu." },
     { icon: <Leaf size={22}/>, title: "Projdete emisní kontrolou", desc: "Snížíme emise škodlivin tak, aby váš vůz emisní kontrolou na STK prošel bez problémů." },
@@ -286,7 +289,7 @@ function Benefits() {
               Uhlíkové usazeniny se v motoru hromadí od prvního dne provozu. Čím déle čekáte, tím víc vás to stojí — vyšší spotřeba, slabší výkon, dražší opravy v servisu.
             </p>
             <div className="mt-8">
-              <Image src="/auto-peugeot.jpg" alt="Vodíková dekarbonizace Liberec — HHO přístroj připojený k motoru"
+              <Image src="/auto-peugeot.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO přístroj připojený k motoru"
                 width={1080} height={1080} style={{ width: "100%", height: "auto", display: "block" }} />
               <div style={{ background: C.lime, padding: "13px 18px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <ShieldCheck size={17} style={{ color: "#fff", flexShrink: 0 }} />
@@ -326,7 +329,7 @@ function HowItWorks() {
                 "Žádná demontáž ani výměna oleje",
                 "Vhodné pro benzín, diesel i hybridní motory",
                 "Preventivně každých 15 000–25 000 km",
-                "50–80 minut — počkáte přímo u nás v Liberci",
+                "50–80 minut — počkáte přímo u nás v Praze Letňanech",
                 "Certifikovaní technici, moderní vybavení",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
@@ -339,7 +342,7 @@ function HowItWorks() {
             </div>
           </div>
           <div>
-            <Image src="/motor-detail.jpg" alt="Vodíková dekarbonizace Liberec — HHO hadice v sání motoru"
+            <Image src="/motor-detail.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO hadice v sání motoru"
               width={1400} height={933} style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.lime}` }} />
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[{ num: "H₂O", label: "jediný vedlejší produkt" }, { num: "50–80 min", label: "a hotovo" }].map((s) => (
@@ -362,7 +365,7 @@ function Pricing() {
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap justify-between items-end gap-6 mb-10">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Ceník · Liberec</span>
+            <span style={{ ...S.tag, color: C.navy }}>Ceník · Praha Letňany</span>
             <h2 style={{ ...S.h2, color: C.textDk }}>Transparentní ceny, žádná překvapení</h2>
             <div style={S.divider} />
           </div>
@@ -462,7 +465,7 @@ function FAQ() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-16 items-start">
           <div>
             <span style={{ ...S.tag, color: C.navy }}>Časté otázky</span>
-            <h2 style={{ ...S.h2, color: C.textDk }}>Vše o dekarbonizaci v Liberci</h2>
+            <h2 style={{ ...S.h2, color: C.textDk }}>Vše o dekarbonizaci v Praze Letňanech</h2>
             <div style={S.divider} />
             <p style={{ ...S.sub }}>Nenašli jste co hledáte? Zavolejte nebo napište — odpovíme rychle.</p>
             <a href="#contact" className="inline-flex mt-8" style={btnPrimary}
@@ -507,15 +510,15 @@ function ContactForm() {
     setIsSubmitting(true);
     const formData = new FormData(e.currentTarget);
     formData.append("access_key", "88d43b16-7eeb-46ee-9c4e-3c60da81b2db");
-    formData.append("subject", "Nová poptávka — Liberec");
-    formData.append("from_name", "Čištění Vodíkem - Liberec kontaktní formulář");
+    formData.append("subject", "Nová poptávka — Praha Letňany");
+    formData.append("from_name", "Čištění Vodíkem - Praha Letňany kontaktní formulář");
     try {
       const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
       const data = await response.json();
       if (data.success) {
         setSent(true);
         if (typeof window !== "undefined" && (window as any).gtag) {
-          (window as any).gtag("event", "generate_lead", { event_category: "form", event_label: "contact_liberec", send_to: "G-RNLHTENSDQ" });
+          (window as any).gtag("event", "generate_lead", { event_category: "form", event_label: "contact_praha_letnany", send_to: "G-RNLHTENSDQ" });
           (window as any).gtag("event", "conversion", { send_to: "AW-18028160012/yuN9CJyp9oscEIzIv5RD" });
         }
       } else {
@@ -533,14 +536,14 @@ function ContactForm() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 items-start">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Objednávka · Liberec</span>
+            <span style={{ ...S.tag, color: C.navy }}>Objednávka · Praha Letňany</span>
             <h2 style={{ ...S.h2, color: C.textDk }}>Objednejte se na dekarbonizaci</h2>
             <div style={S.divider} />
             <p style={{ ...S.sub }}>Vyplňte formulář, zavolejte nebo napište e-mail. Termín domluvíme do 24 hodin — bez závazků.</p>
             <div className="flex flex-col gap-4 mt-8">
               {[
                 { icon: <Phone size={16}/>, label: "Telefon", val: "+420 601 269 600", href: "tel:+420601269600" },
-                { icon: <MapPin size={16}/>, label: "Adresa", val: "Tanvaldská 1458, Liberec", href: "https://maps.google.com/?q=Tanvaldsk%C3%A1+1458,+Liberec" },
+                { icon: <MapPin size={16}/>, label: "Adresa", val: "Toužimská 720, Praha Letňany", href: "https://maps.google.com/?q=Tou%C5%BEimsk%C3%A1+720,+Praha+Let%C5%88any" },
                 { icon: <Mail size={16}/>, label: "E-mail", val: "info@cistenivodikem.cz", href: "mailto:info@cistenivodikem.cz" },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-3">
@@ -564,7 +567,7 @@ function ContactForm() {
               <div style={{ background: C.white, border: `1px solid ${C.border}`, borderTop: `4px solid ${C.navy}`, padding: "28px 24px" }}>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
-                  <input name="Pobocka" type="hidden" value="Liberec — Tanvaldská 1458" />
+                  <input name="Pobocka" type="hidden" value="Praha Letňany — Toužimská 720" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Jméno *</label>
@@ -607,7 +610,7 @@ function ContactForm() {
                     style={{ ...btnPrimary, padding: "14px" }}
                     onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.background = C.limeDk; }}
                     onMouseLeave={e => { if (!isSubmitting) e.currentTarget.style.background = C.lime; }}>
-                    {isSubmitting ? "Odesílám..." : "Objednat se v Liberci"} <ArrowRight size={15}/>
+                    {isSubmitting ? "Odesílám..." : "Objednat se v Praze Letňanech"} <ArrowRight size={15}/>
                   </button>
                 </form>
               </div>
@@ -628,16 +631,16 @@ function Footer() {
             <div className="mb-4"><Logo /></div>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", maxWidth: "230px", lineHeight: 1.8, fontFamily: FONT }}>
               Vodíková dekarbonizace motorů.<br />
-              Liberec a České Budějovice.<br /><br />
-              <strong style={{ color: "rgba(255,255,255,0.75)" }}>RespiPlus Care s.r.o.</strong><br />
-              IČO: 09701982<br />
-              Korunní 2569/108, Praha 10<br /><br />
+              Praha Letňany a České Budějovice.<br /><br />
+              <strong style={{ color: "rgba(255,255,255,0.75)" }}>Jakub Franc</strong><br />
+              IČ: 04874455<br />
+              Jiráskova 637/33, Česká Lípa 47001<br /><br />
               <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">
             {[
-              { h: "Pobočky", links: [{ label: "Liberec", href: "/dekarbonizace-liberec" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
+              { h: "Pobočky", links: [{ label: "Praha Letňany", href: "/dekarbonizace-praha-letnany" }, { label: "České Budějovice", href: "/dekarbonizace-ceske-budejovice" }] },
               { h: "Info", links: [{ label: "Hlavní stránka", href: "/" }, { label: "Ceník", href: "/#pricing" }, { label: "FAQ", href: "#faq" }] },
             ].map((col) => (
               <div key={col.h}>
@@ -654,7 +657,7 @@ function Footer() {
           </div>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · RespiPlus Care s.r.o.</p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", fontFamily: FONT }}>© 2026 cistenivodikem.cz · Jakub Franc</p>
           <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", textDecoration: "none", fontFamily: FONT }}>
             Vytvořilo Inetio s.r.o.
@@ -665,7 +668,7 @@ function Footer() {
   );
 }
 
-export default function LiberecPage() {
+export default function PrahaLetnanyPage() {
   return (
     <>
       <Navbar />
