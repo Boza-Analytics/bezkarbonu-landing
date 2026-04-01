@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://i.ytimg.com/vi/uKUlLIWC7Ow/maxresdefault.jpg",
-        width: 1280,
-        height: 720,
+        url: "/praha-letnany.jpg",
+        width: 1920,
+        height: 1080,
         alt: "Dekarbonizace motoru Praha Letňany — vodíkové čištění",
       },
     ],
@@ -66,7 +66,7 @@ const jsonLd = {
       priceRange: "od 2 390 Kč",
       currenciesAccepted: "CZK",
       paymentAccepted: "Hotovost, Karta",
-      image: "https://i.ytimg.com/vi/uKUlLIWC7Ow/maxresdefault.jpg",
+      image: `${SITE_URL}/praha-letnany.jpg`,
       address: {
         "@type": "PostalAddress",
         streetAddress: "Toužimská 720",
