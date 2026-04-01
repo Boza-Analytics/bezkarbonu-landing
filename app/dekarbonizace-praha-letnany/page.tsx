@@ -342,8 +342,8 @@ function HowItWorks() {
             </div>
           </div>
           <div>
-            <Image src="/motor-detail.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO hadice v sání motoru"
-              width={1400} height={933} style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.lime}` }} />
+            <Image src="https://i.ytimg.com/vi/uKUlLIWC7Ow/maxresdefault.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO hadice v sání motoru"
+              width={1280} height={720} style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.lime}` }} />
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[{ num: "H₂O", label: "jediný vedlejší produkt" }, { num: "50–80 min", label: "a hotovo" }].map((s) => (
                 <div key={s.label} style={{ background: C.navyDk, padding: "20px 24px" }}>
