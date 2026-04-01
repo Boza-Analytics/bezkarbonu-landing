@@ -65,7 +65,7 @@ const LOCATIONS = [
     email: "info@cistenivodikem.cz",
     hours: "Po–Pá: 8:00–18:00",
     note: "Nutné objednat se předem",
-    img: "/praha-letnany.jpg",
+    img: "https://i.ytimg.com/vi/uKUlLIWC7Ow/maxresdefault.jpg",
     pageUrl: "/dekarbonizace-praha-letnany",
   },
   {
