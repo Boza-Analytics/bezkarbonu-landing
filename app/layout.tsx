@@ -205,6 +205,12 @@ export default function RootLayout({
   return (
     <html lang="cs" className={dm.variable}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="antialiased">
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=AW-18028160012`}
@@ -231,10 +237,7 @@ export default function RootLayout({
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "w3uehhbkde");`}
         </Script>
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-        >
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -246,12 +249,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1619607452652558');
 fbq('track', 'PageView');`}
         </Script>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="antialiased">
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img height="1" width="1" style={{display:"none"}}
