@@ -23,7 +23,7 @@ export const posts: BlogPost[] = [
     date: "2026-04-10",
     readTime: 6,
     category: "Rady & tipy",
-    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1742741323361-78fada9ed6f2?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Detail motorového prostoru automobilu",
     keywords: ["příznaky zauhleného motoru", "motor potřebuje dekarbonizaci", "ztráta výkonu motoru", "zvýšená spotřeba paliva", "vodíková dekarbonizace"],
     body: `
@@ -73,7 +73,7 @@ export const posts: BlogPost[] = [
     date: "2026-04-07",
     readTime: 5,
     category: "Srovnání",
-    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1758563920451-0ea1c2eb963b?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Pohled do motorového prostoru — srovnání metod čistění",
     keywords: ["vodíková dekarbonizace", "chemická dekarbonizace", "HHO dekarbonizace", "srovnání metod čistění motoru"],
     body: `
@@ -110,7 +110,7 @@ export const posts: BlogPost[] = [
     date: "2026-04-03",
     readTime: 5,
     category: "STK & Emise",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1760449072812-9f6030afcee5?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Emisní zkouška automobilu na STK",
     keywords: ["STK emise", "jak projít STK", "emise STK motor", "příprava na STK", "snížit emise auto"],
     body: `
@@ -155,7 +155,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-28",
     readTime: 6,
     category: "Technologie",
-    image: "https://images.unsplash.com/photo-1502637098811-fa9526d2b659?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1763679112092-053a6eadd72f?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Servis dieselového motoru s DPF filtrem",
     keywords: ["DPF filtr", "co je DPF", "ucpaný DPF", "čistění DPF filtru diesel", "DPF regenerace"],
     body: `
@@ -198,7 +198,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-22",
     readTime: 6,
     category: "Rady & tipy",
-    image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1758362066807-39825a297aa4?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Tankování auta — snížení spotřeby paliva",
     keywords: ["snížit spotřebu paliva", "úspora paliva", "nižší spotřeba auta", "jak ušetřit na palivu", "spotřeba benzín diesel"],
     body: `
@@ -240,7 +240,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-15",
     readTime: 5,
     category: "Péče o motor",
-    image: "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1664695221759-21ed7295f697?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Mechanik při práci na motoru s turbodmychadlem",
     keywords: ["turbodmychadlo životnost", "péče o turbo", "turbo uhlíkové nánosy", "turbo servis", "turbodmychadlo porucha"],
     body: `
@@ -278,7 +278,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-08",
     readTime: 6,
     category: "Technologie",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1755728531140-88e0b2a72d75?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Dieselový automobil — zauhličení a emise motoru",
     keywords: ["dekarbonizace diesel", "diesel motor saze", "diesel EGR", "DPF diesel", "zauhličení dieselový motor"],
     body: `
@@ -311,7 +311,7 @@ export const posts: BlogPost[] = [
     date: "2026-03-01",
     readTime: 5,
     category: "Ekonomika",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1756575527484-2839c593ed84?w=1200&q=80&auto=format&fit=crop",
     imageAlt: "Kalkulačka a výpočet nákladů na servis motoru",
     keywords: ["cena dekarbonizace", "kolik stojí dekarbonizace", "náklady servis motoru", "oprava vs prevence motor"],
     body: `
@@ -355,8 +355,8 @@ export const posts: BlogPost[] = [
     date: "2026-02-22",
     readTime: 5,
     category: "Péče o motor",
-    image: "https://images.unsplash.com/photo-1494905998402-395d579af36f?w=1200&q=80&auto=format&fit=crop",
-    imageAlt: "Interiér automobilu na LPG nebo CNG — palubní deska",
+    image: "https://images.unsplash.com/photo-1709719263439-364363375a3a?w=1200&q=80&auto=format&fit=crop",
+    imageAlt: "Tankování automobilu na LPG nebo CNG",
     keywords: ["LPG dekarbonizace", "CNG motor čistění", "LPG auto servis", "bi-fuel motor problémy", "LPG sací ventily"],
     body: `
 <p>Majitelé vozů na alternativní paliva — LPG nebo CNG — se nás občas ptají, zda jejich auto dekarbonizaci vůbec potřebuje. LPG a CNG přece „spalují čistěji", ne? Pravda je trochu složitější.</p>
@@ -390,8 +390,8 @@ export const posts: BlogPost[] = [
     date: "2026-02-15",
     readTime: 6,
     category: "Příběhy zákazníků",
-    image: "https://images.unsplash.com/photo-1519791883288-dc8bd696e667?w=1200&q=80&auto=format&fit=crop",
-    imageAlt: "Spokojený zákazník po vodíkové dekarbonizaci",
+    image: "https://images.unsplash.com/photo-1727893512947-8bdc773ceb02?w=1200&q=80&auto=format&fit=crop",
+    imageAlt: "Spokojený zákazník předává klíče od auta po servisu",
     keywords: ["zkušenosti s dekarbonizací", "výsledky vodíkové dekarbonizace", "recenze dekarbonizace", "vodíkové čistění výsledky"],
     body: `
 <p>Čísla a grafy jsou jedno — ale nejlepší důkaz je reálný příběh zákazníka, který přijel se stejným problémem jako vy. Tady jsou tři z nich.</p>
