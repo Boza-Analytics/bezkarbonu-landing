@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "./components/CookieBanner";
-import Chatbot from "./components/Chatbot";
 import Script from "next/script";
 
 const dm = DM_Sans({
@@ -259,7 +258,6 @@ fbq('track', 'PageView');`}
         </noscript>
         {children}
         <CookieBanner />
-        <Chatbot />
       </body>
     </html>
   );
