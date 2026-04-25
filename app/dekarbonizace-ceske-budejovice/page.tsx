@@ -78,6 +78,7 @@ function Navbar() {
             { label: "Hlavní stránka", href: "/" },
             { label: "O službě", href: "/#about" },
             { label: "Ceník", href: "/#pricing" },
+            { label: "Blog", href: "/blog" },
             { label: "Kontakt", href: "#contact" },
           ].map((l) => (
             <a key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT, transition: "color 0.2s" }}
@@ -103,6 +104,7 @@ function Navbar() {
             { label: "Hlavní stránka", href: "/" },
             { label: "O službě", href: "/#about" },
             { label: "Ceník", href: "/#pricing" },
+            { label: "Blog", href: "/blog" },
             { label: "Kontakt", href: "#contact" },
           ].map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}

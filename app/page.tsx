@@ -114,6 +114,7 @@ function Navbar() {
     { label: "O službě", href: "#about" },
     { label: "Ceník", href: "#pricing" },
     { label: "Výsledky", href: "#results" },
+    { label: "Blog", href: "/blog" },
     { label: "Kontakt", href: "#contact" },
   ];
 
