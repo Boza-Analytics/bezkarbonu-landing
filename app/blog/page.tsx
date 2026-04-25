@@ -4,14 +4,33 @@ import Link from "next/link";
 import { posts, formatDate } from "../lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Tipy a rady o péči o motor",
-  description: "Praktické rady o vodíkové dekarbonizaci, péči o motor, DPF filtrech, turbodmychadlech a jak ušetřit na servisu. Odborné články pro řidiče.",
+  title: "Blog o dekarbonizaci motoru — Rady, tipy a návody | CisteniVodikem.cz",
+  description: "Odborné články o vodíkové dekarbonizaci motorů, péči o DPF filtr, turbodmychadlo a jak ušetřit na servisu. Praktické rady pro každého řidiče.",
+  keywords: [
+    "vodíková dekarbonizace blog",
+    "péče o motor rady",
+    "DPF filtr čištění",
+    "turbodmychadlo životnost",
+    "dekarbonizace vs oprava motoru",
+    "jak snížit spotřebu paliva",
+    "STK emise tipy",
+  ],
+  robots: { index: true, follow: true },
   alternates: { canonical: "https://www.cistenivodikem.cz/blog" },
   openGraph: {
-    title: "Blog — Tipy a rady o péči o motor | CisteniVodikem.cz",
-    description: "Praktické rady o vodíkové dekarbonizaci, péči o motor, DPF filtrech a jak ušetřit na servisu.",
+    title: "Blog o dekarbonizaci motoru — Rady, tipy a návody | CisteniVodikem.cz",
+    description: "Odborné články o vodíkové dekarbonizaci motorů, péči o DPF filtr, turbodmychadlo a jak ušetřit na servisu.",
     url: "https://www.cistenivodikem.cz/blog",
     type: "website",
+    siteName: "CisteniVodikem.cz",
+    locale: "cs_CZ",
+    images: [{ url: "/motor-detail.jpg", width: 1400, height: 933, alt: "Vodíková dekarbonizace motoru — blog CisteniVodikem.cz" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog o dekarbonizaci motoru | CisteniVodikem.cz",
+    description: "Odborné články o vodíkové dekarbonizaci, DPF filtrech a péči o motor.",
+    images: ["/motor-detail.jpg"],
   },
 };
 

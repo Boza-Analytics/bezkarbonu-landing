@@ -186,7 +186,7 @@ export const posts: BlogPost[] = [
 <h2>Jak vodíková dekarbonizace chrání DPF?</h2>
 <p>Vodíko-kyslíková směs při dekarbonizaci prochází celým spalovacím okruhem — včetně DPF filtru. Pomáhá uvolnit a vypálit usazené saze, zvyšuje efektivitu regeneračních cyklů a prodlužuje celkovou životnost filtru.</p>
 <p>Pravidelná dekarbonizace každých 15 000–25 000 km je nejlevnější ochrana DPF, jakou pro svůj diesel můžete udělat. Srovnejte to s cenou výměny — a rozhodnutí je jasné.</p>
-<p>Chcete vědět víc o tom, jak zauhlenost motoru ovlivňuje diesel obecně? Přečtěte si <a href="/blog/diesel-dekarbonizace-proc-zauhliCuje-vice">Proč diesel zauhličuje více než benzín</a>.</p>
+<p>Chcete vědět víc o tom, jak zauhlenost motoru ovlivňuje diesel obecně? Přečtěte si <a href="/blog/diesel-dekarbonizace-proc-zauhlichuje-vice">Proč diesel zauhličuje více než benzín</a>.</p>
     `,
   },
   {
@@ -270,7 +270,7 @@ export const posts: BlogPost[] = [
     `,
   },
   {
-    slug: "diesel-dekarbonizace-proc-zauhliCuje-vice",
+    slug: "diesel-dekarbonizace-proc-zauhlichuje-vice",
     title: "Proč diesel zauhličuje více než benzín — a jak s tím bojovat",
     metaTitle: "Diesel a zauhličení motoru: proč diesel zauhličuje více | CisteniVodikem.cz",
     metaDescription: "Dieselové motory se zauhličují rychleji a intenzivněji než benzíny. Zjistěte proč — a jak vodíková dekarbonizace pomáhá dieselům s EGR, DPF a turbem.",

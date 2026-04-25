@@ -1,21 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Hlavní stránky -->
   <url>
     <loc>https://www.cistenivodikem.cz/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.cistenivodikem.cz/dekarbonizace-praha-letnany</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.cistenivodikem.cz/dekarbonizace-ceske-budejovice</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-04-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blogové články -->
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/jak-poznat-ze-motor-potrebuje-dekarbonizaci</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/vodikova-vs-chemicka-dekarbonizace</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/jak-projit-stk-snizit-emise</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/dpf-filtr-co-to-je-jak-chranit</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/jak-snizit-spotrrebu-paliva</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/turbodmychadlo-zivotnost-dekarbonizace</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/diesel-dekarbonizace-proc-zauhlichuje-vice</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/dekarbonizace-vs-oprava-motoru-naklady</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/lpg-cng-auta-dekarbonizace</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cistenivodikem.cz/blog/realne-pribehy-zakazniku-dekarbonizace</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
