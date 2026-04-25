@@ -79,9 +79,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {/* Nav */}
       <nav style={{ background: C.navyDk, borderBottom: `3px solid ${C.lime}`, position: "sticky", top: 0, zIndex: 40 }}>
         <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 24px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ width: 32, height: 32, background: C.lime, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", fontWeight: 900, color: "#fff" }}>H₂</span>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: "1rem" }}>CisteniVodikem.cz</span>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <span style={{ fontFamily: "var(--font-dm), DM Sans, sans-serif", fontWeight: 800, fontSize: "1.125rem", letterSpacing: "-0.01em" }}>
+              <span style={{ color: "#fff" }}>Čištění</span><span style={{ color: C.lime }}>Vodíkem</span>
+            </span>
           </Link>
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             {[
