@@ -4,38 +4,16 @@ import { useState, useEffect } from 'react';
 
 const FONT = "var(--font-dm), 'DM Sans', system-ui, sans-serif";
 
-const sendConsentToGA = (status: 'granted' | 'denied') => {
-  if (typeof window === 'undefined') return;
-  // gtag je vždy definován v <head> takže toto bezpečně funguje
-  (window as any).gtag('consent', 'update', {
-    'analytics_storage': status,
-    'ad_storage': status,
-    'ad_user_data': status,
-    'ad_personalization': status,
-  });
-};
-
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      setIsVisible(true);
-    } else if (consent === 'accepted') {
-      sendConsentToGA('granted');
-    }
+    const seen = localStorage.getItem('cookie-seen');
+    if (!seen) setIsVisible(true);
   }, []);
 
-  const acceptCookies = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
-    sendConsentToGA('granted');
-    setIsVisible(false);
-  };
-
-  const declineCookies = () => {
-    localStorage.setItem('cookie-consent', 'declined');
-    sendConsentToGA('denied');
+  const dismiss = () => {
+    localStorage.setItem('cookie-seen', '1');
     setIsVisible(false);
   };
 
@@ -93,7 +71,7 @@ export default function CookieBanner() {
         {/* Buttons */}
         <div style={{ display: 'flex', gap: '10px', flexShrink: 0 }}>
           <button
-            onClick={declineCookies}
+            onClick={dismiss}
             style={{
               fontFamily: FONT,
               fontSize: '0.8rem',
@@ -119,7 +97,7 @@ export default function CookieBanner() {
             Odmítnout
           </button>
           <button
-            onClick={acceptCookies}
+            onClick={dismiss}
             style={{
               fontFamily: FONT,
               fontSize: '0.8rem',

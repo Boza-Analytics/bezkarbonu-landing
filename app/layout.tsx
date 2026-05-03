@@ -208,7 +208,7 @@ export default function RootLayout({
         {/* Consent default + gtag stub musí být před načtením gtag.js */}
         <script dangerouslySetInnerHTML={{ __html:
           `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}` +
-          `gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});`
+          `gtag('consent','default',{'analytics_storage':'granted','ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});`
         }} />
         <script
           type="application/ld+json"
