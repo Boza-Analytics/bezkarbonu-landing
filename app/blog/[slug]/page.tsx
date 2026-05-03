@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPost, formatDate } from "../../lib/blog";
+import Navbar from "../../components/Navbar";
 
 export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -76,27 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <div style={{ fontFamily: "var(--font-dm), DM Sans, sans-serif", background: "#f8f9fa", minHeight: "100vh" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* Nav */}
-      <nav style={{ background: C.navyDk, borderBottom: `3px solid ${C.lime}`, position: "sticky", top: 0, zIndex: 40 }}>
-        <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 24px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <span style={{ fontFamily: "var(--font-dm), DM Sans, sans-serif", fontWeight: 800, fontSize: "1.125rem", letterSpacing: "-0.01em" }}>
-              <span style={{ color: "#fff" }}>Čištění</span><span style={{ color: C.lime }}>Vodíkem</span>
-            </span>
-          </Link>
-          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-            {[
-              { label: "Hlavní stránka", href: "/" },
-              { label: "Blog", href: "/blog" },
-              { label: "Kontakt", href: "/#contact" },
-            ].map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none" }}>
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero image */}
       <div style={{ position: "relative", height: "clamp(260px, 40vw, 480px)", background: C.navyDk }}>

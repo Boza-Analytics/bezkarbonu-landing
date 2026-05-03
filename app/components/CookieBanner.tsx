@@ -5,11 +5,14 @@ import { useState, useEffect } from 'react';
 const FONT = "var(--font-dm), 'DM Sans', system-ui, sans-serif";
 
 const sendConsentToGA = (status: 'granted' | 'denied') => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('consent', 'update', {
-      'analytics_storage': status
-    });
-  }
+  if (typeof window === 'undefined') return;
+  // gtag je vždy definován v <head> takže toto bezpečně funguje
+  (window as any).gtag('consent', 'update', {
+    'analytics_storage': status,
+    'ad_storage': status,
+    'ad_user_data': status,
+    'ad_personalization': status,
+  });
 };
 
 export default function CookieBanner() {

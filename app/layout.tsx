@@ -205,6 +205,11 @@ export default function RootLayout({
   return (
     <html lang="cs" className={dm.variable}>
       <head>
+        {/* Consent default + gtag stub musí být před načtením gtag.js */}
+        <script dangerouslySetInnerHTML={{ __html:
+          `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}` +
+          `gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});`
+        }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -213,19 +218,11 @@ export default function RootLayout({
       <body className="antialiased">
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=AW-18028160012`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-RNLHTENSDQ"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
-            // Výchozí nastavení: vše zamítnuto, dokud uživatel neklikne
-            gtag('consent', 'default', {
-              'analytics_storage': 'denied'
-            });
-
             gtag('config', 'G-RNLHTENSDQ');
             gtag('config', 'AW-18028160012');
           `}

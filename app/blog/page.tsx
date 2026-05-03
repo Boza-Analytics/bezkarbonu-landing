@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { posts, formatDate } from "../lib/blog";
+import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
   title: "Blog o dekarbonizaci motoru — Rady, tipy a návody | CisteniVodikem.cz",
@@ -56,27 +57,7 @@ export default function BlogPage() {
 
   return (
     <div style={{ fontFamily: "var(--font-dm), DM Sans, sans-serif", background: "#f8f9fa", minHeight: "100vh" }}>
-      {/* Nav */}
-      <nav style={{ background: C.navyDk, borderBottom: `3px solid ${C.lime}`, position: "sticky", top: 0, zIndex: 40 }}>
-        <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 24px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <span style={{ fontFamily: "var(--font-dm), DM Sans, sans-serif", fontWeight: 800, fontSize: "1.125rem", letterSpacing: "-0.01em" }}>
-              <span style={{ color: "#fff" }}>Čištění</span><span style={{ color: C.lime }}>Vodíkem</span>
-            </span>
-          </Link>
-          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-            {[
-              { label: "Hlavní stránka", href: "/" },
-              { label: "Ceník", href: "/#pricing" },
-              { label: "Kontakt", href: "/#contact" },
-            ].map((l) => (
-              <Link key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", fontWeight: 700, textDecoration: "none" }}>
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero */}
       <section style={{ background: `linear-gradient(135deg, ${C.navyDk} 0%, ${C.navy} 100%)`, padding: "64px 24px 48px" }}>
@@ -99,11 +80,11 @@ export default function BlogPage() {
         {/* Featured post */}
         <div style={{ marginBottom: "48px" }}>
           <Link href={`/blog/${featured.slug}`} style={{ textDecoration: "none", display: "block", background: "#fff", borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.08)", transition: "transform 0.2s, box-shadow 0.2s" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "340px" }}>
-              <div style={{ position: "relative", minHeight: "280px" }}>
+            <div className="blog-featured-grid">
+              <div className="blog-featured-img">
                 <Image src={featured.image} alt={featured.imageAlt} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 576px" priority />
               </div>
-              <div style={{ padding: "40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div className="blog-featured-body">
                 <div style={{ display: "flex", gap: "10px", marginBottom: "16px", alignItems: "center" }}>
                   <span style={{ background: CATEGORY_COLORS[featured.category] ?? C.navy, color: "#fff", fontSize: "0.72rem", fontWeight: 700, padding: "4px 10px", borderRadius: "4px", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                     {featured.category}
@@ -168,6 +149,17 @@ export default function BlogPage() {
           © {new Date().getFullYear()} CisteniVodikem.cz — RespiPlus Care s.r.o.
         </p>
       </footer>
+
+      <style>{`
+        .blog-featured-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 340px; }
+        .blog-featured-img { position: relative; min-height: 280px; }
+        .blog-featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        @media (max-width: 700px) {
+          .blog-featured-grid { grid-template-columns: 1fr; }
+          .blog-featured-img { min-height: 220px; }
+          .blog-featured-body { padding: 24px; }
+        }
+      `}</style>
     </div>
   );
 }
