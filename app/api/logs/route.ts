@@ -8,6 +8,14 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return new NextResponse(
+      `<h2>Chybí BLOB_READ_WRITE_TOKEN</h2>
+       <p>Vercel Blob storage není nakonfigurován. Jdi do <b>Vercel Dashboard → tvůj projekt → Storage → Connect Store → Create Blob</b> a připoj ho k projektu. Pak redeploy.</p>`,
+      { status: 500, headers: { "Content-Type": "text/html; charset=utf-8" } }
+    );
+  }
+
   const { blobs } = await list({ prefix: "conversations/", limit: 500 });
 
   // Fetch all entries
