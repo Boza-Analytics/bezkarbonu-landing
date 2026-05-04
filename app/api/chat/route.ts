@@ -154,7 +154,6 @@ export async function POST(req: NextRequest) {
         sessionId,
         history: [...messages, { role: "assistant", content: text }],
       }),
-      { access: "public" }
     ).catch((e) => console.error("[blob] write failed:", e?.message ?? e));
 
     return NextResponse.json({ message: text }, { headers: cors });

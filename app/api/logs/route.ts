@@ -20,10 +20,13 @@ export async function GET(req: NextRequest) {
 
   // Fetch all entries
   const entries: { ts: string; sessionId: string; history: { role: string; content: string }[] }[] = [];
+  const token = process.env.BLOB_READ_WRITE_TOKEN!;
   await Promise.all(
     blobs.map(async (blob) => {
       try {
-        const res = await fetch(blob.url);
+        const res = await fetch(blob.url, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         entries.push(await res.json());
       } catch { /* skip corrupt entries */ }
     })

@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 
   // Test write
   try {
-    const { url } = await put(`debug/test-${Date.now()}.txt`, "test", { access: "public" });
+    const { url } = await put(`debug/test-${Date.now()}.txt`, "test");
     results.write = `✅ OK — ${url}`;
   } catch (e: unknown) {
     results.write = `❌ CHYBA: ${e instanceof Error ? e.message : String(e)}`;
