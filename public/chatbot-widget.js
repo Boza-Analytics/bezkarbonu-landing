@@ -17,6 +17,7 @@
   var WELCOME = 'Dobrý den! Jsem asistent BezKarbonu.cz. Mohu vám poradit s vodíkovou dekarbonizací, cenami, pobočkami nebo objednávkou. Jak vám mohu pomoci?';
   var SUGGESTIONS = ['Jaká je cena?', 'Kde jsou pobočky?', 'Jak to funguje?', 'Chci se objednat'];
 
+  var SESSION_ID = Math.random().toString(36).slice(2, 10);
   var MAX_INPUT = 500;
   var MAX_USER_MSGS = 10;
   var LIMIT_MSG = 'Dosáhli jste limitu konverzace. Pro další dotazy nás prosím kontaktujte na info@bezkarbonu.cz nebo zavolejte na +420 792 767 337.';
@@ -35,6 +36,15 @@
     '#bzk-msgs::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px}' +
     '#bzk-w .bzk-msg a{color:' + C.red + ';text-decoration:underline}';
   document.head.appendChild(styleEl);
+
+  function renderMarkdown(text) {
+    return text
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/^#{1,3} (.+)$/gm, '<strong>$1</strong>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/^- (.+)$/gm, '• $1');
+  }
 
   // ── DOM helpers ───────────────────────────────────────────────────────────
   function el(tag, css) {
@@ -179,7 +189,11 @@
         'white-space:pre-wrap;word-break:break-word;'
       );
       bubble.className = 'bzk-msg';
-      bubble.textContent = m.content;
+      if (m.role === 'assistant') {
+        bubble.innerHTML = renderMarkdown(m.content);
+      } else {
+        bubble.textContent = m.content;
+      }
       row.appendChild(bubble);
       msgsDiv.appendChild(row);
     });
@@ -252,7 +266,7 @@
     fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: msgs.slice(-10) }),
+      body: JSON.stringify({ messages: msgs.slice(-10), sessionId: SESSION_ID }),
     })
       .then(function (r) { return r.json(); })
       .then(function (d) {

@@ -205,6 +205,7 @@ export default function RootLayout({
   return (
     <html lang="cs" className={dm.variable}>
       <head>
+        <link rel="icon" href="https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico" />
         {/* Consent default + gtag stub musí být před načtením gtag.js */}
         <script dangerouslySetInnerHTML={{ __html:
           `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}` +

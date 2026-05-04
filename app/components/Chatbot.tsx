@@ -20,6 +20,15 @@ const C = {
 
 const FONT = "var(--font-dm), DM Sans, sans-serif";
 
+function renderMarkdown(text: string): string {
+  return text
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/^#{1,3} (.+)$/gm, "<strong>$1</strong>")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/^- (.+)$/gm, "• $1");
+}
+
 const WELCOME: Message = {
   role: "assistant",
   content: "Dobrý den! Jsem asistent BezKarbonu.cz. Mohu vám poradit s vodíkovou dekarbonizací, cenami, pobočkami nebo objednávkou. Jak vám mohu pomoci?",
@@ -122,9 +131,12 @@ export default function Chatbot() {
                     fontSize: "0.855rem", lineHeight: 1.55,
                     boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
                     whiteSpace: "pre-wrap", wordBreak: "break-word",
-                  }}>
-                    {m.content}
-                  </div>
+                  }}
+                    {...(m.role === "assistant"
+                      ? { dangerouslySetInnerHTML: { __html: renderMarkdown(m.content) } }
+                      : { children: m.content }
+                    )}
+                  />
                 </div>
               ))}
 

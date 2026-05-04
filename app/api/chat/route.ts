@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 const ALLOWED_ORIGINS = ["https://www.bezkarbonu.cz", "https://bezkarbonu.cz"];
 
@@ -134,6 +135,7 @@ export async function POST(req: NextRequest) {
     }
 
     const messages = body.messages;
+    const sessionId: string = typeof body.sessionId === "string" ? body.sessionId.slice(0, 20) : "unknown";
 
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
@@ -143,6 +145,18 @@ export async function POST(req: NextRequest) {
     });
 
     const text = response.content[0].type === "text" ? response.content[0].text : "";
+
+    // Log conversation to Vercel Blob (fire and forget)
+    put(
+      `conversations/${sessionId}-${Date.now()}.json`,
+      JSON.stringify({
+        ts: new Date().toISOString(),
+        sessionId,
+        history: [...messages, { role: "assistant", content: text }],
+      }),
+      { access: "public" }
+    ).catch(() => {});
+
     return NextResponse.json({ message: text }, { headers: cors });
   } catch (err) {
     console.error("Chat API error:", err);
