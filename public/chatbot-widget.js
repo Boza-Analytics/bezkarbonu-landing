@@ -67,8 +67,9 @@
   // Header
   var hdr = el('div', 'background:' + C.dark + ';padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;');
   var hdrLeft = el('div', 'display:flex;align-items:center;gap:10px;');
-  var hdrAvatar = el('div', 'width:36px;height:36px;background:' + C.red + ';border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:.8rem;flex-shrink:0;');
-  hdrAvatar.textContent = 'BK';
+  var hdrAvatar = el('img', 'width:36px;height:36px;border-radius:50%;background:' + C.red + ';object-fit:contain;padding:5px;flex-shrink:0;');
+  hdrAvatar.src = 'https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico';
+  hdrAvatar.alt = '';
   var hdrInfo = el('div', '');
   var hdrTitle = el('div', 'color:#fff;font-weight:700;font-size:.9rem;');
   hdrTitle.textContent = 'BezKarbonu Asistent';
@@ -160,12 +161,12 @@
 
   // ── Helpers ───────────────────────────────────────────────────────────────
   function avatar(size) {
-    var a = el('div',
-      'width:' + size + 'px;height:' + size + 'px;background:' + C.red + ';border-radius:50%;' +
-      'display:flex;align-items:center;justify-content:center;' +
-      'font-size:' + (size * 0.6 / 10) + 'rem;font-weight:900;color:#fff;flex-shrink:0;'
+    var a = el('img',
+      'width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + C.red + ';' +
+      'object-fit:contain;padding:' + Math.round(size * 0.14) + 'px;flex-shrink:0;'
     );
-    a.textContent = 'BK';
+    a.src = 'https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico';
+    a.alt = '';
     return a;
   }
 

@@ -100,9 +100,7 @@ export default function Chatbot() {
             {/* Header */}
             <div style={{ background: C.dark, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <div style={{ width: 36, height: 36, background: C.red, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: "0.8rem", flexShrink: 0 }}>
-                  BK
-                </div>
+                <img src="https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico" alt="" style={{ width: 36, height: 36, borderRadius: "50%", background: C.red, objectFit: "contain", padding: "5px", flexShrink: 0 }} />
                 <div>
                   <div style={{ color: "#fff", fontWeight: 700, fontSize: "0.9rem", lineHeight: 1.2 }}>BezKarbonu Asistent</div>
                   <div style={{ color: C.green, fontSize: "0.72rem", display: "flex", alignItems: "center", gap: "4px" }}>
@@ -119,9 +117,7 @@ export default function Chatbot() {
               {messages.map((m, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
                   {m.role === "assistant" && (
-                    <div style={{ width: 28, height: 28, background: C.red, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.6rem", fontWeight: 900, color: "#fff", flexShrink: 0, marginRight: "6px", alignSelf: "flex-end" }}>
-                      BK
-                    </div>
+                    <img src="https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico" alt="" style={{ width: 28, height: 28, borderRadius: "50%", background: C.red, objectFit: "contain", padding: "4px", flexShrink: 0, marginRight: "6px", alignSelf: "flex-end" }} />
                   )}
                   <div className="bzk-msg" style={{
                     maxWidth: "75%", padding: "9px 13px",
@@ -142,7 +138,7 @@ export default function Chatbot() {
 
               {loading && (
                 <div style={{ display: "flex", alignItems: "flex-end", gap: "6px" }}>
-                  <div style={{ width: 28, height: 28, background: C.red, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.6rem", fontWeight: 900, color: "#fff", flexShrink: 0 }}>BK</div>
+                  <img src="https://www.bezkarbonu.cz/wp-content/themes/bezkarbonu/assets/img/favicons/favicon.ico" alt="" style={{ width: 28, height: 28, borderRadius: "50%", background: C.red, objectFit: "contain", padding: "4px", flexShrink: 0 }} />
                   <div style={{ background: "#fff", padding: "10px 14px", borderRadius: "14px 14px 14px 3px", boxShadow: "0 1px 3px rgba(0,0,0,0.08)", display: "flex", gap: "5px", alignItems: "center" }}>
                     {[0, 0.2, 0.4].map((delay, i) => (
                       <span key={i} style={{ width: 7, height: 7, background: "#ccc", borderRadius: "50%", display: "inline-block", animation: `bzk-bounce 1.1s infinite ${delay}s` }} />
