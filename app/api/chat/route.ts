@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
         history: [...messages, { role: "assistant", content: text }],
       }),
       { access: "public" }
-    ).catch(() => {});
+    ).catch((e) => console.error("[blob] write failed:", e?.message ?? e));
 
     return NextResponse.json({ message: text }, { headers: cors });
   } catch (err) {
