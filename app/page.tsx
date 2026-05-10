@@ -225,7 +225,7 @@ function Hero() {
           {/* RIGHT — quick form */}
           <div style={{ background: C.card, border: `2px solid ${C.orange}`, overflow: "hidden" }}>
             <div style={{ background: C.orange, padding: "14px 20px", textAlign: "center" }}>
-              <span style={{ fontFamily: FONT, color: C.white, fontWeight: 800, fontSize: "1rem" }}>📅 ZAREZERVUJTE TERMÍN ZDARMA</span>
+              <span style={{ fontFamily: FONT, color: C.white, fontWeight: 800, fontSize: "1rem" }}>📅 ZAREZERVUJTE TERMÍN</span>
             </div>
             {sent ? (
               <div style={{ textAlign: "center", padding: "40px 24px" }}>
@@ -260,7 +260,7 @@ function Hero() {
                   <button type="submit" disabled={submitting} style={{ ...btnOrange, width: "100%", marginTop: "4px", opacity: submitting ? 0.7 : 1 }}
                     onMouseEnter={e => { if (!submitting) (e.currentTarget as HTMLButtonElement).style.background = C.orangeDk; }}
                     onMouseLeave={e => { if (!submitting) (e.currentTarget as HTMLButtonElement).style.background = C.orange; }}>
-                    {submitting ? "Odesílám..." : "CHCI TERMÍN ZDARMA →"}
+                    {submitting ? "Odesílám..." : "ZAREZERVOVAT TERMÍN →"}
                   </button>
                 </form>
                 <p style={{ fontFamily: FONT, color: "#555", fontSize: "0.72rem", marginTop: "10px", textAlign: "center" }}>
