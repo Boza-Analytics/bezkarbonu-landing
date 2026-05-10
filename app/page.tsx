@@ -90,10 +90,10 @@ const FAQS = [
 /* ─── TOP BAR ─── */
 function TopBar() {
   return (
-    <div style={{ background: C.red, padding: "10px 16px", textAlign: "center", fontFamily: FONT }}>
-      <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.95rem" }}>
-        ⚠️&nbsp; Svítí kontrolka DPF nebo motoru? Zavolejte ihned:&nbsp;
-        <a href="tel:+420601269600" style={{ color: C.yellow, textDecoration: "none", fontWeight: 800 }}>
+    <div style={{ background: C.red, padding: "9px 16px", textAlign: "center", fontFamily: FONT }}>
+      <span style={{ color: "#fff", fontWeight: 700, fontSize: "clamp(0.78rem, 2.5vw, 0.9rem)", lineHeight: 1.4 }}>
+        ⚠️ Svítí kontrolka DPF?&nbsp;
+        <a href="tel:+420601269600" style={{ color: C.yellow, textDecoration: "none", fontWeight: 800, whiteSpace: "nowrap" }}>
           +420 601 269 600
         </a>
       </span>
@@ -104,45 +104,84 @@ function TopBar() {
 /* ─── NAVBAR ─── */
 function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const LINKS = [
+    ["Jak to funguje", "#jak-to-funguje"],
+    ["Ceny", "#ceny"],
+    ["Recenze", "#recenze"],
+    ["Pobočky", "#pobocky"],
+    ["Kontakt", "#kontakt"],
+  ];
+
   return (
-    <nav style={{ background: C.dark, borderBottom: `3px solid ${C.orange}`, position: "sticky", top: 0, zIndex: 50 }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 20px", height: "62px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <a href="#" style={{ textDecoration: "none", fontFamily: FONT, fontWeight: 800, fontSize: "1.2rem", color: C.white }}>
-          Čištění<span style={{ color: C.orange }}>Vodíkem</span>
-        </a>
-        <div className="hidden md:flex" style={{ gap: "28px", alignItems: "center" }}>
-          {[["Jak to funguje", "#jak-to-funguje"], ["Ceny", "#ceny"], ["Recenze", "#recenze"], ["Pobočky", "#pobocky"], ["Kontakt", "#kontakt"]].map(([label, href]) => (
-            <a key={href} href={href} style={{ color: C.textMd, fontSize: "0.9rem", fontWeight: 600, textDecoration: "none", fontFamily: FONT, transition: "color 0.15s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = C.white)}
-              onMouseLeave={e => (e.currentTarget.style.color = C.textMd)}>
-              {label}
-            </a>
-          ))}
-        </div>
-        <a href="tel:+420601269600" className="hidden md:flex" style={{ ...btnOrangeSm, fontSize: "0.9rem", padding: "10px 20px" }}
-          onMouseEnter={e => (e.currentTarget.style.background = C.orangeDk)}
-          onMouseLeave={e => (e.currentTarget.style.background = C.orange)}>
-          📞 +420 601 269 600
-        </a>
-        <button onClick={() => setOpen(!open)} className="md:hidden"
-          style={{ background: "none", border: "none", color: C.white, cursor: "pointer", fontSize: "1.5rem", padding: "4px" }}>
-          {open ? "✕" : "☰"}
-        </button>
-      </div>
-      {open && (
-        <div style={{ background: "#1a1a1a", borderTop: "1px solid #333", padding: "20px", display: "flex", flexDirection: "column", gap: "16px" }}>
-          {[["Jak to funguje", "#jak-to-funguje"], ["Ceny", "#ceny"], ["Recenze", "#recenze"], ["Pobočky", "#pobocky"], ["Kontakt", "#kontakt"]].map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}
-              style={{ color: C.white, fontSize: "1.1rem", fontWeight: 700, textDecoration: "none", fontFamily: FONT }}>
-              {label}
-            </a>
-          ))}
-          <a href="tel:+420601269600" style={{ ...btnOrange, justifyContent: "center", marginTop: "4px" }}>
-            📞 Zavolat hned
+    <>
+      <style>{`
+        @media (min-width: 768px) { .nav-mobile-only { display: none !important; } }
+        @media (max-width: 767px) { .nav-desktop-only { display: none !important; } }
+      `}</style>
+      <nav style={{ background: C.dark, borderBottom: `3px solid ${C.orange}`, position: "sticky", top: 0, zIndex: 50, fontFamily: FONT }}>
+
+        {/* ── Bar ── */}
+        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 16px", height: "58px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
+
+          {/* Logo */}
+          <a href="#" style={{ textDecoration: "none", fontWeight: 800, fontSize: "1.15rem", color: C.white, whiteSpace: "nowrap" as const }}>
+            Čištění<span style={{ color: C.orange }}>Vodíkem</span>
           </a>
+
+          {/* Desktop links */}
+          <div className="nav-desktop-only" style={{ display: "flex", gap: "24px", alignItems: "center", flex: 1, justifyContent: "center" }}>
+            {LINKS.map(([label, href]) => (
+              <a key={href} href={href} style={{ color: C.textMd, fontSize: "0.875rem", fontWeight: 600, textDecoration: "none", transition: "color 0.15s", whiteSpace: "nowrap" as const }}
+                onMouseEnter={e => (e.currentTarget.style.color = C.white)}
+                onMouseLeave={e => (e.currentTarget.style.color = C.textMd)}>
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Desktop phone CTA */}
+          <a href="tel:+420601269600" className="nav-desktop-only"
+            style={{ ...btnOrangeSm, fontSize: "0.875rem", padding: "9px 18px", whiteSpace: "nowrap" as const }}
+            onMouseEnter={e => (e.currentTarget.style.background = C.orangeDk)}
+            onMouseLeave={e => (e.currentTarget.style.background = C.orange)}>
+            📞 +420 601 269 600
+          </a>
+
+          {/* Mobile right side: phone + hamburger */}
+          <div className="nav-mobile-only" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <a href="tel:+420601269600"
+              style={{ background: C.orange, color: C.white, fontWeight: 700, fontSize: "0.85rem", padding: "8px 12px", textDecoration: "none", whiteSpace: "nowrap" as const }}>
+              📞 Zavolat
+            </a>
+            <button onClick={() => setOpen(!open)}
+              style={{ background: "none", border: "1px solid #444", color: C.white, cursor: "pointer", fontSize: "1.1rem", padding: "6px 10px", lineHeight: 1 }}>
+              {open ? "✕" : "☰"}
+            </button>
+          </div>
         </div>
-      )}
-    </nav>
+
+        {/* ── Mobile dropdown ── */}
+        {open && (
+          <div className="nav-mobile-only" style={{ background: "#181818", borderTop: `1px solid ${C.orange}` }}>
+            {LINKS.map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setOpen(false)}
+                style={{ display: "block", padding: "16px 20px", color: C.white, fontSize: "1.05rem", fontWeight: 700, textDecoration: "none", borderBottom: "1px solid #2a2a2a" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#242424")}
+                onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
+                {label}
+              </a>
+            ))}
+            <div style={{ padding: "16px 20px" }}>
+              <a href="tel:+420601269600"
+                style={{ ...btnOrange, width: "100%", fontSize: "1rem", padding: "14px" }}>
+                📞 +420 601 269 600
+              </a>
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }
 
@@ -181,7 +220,7 @@ function Hero() {
         />
       </div>
 
-      <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", padding: "70px 20px 80px" }}>
+      <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", padding: "44px 20px 56px" }}>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 items-start">
 
           {/* LEFT */}
@@ -192,7 +231,7 @@ function Hero() {
               </span>
             </div>
 
-            <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.6rem, 6vw, 4.8rem)", fontWeight: 900, color: C.white, lineHeight: 1.0, letterSpacing: "-2px", margin: "0 0 20px" }}>
+            <h1 style={{ fontFamily: FONT, fontSize: "clamp(2rem, 6vw, 4.8rem)", fontWeight: 900, color: C.white, lineHeight: 1.05, letterSpacing: "-1.5px", margin: "0 0 20px" }}>
               Váš motor ztrácí výkon<br />
               <span style={{ color: C.orange }}>a stojí vás zbytečně víc.</span>
             </h1>
