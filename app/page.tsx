@@ -398,7 +398,7 @@ function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "2px", background: "#2a2a2a", marginBottom: "36px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "2px", background: "#2a2a2a" }}>
           {STEPS.map((step) => (
             <div key={step.num} style={{ background: C.card, padding: "52px 32px", textAlign: "center" }}>
               <div style={{ width: "80px", height: "80px", background: C.orange, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", fontFamily: FONT, fontWeight: 900, fontSize: "2.2rem", color: C.white }}>
@@ -406,21 +406,6 @@ function HowItWorks() {
               </div>
               <h3 style={{ fontFamily: FONT, fontSize: "1.5rem", fontWeight: 900, color: C.white, marginBottom: "12px", letterSpacing: "-0.5px" }}>{step.title}</h3>
               <p style={{ fontFamily: FONT, fontSize: "1.05rem", color: C.textMd, lineHeight: 1.6 }}>{step.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "2px" }}>
-          {[
-            { src: "/auto-peugeot.jpg", label: "Přístroj připojený ke sání motoru" },
-            { src: "/motor-detail.jpg", label: "Motor po vyčištění" },
-          ].map(img => (
-            <div key={img.src} style={{ position: "relative", height: "300px", overflow: "hidden" }}>
-              <Image src={img.src} alt={img.label} fill style={{ objectFit: "cover" }} />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)" }} />
-              <div style={{ position: "absolute", bottom: "18px", left: "20px", fontFamily: FONT, color: C.white, fontWeight: 700, fontSize: "1rem" }}>
-                {img.label}
-              </div>
             </div>
           ))}
         </div>

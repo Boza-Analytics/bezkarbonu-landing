@@ -10,17 +10,15 @@ import {
 
 /* ── PALETTE ── */
 const C = {
-  navy:    "#0d3a79",
-  navyDk:  "#092d62",
-  lime:    "#8cc63f",
-  limeDk:  "#6fa32e",
-  white:   "#ffffff",
-  offWhite:"#f4f5f7",
-  gray:    "#e8eaed",
-  textDk:  "#111827",
-  textMd:  "#374151",
-  textLt:  "#6b7280",
-  border:  "#d1d5db",
+  orange:   "#ff5500",
+  orangeDk: "#d94700",
+  dark:     "#111111",
+  card:     "#1e1e1e",
+  red:      "#e01c1c",
+  white:    "#ffffff",
+  textMd:   "#cccccc",
+  textLt:   "#888888",
+  green:    "#22c55e",
 };
 const FONT = "var(--font-dm), 'DM Sans', system-ui, sans-serif";
 
@@ -28,11 +26,11 @@ const S = {
   tag:    { fontFamily: FONT, fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, display: "block", marginBottom: "10px" },
   h2:     { fontFamily: FONT, fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 700, letterSpacing: "-0.8px", lineHeight: 1.15, margin: 0 },
   sub:    { fontFamily: FONT, fontSize: "1.05rem", lineHeight: 1.8, color: C.textMd, marginTop: "14px", fontWeight: 400 },
-  divider:{ width: "32px", height: "3px", background: C.lime, display: "block", margin: "14px 0 0" },
+  divider:{ width: "32px", height: "3px", background: C.orange, display: "block", margin: "14px 0 0" },
 };
 const btnPrimary: React.CSSProperties = {
   display: "inline-flex", alignItems: "center", gap: "8px",
-  background: C.lime, color: C.white,
+  background: C.orange, color: C.white,
   fontFamily: FONT, fontWeight: 600, fontSize: "0.9rem",
   padding: "13px 24px", border: "none", cursor: "pointer",
   textDecoration: "none", transition: "background 0.2s",
@@ -62,7 +60,7 @@ function Logo() {
   return (
     <span className="font-extrabold text-lg tracking-tight" style={{ fontFamily: FONT }}>
       <span className="text-white">Čištění</span>
-      <span className="text-[#8cc63f]">Vodíkem</span>
+      <span style={{ color: C.orange }}>Vodíkem</span>
     </span>
   );
 }
@@ -70,7 +68,7 @@ function Logo() {
 function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: C.navyDk, borderBottom: `3px solid ${C.lime}` }}>
+    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: C.dark, borderBottom: `3px solid ${C.orange}` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8" style={{ height: "60px" }}>
         <a href="/" style={{ textDecoration: "none" }}><Logo /></a>
         <div className="hidden md:flex items-center gap-8">
@@ -89,9 +87,9 @@ function Navbar() {
           ))}
         </div>
         <a href="tel:+420601269600" className="hidden md:flex items-center gap-2"
-          style={{ background: C.lime, color: "#fff", fontWeight: 600, fontSize: "0.875rem", padding: "8px 16px", textDecoration: "none", fontFamily: FONT, transition: "background 0.2s" }}
-          onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
-          onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
+          style={{ background: C.orange, color: "#fff", fontWeight: 600, fontSize: "0.875rem", padding: "8px 16px", textDecoration: "none", fontFamily: FONT, transition: "background 0.2s" }}
+          onMouseEnter={e => (e.currentTarget.style.background = C.orangeDk)}
+          onMouseLeave={e => (e.currentTarget.style.background = C.orange)}>
           <Phone size={13} /> +420 601 269 600
         </a>
         <button className="md:hidden" onClick={() => setOpen(!open)} style={{ background: "none", border: "none", color: "#fff", cursor: "pointer", padding: "4px" }}>
@@ -99,7 +97,7 @@ function Navbar() {
         </button>
       </div>
       {open && (
-        <div style={{ background: C.navyDk, borderTop: "1px solid rgba(255,255,255,0.08)", padding: "16px" }}>
+        <div style={{ background: C.dark, borderTop: "1px solid rgba(255,255,255,0.08)", padding: "16px" }}>
           {[
             { label: "Hlavní stránka", href: "/" },
             { label: "O službě", href: "/#about" },
@@ -159,9 +157,9 @@ function Hero() {
           alt="Praha Letňany — vodíková dekarbonizace motoru" fill
           style={{ objectFit: "cover", objectPosition: "center" }} priority
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(9,45,98,0.96) 0%, rgba(9,45,98,0.85) 55%, rgba(9,45,98,0.6) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.82)" }} />
       </div>
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", background: C.lime }} />
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "4px", background: C.orange }} />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-8 w-full relative" style={{ paddingTop: "40px", paddingBottom: "40px" }}>
         {/* Breadcrumb */}
@@ -173,19 +171,19 @@ function Hero() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-center">
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Vodíková dekarbonizace motoru · Praha Letňany</span>
-            <div style={{ width: "40px", height: "3px", background: C.lime, marginBottom: "20px" }} />
+            <span style={{ ...S.tag, color: C.orange }}>Vodíková dekarbonizace motoru · Praha Letňany</span>
+            <div style={{ width: "40px", height: "3px", background: C.orange, marginBottom: "20px" }} />
             <h1 style={{ fontFamily: FONT, fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)", fontWeight: 700, color: "#fff", lineHeight: 1.1, letterSpacing: "-1.5px", margin: 0 }}>
               Dekarbonizace motoru<br />
-              <span style={{ color: C.lime }}>přímo v Praze Letňanech</span>
+              <span style={{ color: C.orange }}>přímo v Praze Letňanech</span>
             </h1>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "clamp(0.95rem, 2vw, 1.1rem)", lineHeight: 1.75, marginTop: "20px", maxWidth: "520px" }}>
               Profesionální vodíková dekarbonizace na pobočce Praha Letňany — Toužimská 720. Obnovíme výkon vašeho motoru, snížíme spotřebu a připravíme vás na STK. Bez demontáže, za 50–80 minut.
             </p>
             <div className="flex flex-wrap gap-3 mt-8">
               <a href="#contact" style={btnPrimary}
-                onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
-                onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
+                onMouseEnter={e => (e.currentTarget.style.background = C.orangeDk)}
+                onMouseLeave={e => (e.currentTarget.style.background = C.orange)}>
                 Objednat v Praze Letňanech <ArrowRight size={15}/>
               </a>
               <a href="tel:+420601269600" style={{ ...btnPrimary, background: "transparent", border: "1.5px solid rgba(255,255,255,0.35)" }}
@@ -208,10 +206,10 @@ function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:block" style={{ background: "rgba(9,45,98,0.9)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px", borderTop: `3px solid ${C.lime}` }}>
+          <div className="hidden lg:block" style={{ background: "rgba(0,0,0,0.75)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px", borderTop: `3px solid ${C.orange}` }}>
             {sent ? (
               <div className="py-10 text-center text-white">
-                <CheckCircle2 size={40} style={{ color: C.lime, margin: "0 auto 16px" }} />
+                <CheckCircle2 size={40} style={{ color: C.orange, margin: "0 auto 16px" }} />
                 <h3 className="font-bold text-lg">Děkujeme!</h3>
                 <p className="opacity-70 text-sm mt-2">Ozveme se vám do 2 hodin.</p>
               </div>
@@ -243,7 +241,7 @@ function Hero() {
 
 function LocationInfo() {
   return (
-    <section style={{ background: C.navy, padding: "40px 0" }}>
+    <section style={{ background: "#1a1a1a", padding: "40px 0" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
@@ -252,7 +250,7 @@ function LocationInfo() {
             { icon: <Phone size={18}/>, title: "Telefonní kontakt", val: "+420 601 269 600", sub: "Odpovíme do 24 hodin", href: "tel:+420601269600" },
           ].map((item) => (
             <div key={item.title} className="flex items-start gap-4">
-              <div style={{ width: "44px", height: "44px", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0 }}>{item.icon}</div>
+              <div style={{ width: "44px", height: "44px", background: C.orange, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0 }}>{item.icon}</div>
               <div>
                 <div style={{ fontFamily: FONT, fontSize: "0.7rem", fontWeight: 700, color: "rgba(255,255,255,0.45)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>{item.title}</div>
                 {item.href
@@ -260,7 +258,7 @@ function LocationInfo() {
                   : <div style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.white }}>{item.val}</div>
                 }
                 {item.href && item.sub
-                  ? <a href={item.href} style={{ fontFamily: FONT, fontSize: "0.8rem", color: C.lime, marginTop: "2px", display: "block", textDecoration: "none" }}>{item.sub}</a>
+                  ? <a href={item.href} style={{ fontFamily: FONT, fontSize: "0.8rem", color: C.orange, marginTop: "2px", display: "block", textDecoration: "none" }}>{item.sub}</a>
                   : <div style={{ fontFamily: FONT, fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", marginTop: "2px" }}>{item.sub}</div>
                 }
               </div>
@@ -280,12 +278,12 @@ function Benefits() {
     { icon: <Leaf size={22}/>, title: "Projdete emisní kontrolou", desc: "Snížíme emise škodlivin tak, aby váš vůz emisní kontrolou na STK prošel bez problémů." },
   ];
   return (
-    <section id="about" className="py-16 lg:py-24" style={{ background: C.white }}>
+    <section id="about" className="py-16 lg:py-24" style={{ background: C.card }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Proč to funguje</span>
-            <h2 style={{ ...S.h2, color: C.textDk }}>Co vaše auto po dekarbonizaci získá</h2>
+            <span style={{ ...S.tag, color: C.orange }}>Proč to funguje</span>
+            <h2 style={{ ...S.h2, color: C.white }}>Co vaše auto po dekarbonizaci získá</h2>
             <div style={S.divider} />
             <p style={{ ...S.sub, maxWidth: "460px" }}>
               Uhlíkové usazeniny se v motoru hromadí od prvního dne provozu. Čím déle čekáte, tím víc vás to stojí — vyšší spotřeba, slabší výkon, dražší opravy v servisu.
@@ -293,17 +291,17 @@ function Benefits() {
             <div className="mt-8">
               <Image src="/auto-peugeot.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO přístroj připojený k motoru"
                 width={1080} height={1080} style={{ width: "100%", height: "auto", display: "block" }} />
-              <div style={{ background: C.lime, padding: "13px 18px", display: "flex", alignItems: "center", gap: "10px" }}>
+              <div style={{ background: C.orange, padding: "13px 18px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <ShieldCheck size={17} style={{ color: "#fff", flexShrink: 0 }} />
                 <span style={{ color: "#fff", fontWeight: 600, fontSize: "0.875rem", fontFamily: FONT }}>Základní diagnostika vozidla ZDARMA ke každé zakázce</span>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px" style={{ background: C.gray }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px" style={{ background: "#2a2a2a" }}>
             {items.map((b, i) => (
-              <div key={b.title} style={{ background: C.white, padding: "28px 22px", borderTop: `3px solid ${i < 2 ? C.navy : C.lime}` }}>
-                <div style={{ color: C.navy, marginBottom: "12px" }}>{b.icon}</div>
-                <h3 style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.textDk, marginBottom: "8px", letterSpacing: "-0.2px" }}>{b.title}</h3>
+              <div key={b.title} style={{ background: "#1e1e1e", padding: "28px 22px", borderTop: `3px solid ${i < 2 ? C.orange : C.red}` }}>
+                <div style={{ color: C.orange, marginBottom: "12px" }}>{b.icon}</div>
+                <h3 style={{ fontFamily: FONT, fontSize: "1rem", fontWeight: 600, color: C.white, marginBottom: "8px", letterSpacing: "-0.2px" }}>{b.title}</h3>
                 <p style={{ fontSize: "0.95rem", color: C.textMd, lineHeight: 1.7, fontFamily: FONT }}>{b.desc}</p>
               </div>
             ))}
@@ -316,11 +314,11 @@ function Benefits() {
 
 function HowItWorks() {
   return (
-    <section className="py-16 lg:py-24" style={{ background: C.navy }}>
+    <section className="py-16 lg:py-24" style={{ background: "#161616" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Jak to funguje</span>
+            <span style={{ ...S.tag, color: C.orange }}>Jak to funguje</span>
             <h2 style={{ ...S.h2, color: C.white }}>Vodík vyčistí, co chemie neumí</h2>
             <div style={{ ...S.divider }} />
             <p style={{ ...S.sub, color: "rgba(255,255,255,0.65)" }}>
@@ -335,7 +333,7 @@ function HowItWorks() {
                 "Certifikovaní technici, moderní vybavení",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <div style={{ width: "17px", height: "17px", background: C.lime, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                  <div style={{ width: "17px", height: "17px", background: C.orange, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
                     <span style={{ color: "#fff", fontSize: "0.6rem", fontWeight: 700 }}>✓</span>
                   </div>
                   <span style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, fontFamily: FONT }}>{item}</span>
@@ -345,11 +343,11 @@ function HowItWorks() {
           </div>
           <div>
             <Image src="/motor-detail.jpg" alt="Vodíková dekarbonizace Praha Letňany — HHO hadice v sání motoru"
-              width={1400} height={933} style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.lime}` }} />
+              width={1400} height={933} style={{ width: "100%", height: "auto", display: "block", borderLeft: `4px solid ${C.orange}` }} />
             <div className="grid grid-cols-2 gap-px mt-px" style={{ background: "rgba(255,255,255,0.08)" }}>
               {[{ num: "H₂O", label: "jediný vedlejší produkt" }, { num: "50–80 min", label: "a hotovo" }].map((s) => (
-                <div key={s.label} style={{ background: C.navyDk, padding: "20px 24px" }}>
-                  <div style={{ fontFamily: FONT, fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: C.lime, letterSpacing: "-1px" }}>{s.num}</div>
+                <div key={s.label} style={{ background: "#0a0a0a", padding: "20px 24px" }}>
+                  <div style={{ fontFamily: FONT, fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: C.orange, letterSpacing: "-1px" }}>{s.num}</div>
                   <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginTop: "3px", fontFamily: FONT }}>{s.label}</div>
                 </div>
               ))}
@@ -363,12 +361,12 @@ function HowItWorks() {
 
 function Pricing() {
   return (
-    <section id="pricing" className="py-16 lg:py-24" style={{ background: C.offWhite }}>
+    <section id="pricing" className="py-16 lg:py-24" style={{ background: "#111" }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap justify-between items-end gap-6 mb-10">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Ceník · Praha Letňany</span>
-            <h2 style={{ ...S.h2, color: C.textDk }}>Transparentní ceny, žádná překvapení</h2>
+            <span style={{ ...S.tag, color: C.orange }}>Ceník · Praha Letňany</span>
+            <h2 style={{ ...S.h2, color: C.white }}>Transparentní ceny, žádná překvapení</h2>
             <div style={S.divider} />
           </div>
           <p style={{ fontFamily: FONT, fontSize: "0.875rem", color: C.textLt, maxWidth: "300px", lineHeight: 1.7 }}>
@@ -377,22 +375,22 @@ function Pricing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {[
-            { key: "benzin" as const, label: "Benzín / LPG / CNG", accent: C.lime },
-            { key: "diesel" as const, label: "Diesel", accent: C.navy },
+            { key: "benzin" as const, label: "Benzín / LPG / CNG", accent: C.orange },
+            { key: "diesel" as const, label: "Diesel", accent: "#333" },
           ].map((fuel) => (
-            <div key={fuel.key} style={{ background: C.white, border: `1px solid ${C.border}`, overflow: "hidden" }}>
+            <div key={fuel.key} style={{ background: C.card, border: "1px solid #2a2a2a", overflow: "hidden" }}>
               <div style={{ background: fuel.accent, padding: "20px 24px" }}>
                 <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: "1.1rem", color: "#fff" }}>{fuel.label}</div>
                 <div style={{ fontFamily: FONT, fontSize: "0.72rem", color: "rgba(255,255,255,0.7)", marginTop: "2px" }}>cena s DPH</div>
               </div>
               {PRICING.map((tier, i) => (
-                <div key={tier.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 24px", borderBottom: i < PRICING.length - 1 ? `1px solid ${C.border}` : "none", background: i === 1 ? "#fafbfc" : C.white }}>
+                <div key={tier.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 24px", borderBottom: i < PRICING.length - 1 ? "1px solid #2a2a2a" : "none", background: i === 1 ? "#252525" : C.card }}>
                   <div>
                     <div style={{ fontFamily: FONT, fontSize: "0.78rem", fontWeight: 600, color: C.textLt, textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: "3px" }}>Objem motoru</div>
-                    <div style={{ fontFamily: FONT, fontSize: "1.05rem", fontWeight: 700, color: C.textDk }}>{tier.label}</div>
+                    <div style={{ fontFamily: FONT, fontSize: "1.05rem", fontWeight: 700, color: C.white }}>{tier.label}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontFamily: FONT, fontSize: "2rem", fontWeight: 800, color: fuel.accent, letterSpacing: "-1px", lineHeight: 1 }}>
+                    <div style={{ fontFamily: FONT, fontSize: "2rem", fontWeight: 800, color: C.orange, letterSpacing: "-1px", lineHeight: 1 }}>
                       {tier[fuel.key]}<span style={{ fontSize: "1rem", fontWeight: 500, color: C.textLt, marginLeft: "4px" }}>Kč</span>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "4px", justifyContent: "flex-end", marginTop: "4px" }}>
@@ -405,10 +403,10 @@ function Pricing() {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: "16px", background: C.white, border: `1px solid ${C.border}`, borderLeft: `4px solid ${C.lime}`, padding: "15px 20px", display: "flex", alignItems: "center", gap: "10px" }}>
-          <ShieldCheck size={17} style={{ color: C.lime, flexShrink: 0 }} />
+        <div style={{ marginTop: "16px", background: C.card, border: "1px solid #2a2a2a", borderLeft: `4px solid ${C.orange}`, padding: "15px 20px", display: "flex", alignItems: "center", gap: "10px" }}>
+          <ShieldCheck size={17} style={{ color: C.orange, flexShrink: 0 }} />
           <span style={{ fontFamily: FONT, fontSize: "0.9rem", color: C.textMd, lineHeight: 1.6 }}>
-            <strong style={{ color: C.textDk }}>Diagnostika zdarma</strong> ke každé dekarbonizaci (hodnota 300 Kč). Objem motoru najdete v technickém průkazu pod „zdvihový objem".
+            <strong style={{ color: C.white }}>Diagnostika zdarma</strong> ke každé dekarbonizaci (hodnota 300 Kč). Objem motoru najdete v technickém průkazu pod „zdvihový objem".
           </span>
         </div>
       </div>
@@ -418,11 +416,11 @@ function Pricing() {
 
 function Reviews() {
   return (
-    <section className="py-16 lg:py-24" style={{ background: C.navy }}>
+    <section className="py-16 lg:py-24" style={{ background: C.dark }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-16 items-start">
           <div>
-            <span style={{ ...S.tag, color: C.lime }}>Zákazníci</span>
+            <span style={{ ...S.tag, color: C.orange }}>Zákazníci</span>
             <h2 style={{ ...S.h2, color: C.white }}>Co říkají spokojení zákazníci</h2>
             <div style={{ ...S.divider }} />
             <p style={{ ...S.sub, color: "rgba(255,255,255,0.55)" }}>Přes 500 spokojených zákazníků. Průměrné hodnocení 4,9 z 5.</p>
@@ -435,7 +433,7 @@ function Reviews() {
           </div>
           <div className="grid grid-cols-1 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
             {REVIEWS.map((r) => (
-              <div key={r.name} className="flex flex-col sm:flex-row gap-4 items-start" style={{ background: C.navyDk, padding: "22px 24px" }}>
+              <div key={r.name} className="flex flex-col sm:flex-row gap-4 items-start" style={{ background: "#1e1e1e", padding: "22px 24px" }}>
                 <div style={{ width: "48px", height: "48px", flexShrink: 0, borderRadius: "50%", overflow: "hidden", position: "relative" }}>
                   <Image src={r.carImg} alt={`Auto zákazníka ${r.name}`} fill style={{ objectFit: "cover" }} />
                 </div>
@@ -447,7 +445,7 @@ function Reviews() {
                   </div>
                   <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", lineHeight: 1.75, marginBottom: "10px", fontStyle: "italic", fontFamily: FONT }}>&ldquo;{r.text}&rdquo;</p>
                   <div style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", fontFamily: FONT }}>
-                    {r.name} &mdash; <span style={{ color: C.lime }}>Google recenze</span>
+                    {r.name} &mdash; <span style={{ color: C.orange }}>Google recenze</span>
                   </div>
                 </div>
               </div>
@@ -462,28 +460,28 @@ function Reviews() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="py-16 lg:py-24" style={{ background: C.white }}>
+    <section className="py-16 lg:py-24" style={{ background: "#161616" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-8 lg:gap-16 items-start">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Časté otázky</span>
-            <h2 style={{ ...S.h2, color: C.textDk }}>Vše o dekarbonizaci v Praze Letňanech</h2>
+            <span style={{ ...S.tag, color: C.orange }}>Časté otázky</span>
+            <h2 style={{ ...S.h2, color: C.white }}>Vše o dekarbonizaci v Praze Letňanech</h2>
             <div style={S.divider} />
             <p style={{ ...S.sub }}>Nenašli jste co hledáte? Zavolejte nebo napište — odpovíme rychle.</p>
             <a href="#contact" className="inline-flex mt-8" style={btnPrimary}
-              onMouseEnter={e => (e.currentTarget.style.background = C.limeDk)}
-              onMouseLeave={e => (e.currentTarget.style.background = C.lime)}>
+              onMouseEnter={e => (e.currentTarget.style.background = C.orangeDk)}
+              onMouseLeave={e => (e.currentTarget.style.background = C.orange)}>
               Napsat dotaz
             </a>
           </div>
           <div>
             {FAQS.map((faq, i) => (
-              <div key={i} style={{ borderBottom: `1px solid ${C.border}` }}>
+              <div key={i} style={{ borderBottom: "1px solid #2a2a2a" }}>
                 <button onClick={() => setOpen(open === i ? null : i)}
                   className="w-full flex justify-between items-center gap-4 text-left py-4"
                   style={{ background: "none", border: "none", cursor: "pointer", fontFamily: FONT }}>
-                  <span style={{ fontSize: "1rem", fontWeight: 600, color: open === i ? C.navy : C.textDk }}>{faq.q}</span>
-                  <ChevronDown size={17} style={{ color: C.navy, flexShrink: 0, transform: open === i ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s" }} />
+                  <span style={{ fontSize: "1rem", fontWeight: 600, color: open === i ? C.orange : C.white }}>{faq.q}</span>
+                  <ChevronDown size={17} style={{ color: C.orange, flexShrink: 0, transform: open === i ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.25s" }} />
                 </button>
                 {open === i && (
                   <div style={{ paddingBottom: "18px", fontSize: "0.95rem", color: C.textMd, lineHeight: 1.8, fontFamily: FONT }}>{faq.a}</div>
@@ -502,9 +500,9 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const field: React.CSSProperties = {
-    width: "100%", background: C.white, border: `1.5px solid ${C.border}`,
+    width: "100%", background: "#f9f9f9", border: "1.5px solid #e0e0e0",
     padding: "11px 13px", fontFamily: FONT, fontSize: "0.9rem",
-    color: C.textDk, outline: "none", transition: "border-color 0.2s",
+    color: "#111", outline: "none", transition: "border-color 0.2s",
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -534,14 +532,14 @@ function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24" style={{ background: C.offWhite }}>
+    <section id="contact" className="py-16 lg:py-24" style={{ background: C.orange }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16 items-start">
           <div>
-            <span style={{ ...S.tag, color: C.navy }}>Objednávka · Praha Letňany</span>
-            <h2 style={{ ...S.h2, color: C.textDk }}>Objednejte se na dekarbonizaci</h2>
-            <div style={S.divider} />
-            <p style={{ ...S.sub }}>Vyplňte formulář, zavolejte nebo napište e-mail. Termín domluvíme do 24 hodin — bez závazků.</p>
+            <span style={{ ...S.tag, color: C.dark }}>Objednávka · Praha Letňany</span>
+            <h2 style={{ ...S.h2, color: C.white }}>Objednejte se na dekarbonizaci</h2>
+            <div style={{ ...S.divider, background: C.dark }} />
+            <p style={{ ...S.sub, color: "rgba(255,255,255,0.85)" }}>Vyplňte formulář, zavolejte nebo napište e-mail. Termín domluvíme do 24 hodin — bez závazků.</p>
             <div className="flex flex-col gap-4 mt-8">
               {[
                 { icon: <Phone size={16}/>, label: "Telefon", val: "+420 601 269 600", href: "tel:+420601269600" },
@@ -549,10 +547,10 @@ function ContactForm() {
                 { icon: <Mail size={16}/>, label: "E-mail", val: "info@cistenivodikem.cz", href: "mailto:info@cistenivodikem.cz" },
               ].map((c) => (
                 <div key={c.label} className="flex items-center gap-3">
-                  <div style={{ width: "38px", height: "38px", background: C.navy, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0 }}>{c.icon}</div>
+                  <div style={{ width: "38px", height: "38px", background: C.dark, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", flexShrink: 0 }}>{c.icon}</div>
                   <div>
-                    <div style={{ fontSize: "0.7rem", fontWeight: 600, color: C.textLt, textTransform: "uppercase" as const, letterSpacing: "0.08em", fontFamily: FONT }}>{c.label}</div>
-                    <a href={c.href} style={{ fontSize: "0.9rem", fontWeight: 600, color: C.textDk, textDecoration: "none", fontFamily: FONT }}>{c.val}</a>
+                    <div style={{ fontSize: "0.7rem", fontWeight: 600, color: "rgba(255,255,255,0.75)", textTransform: "uppercase" as const, letterSpacing: "0.08em", fontFamily: FONT }}>{c.label}</div>
+                    <a href={c.href} style={{ fontSize: "0.9rem", fontWeight: 600, color: C.white, textDecoration: "none", fontFamily: FONT }}>{c.val}</a>
                   </div>
                 </div>
               ))}
@@ -560,58 +558,58 @@ function ContactForm() {
           </div>
           <div>
             {sent ? (
-              <div className="text-center" style={{ background: C.white, border: `1px solid ${C.border}`, borderTop: `4px solid ${C.lime}`, padding: "48px 32px" }}>
-                <CheckCircle2 size={48} style={{ color: C.lime, margin: "0 auto 16px", display: "block" }} />
+              <div className="text-center" style={{ background: C.white, border: "none", borderTop: `4px solid ${C.dark}`, padding: "48px 32px" }}>
+                <CheckCircle2 size={48} style={{ color: C.orange, margin: "0 auto 16px", display: "block" }} />
                 <h3 style={{ fontFamily: FONT, fontSize: "1.35rem", fontWeight: 700, letterSpacing: "-0.5px", marginBottom: "8px" }}>Zpráva odeslána!</h3>
-                <p style={{ color: C.textMd, fontSize: "0.9rem", fontFamily: FONT }}>Ozveme se vám nejpozději do 24 hodin a domluvíme termín.</p>
+                <p style={{ color: "#374151", fontSize: "0.9rem", fontFamily: FONT }}>Ozveme se vám nejpozději do 24 hodin a domluvíme termín.</p>
               </div>
             ) : (
-              <div style={{ background: C.white, border: `1px solid ${C.border}`, borderTop: `4px solid ${C.navy}`, padding: "28px 24px" }}>
+              <div style={{ background: C.white, border: "none", borderTop: `4px solid ${C.dark}`, padding: "28px 24px" }}>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
                   <input name="Pobocka" type="hidden" value="Praha Letňany — Toužimská 720" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Jméno *</label>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "5px", fontFamily: FONT }}>Jméno *</label>
                       <input name="Jmeno" required type="text" placeholder="Jan" style={field}
-                        onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
-                        onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
+                        onFocus={e => (e.currentTarget.style.borderColor = C.orange)}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#e0e0e0")} />
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Příjmení *</label>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "5px", fontFamily: FONT }}>Příjmení *</label>
                       <input name="Prijmeni" required type="text" placeholder="Novák" style={field}
-                        onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
-                        onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
+                        onFocus={e => (e.currentTarget.style.borderColor = C.orange)}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#e0e0e0")} />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Telefon *</label>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "5px", fontFamily: FONT }}>Telefon *</label>
                       <input name="Telefon" required type="tel" placeholder="+420 123 456 789" style={field}
-                        onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
-                        onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
+                        onFocus={e => (e.currentTarget.style.borderColor = C.orange)}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#e0e0e0")} />
                     </div>
                     <div>
-                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>E-mail *</label>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "5px", fontFamily: FONT }}>E-mail *</label>
                       <input name="E-mail" required type="email" placeholder="jan@email.cz" style={field}
-                        onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
-                        onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
+                        onFocus={e => (e.currentTarget.style.borderColor = C.orange)}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#e0e0e0")} />
                     </div>
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: C.textMd, marginBottom: "5px", fontFamily: FONT }}>Zpráva (nepovinné)</label>
+                    <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "5px", fontFamily: FONT }}>Zpráva (nepovinné)</label>
                     <textarea name="Zprava" rows={3} placeholder="Objem motoru, preferovaný termín nebo cokoliv dalšího..." style={{ ...field, resize: "none" }}
-                      onFocus={e => (e.currentTarget.style.borderColor = C.navy)}
-                      onBlur={e => (e.currentTarget.style.borderColor = C.border)} />
+                      onFocus={e => (e.currentTarget.style.borderColor = C.orange)}
+                      onBlur={e => (e.currentTarget.style.borderColor = "#e0e0e0")} />
                   </div>
-                  <label className="flex items-start gap-2 cursor-pointer" style={{ fontSize: "0.78rem", color: C.textLt, lineHeight: 1.6, fontFamily: FONT }}>
-                    <input required type="checkbox" style={{ marginTop: "2px", flexShrink: 0, accentColor: C.navy }} />
-                    Souhlasím se zpracováním osobních údajů dle <a href="/" style={{ color: C.navy, fontWeight: 600 }}>zásad ochrany osobních údajů</a>. *
+                  <label className="flex items-start gap-2 cursor-pointer" style={{ fontSize: "0.78rem", color: "#6b7280", lineHeight: 1.6, fontFamily: FONT }}>
+                    <input required type="checkbox" style={{ marginTop: "2px", flexShrink: 0, accentColor: C.orange }} />
+                    Souhlasím se zpracováním osobních údajů dle <a href="/" style={{ color: C.orange, fontWeight: 600 }}>zásad ochrany osobních údajů</a>. *
                   </label>
                   <button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2 mt-1 disabled:opacity-70 disabled:cursor-not-allowed"
-                    style={{ ...btnPrimary, padding: "14px" }}
-                    onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.background = C.limeDk; }}
-                    onMouseLeave={e => { if (!isSubmitting) e.currentTarget.style.background = C.lime; }}>
+                    style={{ ...btnPrimary, background: C.dark, color: C.white, padding: "14px" }}
+                    onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.background = "#222"; }}
+                    onMouseLeave={e => { if (!isSubmitting) e.currentTarget.style.background = C.dark; }}>
                     {isSubmitting ? "Odesílám..." : "Objednat se v Praze Letňanech"} <ArrowRight size={15}/>
                   </button>
                 </form>
@@ -626,7 +624,7 @@ function ContactForm() {
 
 function Footer() {
   return (
-    <footer style={{ background: C.navyDk, borderTop: `4px solid ${C.lime}` }}>
+    <footer style={{ background: "#0a0a0a", borderTop: `4px solid ${C.orange}` }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-12 pb-8">
         <div className="flex flex-wrap justify-between gap-10 mb-10">
           <div>
@@ -637,7 +635,7 @@ function Footer() {
               <strong style={{ color: "rgba(255,255,255,0.75)" }}>Jakub Franc</strong><br />
               IČ: 04874455<br />
               Jiráskova 637/33, Česká Lípa 47001<br /><br />
-              <a href="mailto:info@cistenivodikem.cz" style={{ color: C.lime, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
+              <a href="mailto:info@cistenivodikem.cz" style={{ color: C.orange, textDecoration: "none", fontWeight: 600 }}>info@cistenivodikem.cz</a>
             </p>
           </div>
           <div className="flex flex-wrap gap-10">

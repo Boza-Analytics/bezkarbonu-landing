@@ -26,73 +26,45 @@ export default function CookieBanner() {
       left: 0,
       right: 0,
       zIndex: 9999,
-      background: '#0d3a79',
-      borderTop: '3px solid #8cc63f',
+      background: '#1a1a1a',
+      borderTop: '3px solid #ff5500',
       fontFamily: FONT,
     }}>
       <div style={{
-        maxWidth: '1200px',
+        maxWidth: '1100px',
         margin: '0 auto',
-        padding: '18px 24px',
+        padding: '16px 20px',
         display: 'flex',
         alignItems: 'center',
-        gap: '24px',
+        gap: '20px',
         flexWrap: 'wrap',
       }}>
-        {/* Icon + text */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: '220px' }}>
-          <div style={{
-            width: '36px',
-            height: '36px',
-            background: '#8cc63f',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            fontSize: '18px',
-          }}>
-            🍪
-          </div>
-          <p style={{
-            margin: 0,
-            fontSize: '0.85rem',
-            color: 'rgba(255,255,255,0.85)',
-            lineHeight: 1.5,
-            fontWeight: 400,
-          }}>
-            Používáme analytické cookies ke zlepšení webu.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.8rem' }}>
-              Motor vyčistíme i bez vašeho souhlasu.
-            </span>
-          </p>
-        </div>
-
-        {/* Buttons */}
+        <p style={{
+          margin: 0,
+          flex: 1,
+          minWidth: '220px',
+          fontSize: '0.9rem',
+          color: 'rgba(255,255,255,0.75)',
+          lineHeight: 1.5,
+        }}>
+          🍪 Používáme analytické cookies ke zlepšení webu.
+        </p>
         <div style={{ display: 'flex', gap: '10px', flexShrink: 0 }}>
           <button
             onClick={dismiss}
             style={{
               fontFamily: FONT,
-              fontSize: '0.8rem',
+              fontSize: '0.85rem',
               fontWeight: 600,
               padding: '9px 18px',
-              border: '1px solid rgba(255,255,255,0.25)',
+              border: '1px solid #444',
               background: 'transparent',
-              color: 'rgba(255,255,255,0.7)',
+              color: '#aaa',
               cursor: 'pointer',
-              borderRadius: '4px',
-              transition: 'all 0.2s',
-              letterSpacing: '0.02em',
+              transition: 'all 0.15s',
             }}
-            onMouseEnter={e => {
-              (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.5)';
-              (e.target as HTMLButtonElement).style.color = '#fff';
-            }}
-            onMouseLeave={e => {
-              (e.target as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.25)';
-              (e.target as HTMLButtonElement).style.color = 'rgba(255,255,255,0.7)';
-            }}
+            onMouseEnter={e => { (e.target as HTMLButtonElement).style.borderColor = '#888'; (e.target as HTMLButtonElement).style.color = '#fff'; }}
+            onMouseLeave={e => { (e.target as HTMLButtonElement).style.borderColor = '#444'; (e.target as HTMLButtonElement).style.color = '#aaa'; }}
           >
             Odmítnout
           </button>
@@ -100,21 +72,19 @@ export default function CookieBanner() {
             onClick={dismiss}
             style={{
               fontFamily: FONT,
-              fontSize: '0.8rem',
-              fontWeight: 600,
+              fontSize: '0.85rem',
+              fontWeight: 700,
               padding: '9px 20px',
               border: 'none',
-              background: '#8cc63f',
+              background: '#ff5500',
               color: '#fff',
               cursor: 'pointer',
-              borderRadius: '4px',
-              transition: 'background 0.2s',
-              letterSpacing: '0.02em',
+              transition: 'background 0.15s',
             }}
-            onMouseEnter={e => (e.target as HTMLButtonElement).style.background = '#6fa32e'}
-            onMouseLeave={e => (e.target as HTMLButtonElement).style.background = '#8cc63f'}
+            onMouseEnter={e => (e.target as HTMLButtonElement).style.background = '#d94700'}
+            onMouseLeave={e => (e.target as HTMLButtonElement).style.background = '#ff5500'}
           >
-            Přijmout vše
+            Přijmout
           </button>
         </div>
       </div>
